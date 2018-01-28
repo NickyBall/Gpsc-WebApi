@@ -23,6 +23,9 @@ namespace GpscWebApi
         public int ID { get; set; }
         public string Company_Name { get; set; }
         public string Company_Logo_Path { get; set; }
+        public decimal Capacity { get; set; }
+        public DateTime COD { get; set; }
+        public DateTime PPA { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plant> Plants { get; set; }

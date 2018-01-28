@@ -208,6 +208,7 @@
     </Compile>
     <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\LocationModel.cs" />
+    <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\PlantModel.cs" />
     <Compile Include="Models\SharedHolderModel.cs" />
     <Compile Include="Plant.cs">

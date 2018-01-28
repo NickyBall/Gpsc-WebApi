@@ -46,6 +46,15 @@ namespace GpscWebApi.Controllers
             {
                 PlantId = p.ID,
                 PlantName = p.Company.Company_Name,
+                PlantInfo = new CompanyModel()
+                {
+                    CompanyId = p.Company.ID,
+                    CompanyName = p.Company.Company_Name,
+                    CompanyLogo = p.Company.Company_Logo_Path,
+                    Capacity = p.Company.Capacity,
+                    COD = p.Company.COD,
+                    PPA = p.Company.PPA
+                },
                 Location = new LocationModel()
                 {
                     Lat = p.Location_Latitude,
@@ -64,6 +73,41 @@ namespace GpscWebApi.Controllers
             }).ToList();
 
             return PlantModels;
+        }
+
+        public PlantModel GetPlantInfo([FromUri] int PlantId)
+        {
+            Plant Plant = Db.Plants.FirstOrDefault(p => p.ID == PlantId);
+            PlantModel PlantInfo = new PlantModel()
+            {
+                PlantId = Plant.ID,
+                PlantName = Plant.Company.Company_Name,
+                PlantInfo = new CompanyModel()
+                {
+                    CompanyId = Plant.Company.ID,
+                    CompanyName = Plant.Company.Company_Name,
+                    CompanyLogo = Plant.Company.Company_Logo_Path,
+                    Capacity = Plant.Company.Capacity,
+                    COD = Plant.Company.COD,
+                    PPA = Plant.Company.PPA
+                },
+                Location = new LocationModel()
+                {
+                    Lat = Plant.Location_Latitude,
+                    Lng = Plant.Location_Longitude
+                },
+                PlantType = Plant.PlantType.PlantType_Type,
+                PowerGen = Plant.Power_Gen,
+                ElectricGen = Plant.Electricity_Gen,
+                SharedHolder = new SharedHolderModel()
+                {
+                    SharedHolderId = Plant.SharedHolder.Id,
+                    SharedHolderName = Plant.SharedHolder.SharedHolder_Name,
+                    GpscShared = Plant.SharedHolder.Gpsc_Share
+                },
+                SharedHolderPercentage = Plant.SharedHolder_Percentage
+            };
+            return PlantInfo;
         }
     }
 }
