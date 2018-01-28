@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="pms_devModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Company_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Company_Logo_Path" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Country_Latitude" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Country_Longitude" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EnergyGen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnergyGen_Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EnergyGen_LatestUpdate" Type="datetime" />
+          <Property Name="EnergyGen_Weather" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnergyGen_Wind_String" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnergyGen_Solarradiation" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnergyGen_UV" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnergyGen_Forecast_Url" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnergyGen_History_Url" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnergyGen_Icon" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnergyGen_Icon_Url" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Plant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="PlantTypeID" Type="int" Nullable="false" />
+          <Property Name="EnergyGenID" Type="int" Nullable="false" />
+          <Property Name="Location_Latitude" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Location_Longitude" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Power_Gen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sharedholder" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Plant_Layout_Path" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Irradiation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AMB_Temp" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlantType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlantType_Type" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Plant_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_EnergyGen">
+          <End Role="EnergyGen" Type="Self.EnergyGen" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnergyGen">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="EnergyGenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_PlantType">
+          <End Role="PlantType" Type="Self.PlantType" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlantType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="PlantTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pms_devModelStoreContainer">
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnergyGen" EntityType="Self.EnergyGen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plant" EntityType="Self.Plant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlantType" EntityType="Self.PlantType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Plant_Company" Association="Self.FK_Plant_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Plant" EntitySet="Plant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_Country" Association="Self.FK_Plant_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Plant" EntitySet="Plant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_EnergyGen" Association="Self.FK_Plant_EnergyGen">
+            <End Role="EnergyGen" EntitySet="EnergyGen" />
+            <End Role="Plant" EntitySet="Plant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_PlantType" Association="Self.FK_Plant_PlantType">
+            <End Role="PlantType" EntitySet="PlantType" />
+            <End Role="Plant" EntitySet="Plant" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pms_devModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Company_Logo_Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_Company" FromRole="Company" ToRole="Plant" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_Country" FromRole="Country" ToRole="Plant" />
+          <Property Name="Country_Latitude" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Country_Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="EnergyGen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnergyGen_Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EnergyGen_LatestUpdate" Type="DateTime" Precision="3" />
+          <Property Name="EnergyGen_Weather" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_Wind_String" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_Solarradiation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_UV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_Forecast_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_History_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_Icon_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_EnergyGen" FromRole="EnergyGen" ToRole="Plant" />
+        </EntityType>
+        <EntityType Name="Plant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="PlantTypeID" Type="Int32" Nullable="false" />
+          <Property Name="EnergyGenID" Type="Int32" Nullable="false" />
+          <Property Name="Location_Latitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Location_Longitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Power_Gen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sharedholder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Plant_Layout_Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Irradiation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AMB_Temp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Plant_Company" FromRole="Plant" ToRole="Company" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Plant_Country" FromRole="Plant" ToRole="Country" />
+          <NavigationProperty Name="EnergyGen" Relationship="Self.FK_Plant_EnergyGen" FromRole="Plant" ToRole="EnergyGen" />
+          <NavigationProperty Name="PlantType" Relationship="Self.FK_Plant_PlantType" FromRole="Plant" ToRole="PlantType" />
+        </EntityType>
+        <EntityType Name="PlantType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlantType_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_PlantType" FromRole="PlantType" ToRole="Plant" />
+        </EntityType>
+        <Association Name="FK_Plant_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_EnergyGen">
+          <End Role="EnergyGen" Type="Self.EnergyGen" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnergyGen">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="EnergyGenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_PlantType">
+          <End Role="PlantType" Type="Self.PlantType" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlantType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="PlantTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pms_devEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="EnergyGens" EntityType="Self.EnergyGen" />
+          <EntitySet Name="Plants" EntityType="Self.Plant" />
+          <EntitySet Name="PlantTypes" EntityType="Self.PlantType" />
+          <AssociationSet Name="FK_Plant_Company" Association="Self.FK_Plant_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_Country" Association="Self.FK_Plant_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_EnergyGen" Association="Self.FK_Plant_EnergyGen">
+            <End Role="EnergyGen" EntitySet="EnergyGens" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_PlantType" Association="Self.FK_Plant_PlantType">
+            <End Role="PlantType" EntitySet="PlantTypes" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pms_devModelStoreContainer" CdmEntityContainer="pms_devEntities">
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="pms_devModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+                <ScalarProperty Name="Company_Logo_Path" ColumnName="Company_Logo_Path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="pms_devModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Country_Longitude" ColumnName="Country_Longitude" />
+                <ScalarProperty Name="Country_Latitude" ColumnName="Country_Latitude" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnergyGens">
+            <EntityTypeMapping TypeName="pms_devModel.EnergyGen">
+              <MappingFragment StoreEntitySet="EnergyGen">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EnergyGen_Value" ColumnName="EnergyGen_Value" />
+                <ScalarProperty Name="EnergyGen_LatestUpdate" ColumnName="EnergyGen_LatestUpdate" />
+                <ScalarProperty Name="EnergyGen_Weather" ColumnName="EnergyGen_Weather" />
+                <ScalarProperty Name="EnergyGen_Wind_String" ColumnName="EnergyGen_Wind_String" />
+                <ScalarProperty Name="EnergyGen_Solarradiation" ColumnName="EnergyGen_Solarradiation" />
+                <ScalarProperty Name="EnergyGen_UV" ColumnName="EnergyGen_UV" />
+                <ScalarProperty Name="EnergyGen_Forecast_Url" ColumnName="EnergyGen_Forecast_Url" />
+                <ScalarProperty Name="EnergyGen_History_Url" ColumnName="EnergyGen_History_Url" />
+                <ScalarProperty Name="EnergyGen_Icon" ColumnName="EnergyGen_Icon" />
+                <ScalarProperty Name="EnergyGen_Icon_Url" ColumnName="EnergyGen_Icon_Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plants">
+            <EntityTypeMapping TypeName="pms_devModel.Plant">
+              <MappingFragment StoreEntitySet="Plant">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="PlantTypeID" ColumnName="PlantTypeID" />
+                <ScalarProperty Name="EnergyGenID" ColumnName="EnergyGenID" />
+                <ScalarProperty Name="Location_Latitude" ColumnName="Location_Latitude" />
+                <ScalarProperty Name="Location_Longitude" ColumnName="Location_Longitude" />
+                <ScalarProperty Name="Power_Gen" ColumnName="Power_Gen" />
+                <ScalarProperty Name="Sharedholder" ColumnName="Sharedholder" />
+                <ScalarProperty Name="Plant_Layout_Path" ColumnName="Plant_Layout_Path" />
+                <ScalarProperty Name="Irradiation" ColumnName="Irradiation" />
+                <ScalarProperty Name="AMB_Temp" ColumnName="AMB_Temp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantTypes">
+            <EntityTypeMapping TypeName="pms_devModel.PlantType">
+              <MappingFragment StoreEntitySet="PlantType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PlantType_Type" ColumnName="PlantType_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

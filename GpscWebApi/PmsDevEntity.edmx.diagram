@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3ab6c1e74c2b48918559b2009db43ed9" Name="Diagram1">
+        <EntityTypeShape EntityType="pms_devModel.Company" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pms_devModel.Country" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pms_devModel.EnergyGen" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pms_devModel.Plant" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="pms_devModel.PlantType" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="pms_devModel.FK_Plant_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="pms_devModel.FK_Plant_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="pms_devModel.FK_Plant_EnergyGen" ManuallyRouted="false" />
+        <AssociationConnector Association="pms_devModel.FK_Plant_PlantType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
