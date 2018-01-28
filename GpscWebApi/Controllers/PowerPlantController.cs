@@ -1,4 +1,5 @@
 ﻿using GpscWebApi.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -22,8 +23,12 @@ namespace GpscWebApi.Controllers
             }
             set => _Db = value;
         }
-        public List<CountryModel> GetAllCountry()
+
+        [HttpPost]
+        public List<CountryModel> GetAllCountry([FromBody] JObject Body)
         {
+            CheckAuthorize(Body["UserCode"].ToString());
+
             DbSet<Country> CountryEntity = Db.Countries;
             List<CountryModel> Countries = CountryEntity.Select(c => new CountryModel()
             {
@@ -39,8 +44,12 @@ namespace GpscWebApi.Controllers
             return Countries;
         }
 
-        public List<PlantModel> GetPlantByCountry([FromUri] int CountryId)
+        [HttpPost]
+        public List<PlantModel> GetPlantByCountry([FromBody] JObject Body)
         {
+            CheckAuthorize(Body["UserCode"].ToString());
+            int CountryId = (int)Body["CountryId"];
+
             List<Plant> Plants = Db.Countries.FirstOrDefault(c => c.Id == CountryId).Plants.ToList();
             List<PlantModel> PlantModels = Plants.Select(p => new PlantModel()
             {
@@ -75,8 +84,12 @@ namespace GpscWebApi.Controllers
             return PlantModels;
         }
 
-        public PlantModel GetPlantInfo([FromUri] int PlantId)
+        [HttpPost]
+        public PlantModel GetPlantInfo([FromBody] JObject Body)
         {
+            CheckAuthorize(Body["UserCode"].ToString());
+            int PlantId = (int)Body["PlantId"];
+
             Plant Plant = Db.Plants.FirstOrDefault(p => p.ID == PlantId);
             PlantModel PlantInfo = new PlantModel()
             {
@@ -108,6 +121,11 @@ namespace GpscWebApi.Controllers
                 SharedHolderPercentage = Plant.SharedHolder_Percentage
             };
             return PlantInfo;
+        }
+
+        private void CheckAuthorize(string UserCode)
+        {
+            if (!UserCode.Equals("UserCode123456")) throw new UnauthorizedAccessException("UserCode Invalid");
         }
     }
 }
