@@ -35,56 +35,6 @@ namespace GpscWebApi.Controllers
                     Lng = (double)c.Country_Longitude
                 }
             }).ToList();
-            
-            //List<Country> CountryList = new List<Country>();
-            //{
-            //    new Country()
-            //    {
-            //        Order = 1,
-            //        Name = "Thailand",
-            //        Location = new Geolocation()
-            //        {
-            //            Lat = 1,
-            //            Lng = 2
-            //        },
-            //        Categories = new List<Category>()
-            //        {
-            //            new Category()
-            //            {
-            //                Name = "cat1",
-            //                ImgUrl = "xxx"
-            //            },
-            //            new Category()
-            //            {
-            //                Name = "cat2",
-            //                ImgUrl = "yyy"
-            //            }
-            //        }
-            //    },
-            //    new Country()
-            //    {
-            //        Order = 2,
-            //        Name = "China",
-            //        Location = new Geolocation()
-            //        {
-            //            Lat = 2,
-            //            Lng = 3
-            //        },
-            //        Categories = new List<Category>()
-            //        {
-            //            new Category()
-            //            {
-            //                Name = "cat1",
-            //                ImgUrl = "xxx"
-            //            },
-            //            new Category()
-            //            {
-            //                Name = "cat2",
-            //                ImgUrl = "yyy"
-            //            }
-            //        }
-            //    },
-            //};
 
             return Countries;
         }

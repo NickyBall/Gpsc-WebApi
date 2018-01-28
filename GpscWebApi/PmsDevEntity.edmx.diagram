@@ -8,12 +8,14 @@
         <EntityTypeShape EntityType="pms_devModel.Company" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="pms_devModel.Country" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="pms_devModel.EnergyGen" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pms_devModel.Plant" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="pms_devModel.Plant" Width="1.5" PointX="4.875" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="pms_devModel.PlantType" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
         <AssociationConnector Association="pms_devModel.FK_Plant_Company" ManuallyRouted="false" />
         <AssociationConnector Association="pms_devModel.FK_Plant_Country" ManuallyRouted="false" />
         <AssociationConnector Association="pms_devModel.FK_Plant_EnergyGen" ManuallyRouted="false" />
         <AssociationConnector Association="pms_devModel.FK_Plant_PlantType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="pms_devModel.SharedHolder" Width="1.5" PointX="2.75" PointY="0.625" />
+        <AssociationConnector Association="pms_devModel.FK_Plant_SharedHolder" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

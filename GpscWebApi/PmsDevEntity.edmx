@@ -49,11 +49,13 @@
           <Property Name="EnergyGenID" Type="int" Nullable="false" />
           <Property Name="Location_Latitude" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="Location_Longitude" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="Power_Gen" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Sharedholder" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Power_Gen" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Plant_Layout_Path" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Irradiation" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="AMB_Temp" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Irradiation" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AMB_Temp" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SharedHolder_Id" Type="int" Nullable="false" />
+          <Property Name="SharedHolder_Percentage" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Electricity_Gen" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="PlantType">
           <Key>
@@ -61,6 +63,14 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PlantType_Type" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SharedHolder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SharedHolder_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gpsc_Share" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <Association Name="FK_Plant_Company">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
@@ -110,12 +120,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Plant_SharedHolder">
+          <End Role="SharedHolder" Type="Self.SharedHolder" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SharedHolder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="SharedHolder_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="pms_devModelStoreContainer">
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EnergyGen" EntityType="Self.EnergyGen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plant" EntityType="Self.Plant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlantType" EntityType="Self.PlantType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SharedHolder" EntityType="Self.SharedHolder" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Plant_Company" Association="Self.FK_Plant_Company">
             <End Role="Company" EntitySet="Company" />
             <End Role="Plant" EntitySet="Plant" />
@@ -130,6 +153,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Plant_PlantType" Association="Self.FK_Plant_PlantType">
             <End Role="PlantType" EntitySet="PlantType" />
+            <End Role="Plant" EntitySet="Plant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_SharedHolder" Association="Self.FK_Plant_SharedHolder">
+            <End Role="SharedHolder" EntitySet="SharedHolder" />
             <End Role="Plant" EntitySet="Plant" />
           </AssociationSet>
         </EntityContainer>
@@ -184,15 +211,19 @@
           <Property Name="EnergyGenID" Type="Int32" Nullable="false" />
           <Property Name="Location_Latitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="Location_Longitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="Power_Gen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Power_Gen" Type="String" Nullable="false" />
           <Property Name="Sharedholder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Plant_Layout_Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Irradiation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AMB_Temp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Irradiation" Type="String" Nullable="false" />
+          <Property Name="AMB_Temp" Type="String" Nullable="false" />
           <NavigationProperty Name="Company" Relationship="Self.FK_Plant_Company" FromRole="Plant" ToRole="Company" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Plant_Country" FromRole="Plant" ToRole="Country" />
           <NavigationProperty Name="EnergyGen" Relationship="Self.FK_Plant_EnergyGen" FromRole="Plant" ToRole="EnergyGen" />
           <NavigationProperty Name="PlantType" Relationship="Self.FK_Plant_PlantType" FromRole="Plant" ToRole="PlantType" />
+          <Property Name="SharedHolder_Id" Type="Int32" Nullable="false" />
+          <Property Name="SharedHolder_Percentage" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Electricity_Gen" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="SharedHolder" Relationship="pms_devModel.FK_Plant_SharedHolder" FromRole="Plant" ToRole="SharedHolder" />
         </EntityType>
         <EntityType Name="PlantType">
           <Key>
@@ -272,7 +303,33 @@
             <End Role="PlantType" EntitySet="PlantTypes" />
             <End Role="Plant" EntitySet="Plants" />
           </AssociationSet>
+          <EntitySet Name="SharedHolders" EntityType="pms_devModel.SharedHolder" />
+          <AssociationSet Name="FK_Plant_SharedHolder" Association="pms_devModel.FK_Plant_SharedHolder">
+            <End Role="SharedHolder" EntitySet="SharedHolders" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="SharedHolder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SharedHolder_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gpsc_Share" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Plants" Relationship="pms_devModel.FK_Plant_SharedHolder" FromRole="SharedHolder" ToRole="Plant" />
+        </EntityType>
+        <Association Name="FK_Plant_SharedHolder">
+          <End Type="pms_devModel.SharedHolder" Role="SharedHolder" Multiplicity="1" />
+          <End Type="pms_devModel.Plant" Role="Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SharedHolder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="SharedHolder_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -318,6 +375,9 @@
           <EntitySetMapping Name="Plants">
             <EntityTypeMapping TypeName="pms_devModel.Plant">
               <MappingFragment StoreEntitySet="Plant">
+                <ScalarProperty Name="Electricity_Gen" ColumnName="Electricity_Gen" />
+                <ScalarProperty Name="SharedHolder_Percentage" ColumnName="SharedHolder_Percentage" />
+                <ScalarProperty Name="SharedHolder_Id" ColumnName="SharedHolder_Id" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
                 <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
@@ -326,7 +386,6 @@
                 <ScalarProperty Name="Location_Latitude" ColumnName="Location_Latitude" />
                 <ScalarProperty Name="Location_Longitude" ColumnName="Location_Longitude" />
                 <ScalarProperty Name="Power_Gen" ColumnName="Power_Gen" />
-                <ScalarProperty Name="Sharedholder" ColumnName="Sharedholder" />
                 <ScalarProperty Name="Plant_Layout_Path" ColumnName="Plant_Layout_Path" />
                 <ScalarProperty Name="Irradiation" ColumnName="Irradiation" />
                 <ScalarProperty Name="AMB_Temp" ColumnName="AMB_Temp" />
@@ -338,6 +397,15 @@
               <MappingFragment StoreEntitySet="PlantType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PlantType_Type" ColumnName="PlantType_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SharedHolders">
+            <EntityTypeMapping TypeName="pms_devModel.SharedHolder">
+              <MappingFragment StoreEntitySet="SharedHolder">
+                <ScalarProperty Name="Gpsc_Share" ColumnName="Gpsc_Share" />
+                <ScalarProperty Name="SharedHolder_Name" ColumnName="SharedHolder_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

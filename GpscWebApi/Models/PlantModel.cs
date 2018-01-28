@@ -9,5 +9,6 @@ namespace GpscWebApi.Models
     {
         public int PlantId { get; set; }
         public string PlantName { get; set; }
+        public LocationModel Location { get; set; }
     }
 }

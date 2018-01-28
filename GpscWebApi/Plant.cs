@@ -26,10 +26,14 @@ namespace GpscWebApi
         public string Plant_Layout_Path { get; set; }
         public string Irradiation { get; set; }
         public string AMB_Temp { get; set; }
+        public int SharedHolder_Id { get; set; }
+        public decimal SharedHolder_Percentage { get; set; }
+        public decimal Electricity_Gen { get; set; }
     
         public virtual Company Company { get; set; }
         public virtual Country Country { get; set; }
         public virtual EnergyGen EnergyGen { get; set; }
         public virtual PlantType PlantType { get; set; }
+        public virtual SharedHolder SharedHolder { get; set; }
     }
 }

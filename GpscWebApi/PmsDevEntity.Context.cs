@@ -30,5 +30,6 @@ namespace GpscWebApi
         public virtual DbSet<EnergyGen> EnergyGens { get; set; }
         public virtual DbSet<Plant> Plants { get; set; }
         public virtual DbSet<PlantType> PlantTypes { get; set; }
+        public virtual DbSet<SharedHolder> SharedHolders { get; set; }
     }
 }
