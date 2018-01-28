@@ -209,6 +209,7 @@
     <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\PlantModel.cs" />
+    <Compile Include="Models\SharedHolderModel.cs" />
     <Compile Include="Plant.cs">
       <DependentUpon>PmsDevEntity.tt</DependentUpon>
     </Compile>
@@ -235,6 +236,9 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SharedHolder.cs">
+      <DependentUpon>PmsDevEntity.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

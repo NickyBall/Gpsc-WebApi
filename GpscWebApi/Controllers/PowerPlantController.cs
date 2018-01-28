@@ -31,8 +31,8 @@ namespace GpscWebApi.Controllers
                 CountryName = c.Country_Name,
                 Location = new LocationModel()
                 {
-                    Lat = (double)c.Country_Latitude,
-                    Lng = (double)c.Country_Longitude
+                    Lat = c.Country_Latitude,
+                    Lng = c.Country_Longitude
                 }
             }).ToList();
 
@@ -42,12 +42,28 @@ namespace GpscWebApi.Controllers
         public List<PlantModel> GetPlantByCountry([FromUri] int CountryId)
         {
             List<Plant> Plants = Db.Countries.FirstOrDefault(c => c.Id == CountryId).Plants.ToList();
-
-            return Plants.Select(p => new PlantModel()
+            List<PlantModel> PlantModels = Plants.Select(p => new PlantModel()
             {
                 PlantId = p.ID,
-                PlantName = p.Company.Company_Name
+                PlantName = p.Company.Company_Name,
+                Location = new LocationModel()
+                {
+                    Lat = p.Location_Latitude,
+                    Lng = p.Location_Longitude
+                },
+                PlantType = p.PlantType.PlantType_Type,
+                PowerGen = p.Power_Gen,
+                ElectricGen = p.Electricity_Gen,
+                SharedHolder = new SharedHolderModel()
+                {
+                    SharedHolderId = p.SharedHolder.Id,
+                    SharedHolderName = p.SharedHolder.SharedHolder_Name,
+                    GpscShared = p.SharedHolder.Gpsc_Share
+                },
+                SharedHolderPercentage = p.SharedHolder_Percentage
             }).ToList();
+
+            return PlantModels;
         }
     }
 }

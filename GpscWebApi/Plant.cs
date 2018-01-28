@@ -21,11 +21,10 @@ namespace GpscWebApi
         public int EnergyGenID { get; set; }
         public decimal Location_Latitude { get; set; }
         public decimal Location_Longitude { get; set; }
-        public string Power_Gen { get; set; }
-        public string Sharedholder { get; set; }
+        public decimal Power_Gen { get; set; }
         public string Plant_Layout_Path { get; set; }
-        public string Irradiation { get; set; }
-        public string AMB_Temp { get; set; }
+        public decimal Irradiation { get; set; }
+        public decimal AMB_Temp { get; set; }
         public int SharedHolder_Id { get; set; }
         public decimal SharedHolder_Percentage { get; set; }
         public decimal Electricity_Gen { get; set; }
