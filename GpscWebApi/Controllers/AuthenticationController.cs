@@ -1,21 +1,28 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using GpscWebApi.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace GpscWebApi.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AuthenticationController : ApiController
     {
         [HttpPost]
-        public string Login([FromBody] JObject Body)
+        public AuthenticateModel Login([FromBody] JObject Body)
         {
-            string UserCode = null;
-            if (Body["Username"].ToString().Equals("admin") && Body["Password"].ToString().Equals("123456")) UserCode = "UserCode123456";
-            return UserCode;
+            AuthenticateModel Result = new AuthenticateModel();
+            if (Body["Username"].ToString().Equals("admin") && Body["Password"].ToString().Equals("123456"))
+            {
+                Result.ResultCode = HttpStatusCode.OK.GetHashCode();
+                Result.UserCode = "UserCode123456";
+            }
+            return Result;
         }
     }
 }
