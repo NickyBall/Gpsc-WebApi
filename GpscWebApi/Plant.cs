@@ -28,11 +28,13 @@ namespace GpscWebApi
         public int SharedHolder_Id { get; set; }
         public decimal SharedHolder_Percentage { get; set; }
         public decimal Electricity_Gen { get; set; }
+        public int Customer_Id { get; set; }
     
         public virtual Company Company { get; set; }
         public virtual Country Country { get; set; }
         public virtual EnergyGen EnergyGen { get; set; }
         public virtual PlantType PlantType { get; set; }
         public virtual SharedHolder SharedHolder { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }

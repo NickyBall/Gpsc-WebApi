@@ -16,6 +16,8 @@
         <AssociationConnector Association="pms_devModel.FK_Plant_EnergyGen" />
         <AssociationConnector Association="pms_devModel.FK_Plant_PlantType" />
         <AssociationConnector Association="pms_devModel.FK_Plant_SharedHolder" />
+        <EntityTypeShape EntityType="pms_devModel.Customer" Width="1.5" PointX="2.75" PointY="0.75" />
+        <AssociationConnector Association="pms_devModel.FK_Plant_Customer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

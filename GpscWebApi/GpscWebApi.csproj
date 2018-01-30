@@ -207,6 +207,9 @@
     <Compile Include="Country.cs">
       <DependentUpon>PmsDevEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>PmsDevEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="EnergyGen.cs">
       <DependentUpon>PmsDevEntity.tt</DependentUpon>
     </Compile>
@@ -215,6 +218,7 @@
     </Compile>
     <Compile Include="Models\AuthenticateModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\PlantModel.cs" />

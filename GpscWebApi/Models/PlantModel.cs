@@ -10,6 +10,7 @@ namespace GpscWebApi.Models
         public int PlantId { get; set; }
         public string PlantName { get; set; }
         public CompanyModel PlantInfo { get; set; }
+        public CustomerModel Customer { get; set; }
         public LocationModel Location { get; set; }
         public decimal PowerGen { get; set; }
         public decimal ElectricGen { get; set; }

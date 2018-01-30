@@ -12,20 +12,16 @@ namespace GpscWebApi
     using System;
     using System.Collections.Generic;
     
-    public partial class Company
+    public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Company()
+        public Customer()
         {
             this.Plants = new HashSet<Plant>();
         }
     
-        public int ID { get; set; }
-        public string Company_Name { get; set; }
-        public string Company_Logo_Path { get; set; }
-        public decimal Capacity { get; set; }
-        public System.DateTime COD { get; set; }
-        public System.DateTime PPA { get; set; }
+        public int Id { get; set; }
+        public string Customer_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plant> Plants { get; set; }

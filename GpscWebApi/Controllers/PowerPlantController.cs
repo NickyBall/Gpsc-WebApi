@@ -66,6 +66,11 @@ namespace GpscWebApi.Controllers
                     COD = p.Company.COD,
                     PPA = p.Company.PPA
                 },
+                Customer = new CustomerModel()
+                {
+                    CustomerId = p.Customer.Id,
+                    CustomerName = p.Customer.Customer_Name
+                },
                 Location = new LocationModel()
                 {
                     Lat = p.Location_Latitude,
@@ -105,6 +110,11 @@ namespace GpscWebApi.Controllers
                     Capacity = Plant.Company.Capacity,
                     COD = Plant.Company.COD,
                     PPA = Plant.Company.PPA
+                },
+                Customer = new CustomerModel()
+                {
+                    CustomerId = Plant.Customer.Id,
+                    CustomerName = Plant.Customer.Customer_Name
                 },
                 Location = new LocationModel()
                 {

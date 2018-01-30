@@ -31,5 +31,6 @@ namespace GpscWebApi
         public virtual DbSet<PlantType> PlantTypes { get; set; }
         public virtual DbSet<SharedHolder> SharedHolders { get; set; }
         public virtual DbSet<Plant> Plants { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
     }
 }

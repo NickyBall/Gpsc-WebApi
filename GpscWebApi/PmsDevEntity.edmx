@@ -25,6 +25,13 @@
           <Property Name="Country_Latitude" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="Country_Longitude" Type="decimal" Precision="18" Scale="4" Nullable="false" />
         </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="EnergyGen">
           <Key>
             <PropertyRef Name="ID" />
@@ -59,6 +66,7 @@
           <Property Name="SharedHolder_Id" Type="int" Nullable="false" />
           <Property Name="SharedHolder_Percentage" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Electricity_Gen" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PlantType">
           <Key>
@@ -96,6 +104,18 @@
             </Principal>
             <Dependent Role="Plant">
               <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="Customer_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -138,6 +158,7 @@
         <EntityContainer Name="pms_devModelStoreContainer">
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EnergyGen" EntityType="Self.EnergyGen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plant" EntityType="Self.Plant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlantType" EntityType="Self.PlantType" Schema="dbo" store:Type="Tables" />
@@ -148,6 +169,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Plant_Country" Association="Self.FK_Plant_Country">
             <End Role="Country" EntitySet="Country" />
+            <End Role="Plant" EntitySet="Plant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_Customer" Association="Self.FK_Plant_Customer">
+            <End Role="Customer" EntitySet="Customer" />
             <End Role="Plant" EntitySet="Plant" />
           </AssociationSet>
           <AssociationSet Name="FK_Plant_EnergyGen" Association="Self.FK_Plant_EnergyGen">
@@ -241,6 +266,11 @@
             <End Role="SharedHolder" EntitySet="SharedHolders" />
             <End Role="Plant" EntitySet="Plants" />
           </AssociationSet>
+          <EntitySet Name="Customers" EntityType="pms_devModel.Customer" />
+          <AssociationSet Name="FK_Plant_Customer" Association="pms_devModel.FK_Plant_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="SharedHolder">
           <Key>
@@ -274,6 +304,8 @@
           <NavigationProperty Name="EnergyGen" Relationship="pms_devModel.FK_Plant_EnergyGen" FromRole="Plant" ToRole="EnergyGen" />
           <NavigationProperty Name="PlantType" Relationship="pms_devModel.FK_Plant_PlantType" FromRole="Plant" ToRole="PlantType" />
           <NavigationProperty Name="SharedHolder" Relationship="pms_devModel.FK_Plant_SharedHolder" FromRole="Plant" ToRole="SharedHolder" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="pms_devModel.FK_Plant_Customer" FromRole="Plant" ToRole="Customer" />
         </EntityType>
         <Association Name="FK_Plant_Company">
           <End Type="pms_devModel.Company" Role="Company" Multiplicity="1" />
@@ -332,6 +364,26 @@
             </Principal>
             <Dependent Role="Plant">
               <PropertyRef Name="SharedHolder_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Plants" Relationship="pms_devModel.FK_Plant_Customer" FromRole="Customer" ToRole="Plant" />
+        </EntityType>
+        <Association Name="FK_Plant_Customer">
+          <End Type="pms_devModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="pms_devModel.Plant" Role="Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="Customer_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -400,6 +452,7 @@
           <EntitySetMapping Name="Plants">
             <EntityTypeMapping TypeName="pms_devModel.Plant">
               <MappingFragment StoreEntitySet="Plant">
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
                 <ScalarProperty Name="Electricity_Gen" ColumnName="Electricity_Gen" />
                 <ScalarProperty Name="SharedHolder_Percentage" ColumnName="SharedHolder_Percentage" />
                 <ScalarProperty Name="SharedHolder_Id" ColumnName="SharedHolder_Id" />
@@ -414,6 +467,14 @@
                 <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="pms_devModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
