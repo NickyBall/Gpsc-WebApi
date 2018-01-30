@@ -16,7 +16,11 @@ namespace GpscWebApi.Controllers
         [HttpPost]
         public AuthenticateModel Login([FromBody] JObject Body)
         {
-            AuthenticateModel Result = new AuthenticateModel();
+            AuthenticateModel Result = new AuthenticateModel()
+            {
+                ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+                UserCode = ""
+            };
             if (Body["Username"].ToString().Equals("admin") && Body["Password"].ToString().Equals("123456"))
             {
                 Result.ResultCode = HttpStatusCode.OK.GetHashCode();
