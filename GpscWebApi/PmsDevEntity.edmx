@@ -38,7 +38,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EnergyGen_Value" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="EnergyGen_LatestUpdate" Type="datetime" />
+          <Property Name="EnergyGen_LatestUpdate" Type="datetime" Nullable="false" />
           <Property Name="EnergyGen_Weather" Type="nvarchar" MaxLength="50" />
           <Property Name="EnergyGen_Wind_String" Type="nvarchar" MaxLength="50" />
           <Property Name="EnergyGen_Solarradiation" Type="nvarchar" MaxLength="50" />
@@ -67,6 +67,7 @@
           <Property Name="SharedHolder_Percentage" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Electricity_Gen" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Customer_Id" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="PlantType">
           <Key>
@@ -220,7 +221,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EnergyGen_Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="EnergyGen_LatestUpdate" Type="DateTime" Precision="3" />
+          <Property Name="EnergyGen_LatestUpdate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="EnergyGen_Weather" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EnergyGen_Wind_String" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EnergyGen_Solarradiation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -306,6 +307,7 @@
           <NavigationProperty Name="SharedHolder" Relationship="pms_devModel.FK_Plant_SharedHolder" FromRole="Plant" ToRole="SharedHolder" />
           <Property Name="Customer_Id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="pms_devModel.FK_Plant_Customer" FromRole="Plant" ToRole="Customer" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_Plant_Company">
           <End Type="pms_devModel.Company" Role="Company" Multiplicity="1" />
@@ -452,6 +454,7 @@
           <EntitySetMapping Name="Plants">
             <EntityTypeMapping TypeName="pms_devModel.Plant">
               <MappingFragment StoreEntitySet="Plant">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
                 <ScalarProperty Name="Electricity_Gen" ColumnName="Electricity_Gen" />
                 <ScalarProperty Name="SharedHolder_Percentage" ColumnName="SharedHolder_Percentage" />

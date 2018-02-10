@@ -68,6 +68,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.Protocols" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -219,6 +221,8 @@
     <Compile Include="Models\AuthenticateModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\EnergyGenModel.cs" />
+    <Compile Include="Models\ResultModel.cs" />
     <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\PlantModel.cs" />

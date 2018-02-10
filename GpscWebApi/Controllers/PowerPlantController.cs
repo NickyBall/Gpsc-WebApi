@@ -27,9 +27,16 @@ namespace GpscWebApi.Controllers
         }
 
         [HttpPost]
-        public List<CountryModel> GetAllCountry([FromBody] JObject Body)
+        public ResultModel<List<CountryModel>> GetAllCountry([FromBody] JObject Body)
         {
-            CheckAuthorize(Body["UserCode"].ToString());
+            if (!CheckAuthorize(Body["UserCode"].ToString()))
+            {
+                return new ResultModel<List<CountryModel>>()
+                {
+                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+                    Message = "Unauthorize."
+                };
+            }
 
             DbSet<Country> CountryEntity = Db.Countries;
             List<CountryModel> Countries = CountryEntity.Select(c => new CountryModel()
@@ -43,13 +50,25 @@ namespace GpscWebApi.Controllers
                 }
             }).ToList();
 
-            return Countries;
+            return new ResultModel<List<CountryModel>>()
+            {
+                ResultCode = HttpStatusCode.OK.GetHashCode(),
+                Message = "",
+                Result = Countries
+            };
         }
 
         [HttpPost]
-        public List<PlantModel> GetPlantByCountry([FromBody] JObject Body)
+        public ResultModel<List<PlantModel>> GetPlantByCountry([FromBody] JObject Body)
         {
-            CheckAuthorize(Body["UserCode"].ToString());
+            if (!CheckAuthorize(Body["UserCode"].ToString()))
+            {
+                return new ResultModel<List<PlantModel>>()
+                {
+                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+                    Message = "Unauthorize."
+                };
+            }
             int CountryId = (int)Body["CountryId"];
 
             List<Plant> Plants = Db.Countries.FirstOrDefault(c => c.Id == CountryId).Plants.ToList();
@@ -88,13 +107,25 @@ namespace GpscWebApi.Controllers
                 SharedHolderPercentage = p.SharedHolder_Percentage
             }).ToList();
 
-            return PlantModels;
+            return new ResultModel<List<PlantModel>>()
+            {
+                ResultCode = HttpStatusCode.OK.GetHashCode(),
+                Message = "",
+                Result = PlantModels
+            };
         }
 
         [HttpPost]
-        public PlantModel GetPlantInfo([FromBody] JObject Body)
+        public ResultModel<PlantModel> GetPlantInfo([FromBody] JObject Body)
         {
-            CheckAuthorize(Body["UserCode"].ToString());
+            if (!CheckAuthorize(Body["UserCode"].ToString()))
+            {
+                return new ResultModel<PlantModel>()
+                {
+                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+                    Message = "Unauthorize."
+                };
+            }
             int PlantId = (int)Body["PlantId"];
 
             Plant Plant = Db.Plants.FirstOrDefault(p => p.ID == PlantId);
@@ -132,12 +163,49 @@ namespace GpscWebApi.Controllers
                 },
                 SharedHolderPercentage = Plant.SharedHolder_Percentage
             };
-            return PlantInfo;
+            return new ResultModel<PlantModel>()
+            {
+                ResultCode = HttpStatusCode.OK.GetHashCode(),
+                Message = "",
+                Result = PlantInfo
+            };
         }
 
-        private void CheckAuthorize(string UserCode)
+        [HttpPost]
+        public ResultModel<List<EnergyGenModel>> GetHourlyEnergyGen([FromBody] JObject Body)
         {
-            if (!UserCode.Equals("UserCode123456")) throw new UnauthorizedAccessException("UserCode Invalid");
+            if (!CheckAuthorize(Body["UserCode"].ToString()))
+            {
+                return new ResultModel<List<EnergyGenModel>>()
+                {
+                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+                    Message = "Unauthorize."
+                };
+            }
+            int PlantId = (int)Body["PlantId"];
+            List<EnergyGenModel> Models = new List<EnergyGenModel>();
+            List<Plant> Plants = Db.Plants.Where(p => p.ID == PlantId).ToList();
+
+            foreach (Plant Plant in Plants)
+            {
+                Models.Add(new EnergyGenModel()
+                {
+                    EnergyValue = Decimal.Parse(Plant.EnergyGen.EnergyGen_Value),
+                    Target = -1,
+                    TimeStamp = Plant.EnergyGen.EnergyGen_LatestUpdate
+                });
+            }
+            
+            ResultModel<List<EnergyGenModel>> Result = new ResultModel<List<EnergyGenModel>>()
+            {
+                ResultCode = HttpStatusCode.OK.GetHashCode(),
+                Message = "",
+                Result = Models
+            };
+            
+            return Result;
         }
+
+        private bool CheckAuthorize(string UserCode) => UserCode.Equals("UserCode123456");
     }
 }

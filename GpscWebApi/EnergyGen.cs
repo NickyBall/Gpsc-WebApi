@@ -22,7 +22,7 @@ namespace GpscWebApi
     
         public int ID { get; set; }
         public string EnergyGen_Value { get; set; }
-        public Nullable<System.DateTime> EnergyGen_LatestUpdate { get; set; }
+        public System.DateTime EnergyGen_LatestUpdate { get; set; }
         public string EnergyGen_Weather { get; set; }
         public string EnergyGen_Wind_String { get; set; }
         public string EnergyGen_Solarradiation { get; set; }

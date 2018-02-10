@@ -7,7 +7,6 @@ namespace GpscWebApi.Models
 {
     public class AuthenticateModel
     {
-        public int ResultCode { get; set; }
         public string UserCode { get; set; }
     }
 }
