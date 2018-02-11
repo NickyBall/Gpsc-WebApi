@@ -182,9 +182,11 @@ namespace GpscWebApi.Controllers
                     Message = "Unauthorize."
                 };
             }
-            int PlantId = (int)Body["PlantId"];
+            int CompanyId = (int)Body["CompanyId"];
+            DateTime StartDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 0, 0, 0);
+            DateTime EndDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
-            List<Plant> Plants = Db.Plants.Where(p => p.ID == PlantId).ToList();
+            List<Plant> Plants = Db.Plants.Where(p => p.CompanyID == CompanyId && p.CreatedBy > StartDate && p.CreatedBy < EndDate).ToList();
 
             foreach (Plant Plant in Plants)
             {
