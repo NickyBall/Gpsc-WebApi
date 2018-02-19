@@ -27,10 +27,15 @@ namespace GpscWebApi
     
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<EnergyGen> EnergyGens { get; set; }
+        public virtual DbSet<EnergyPlantHist> EnergyPlantHists { get; set; }
+        public virtual DbSet<Plant> Plants { get; set; }
         public virtual DbSet<PlantType> PlantTypes { get; set; }
         public virtual DbSet<SharedHolder> SharedHolders { get; set; }
-        public virtual DbSet<Plant> Plants { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<PlantEnergyGenDailyView> PlantEnergyGenDailyViews { get; set; }
+        public virtual DbSet<PlantEnergyGenHourlyView> PlantEnergyGenHourlyViews { get; set; }
+        public virtual DbSet<PlantEnergyGenMonthlyView> PlantEnergyGenMonthlyViews { get; set; }
+        public virtual DbSet<PlantEnergyGenYearlyView> PlantEnergyGenYearlyViews { get; set; }
     }
 }

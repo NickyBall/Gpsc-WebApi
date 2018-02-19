@@ -186,28 +186,34 @@ namespace GpscWebApi.Controllers
             DateTime StartDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 0, 0, 0);
             DateTime EndDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
-            List<Plant> Plants = Db.Plants.Where(p => p.CompanyID == CompanyId && p.CreatedBy > StartDate && p.CreatedBy < EndDate).ToList();
 
-            foreach (Plant Plant in Plants)
+            var hourly = Db.PlantEnergyGenHourlyViews.Where(a => a.Time_Stamp.Value > StartDate && a.Time_Stamp.Value < EndDate).OrderBy(a => a.Time_Stamp).Select(a => new
+            {
+                Index = a.Row,
+                EnergyValue = a.AverageEnergyGenValue.Value,
+                TimeStamp = a.Time_Stamp.Value
+            });
+            foreach (var record in hourly)
             {
                 Models.Add(new EnergyGenModel()
                 {
-                    EnergyValue = Decimal.Parse(Plant.EnergyGen.EnergyGen_Value),
+                    EnergyValue = (double)record.EnergyValue,
                     Target = -1,
-                    TimeStamp = Plant.EnergyGen.EnergyGen_LatestUpdate
+                    TimeStamp = record.TimeStamp
                 });
             }
-            
+
             ResultModel<List<EnergyGenModel>> Result = new ResultModel<List<EnergyGenModel>>()
             {
                 ResultCode = HttpStatusCode.OK.GetHashCode(),
                 Message = "",
                 Result = Models
             };
-            
+
             return Result;
         }
 
         private bool CheckAuthorize(string UserCode) => UserCode.Equals("UserCode123456");
     }
+
 }

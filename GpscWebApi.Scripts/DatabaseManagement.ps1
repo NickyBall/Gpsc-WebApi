@@ -76,3 +76,24 @@ function InsertPlantTable() {
            ,'$($CreatedBy)')"
     Invoke-Sqlcmd -Query $QueryString -ConnectionString $ConnectionString
 }
+
+function InsertEnergyPlantHistTable() {
+    [CmdletBinding()]
+    Param(
+        [Parameter(Mandatory=$true, Position=1)]
+        [string]$PlantId,
+        [Parameter(Mandatory=$true, Position=2)]
+        [string]$EnergyGenId,
+        [Parameter(Mandatory=$true, Position=3)]
+        [string]$CreatedBy
+    )
+    $QueryString = "INSERT INTO [dbo].[EnergyPlantHist]
+           ([PlantId]
+           ,[EnerygyGenId]
+           ,[CreatedBy])
+     VALUES (
+           $($PlantId)
+           ,$($EnergyGenId)
+           ,'$($CreatedBy)')"
+    Invoke-Sqlcmd -Query $QueryString -ConnectionString $ConnectionString
+}

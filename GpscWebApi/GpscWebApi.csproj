@@ -215,6 +215,9 @@
     <Compile Include="EnergyGen.cs">
       <DependentUpon>PmsDevEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="EnergyPlantHist.cs">
+      <DependentUpon>PmsDevEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,6 +231,18 @@
     <Compile Include="Models\PlantModel.cs" />
     <Compile Include="Models\SharedHolderModel.cs" />
     <Compile Include="Plant.cs">
+      <DependentUpon>PmsDevEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlantEnergyGenDailyView.cs">
+      <DependentUpon>PmsDevEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlantEnergyGenHourlyView.cs">
+      <DependentUpon>PmsDevEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlantEnergyGenMonthlyView.cs">
+      <DependentUpon>PmsDevEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlantEnergyGenYearlyView.cs">
       <DependentUpon>PmsDevEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="PlantType.cs">

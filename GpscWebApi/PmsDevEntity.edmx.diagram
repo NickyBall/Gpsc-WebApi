@@ -4,20 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3ab6c1e74c2b48918559b2009db43ed9" Name="Diagram1" ZoomLevel="77">
-        <EntityTypeShape EntityType="pms_devModel.Company" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pms_devModel.Country" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pms_devModel.EnergyGen" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pms_devModel.PlantType" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pms_devModel.SharedHolder" Width="1.5" PointX="2.875" PointY="3.875" />
-        <EntityTypeShape EntityType="pms_devModel.Plant" Width="1.5" PointX="5" PointY="4.75" />
+      <Diagram DiagramId="3ab6c1e74c2b48918559b2009db43ed9" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="pms_devModel.Company" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="pms_devModel.Country" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="pms_devModel.Customer" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="pms_devModel.EnergyGen" Width="1.5" PointX="3" PointY="7" />
+        <EntityTypeShape EntityType="pms_devModel.EnergyPlantHist" Width="1.5" PointX="5.25" PointY="2.5" />
+        <EntityTypeShape EntityType="pms_devModel.Plant" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="pms_devModel.PlantType" Width="1.5" PointX="0.75" PointY="11" />
+        <EntityTypeShape EntityType="pms_devModel.SharedHolder" Width="1.5" PointX="0.75" PointY="13.375" />
+        <EntityTypeShape EntityType="pms_devModel.PlantEnergyGenDailyView" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="pms_devModel.PlantEnergyGenHourlyView" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pms_devModel.PlantEnergyGenMonthlyView" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="pms_devModel.PlantEnergyGenYearlyView" Width="1.5" PointX="7.75" PointY="6.75" />
         <AssociationConnector Association="pms_devModel.FK_Plant_Company" />
         <AssociationConnector Association="pms_devModel.FK_Plant_Country" />
-        <AssociationConnector Association="pms_devModel.FK_Plant_EnergyGen" />
+        <AssociationConnector Association="pms_devModel.FK_Plant_Customer" />
+        <AssociationConnector Association="pms_devModel.FK_EnergyPlantHist_EnergyGen" />
+        <AssociationConnector Association="pms_devModel.FK_EnergyPlantHist_Plant" />
         <AssociationConnector Association="pms_devModel.FK_Plant_PlantType" />
         <AssociationConnector Association="pms_devModel.FK_Plant_SharedHolder" />
-        <EntityTypeShape EntityType="pms_devModel.Customer" Width="1.5" PointX="2.75" PointY="0.75" />
-        <AssociationConnector Association="pms_devModel.FK_Plant_Customer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

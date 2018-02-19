@@ -20,19 +20,9 @@ namespace GpscWebApi.Controllers
         {
             string Username = Body["Username"].ToString();
             string Password = Body["Password"].ToString();
-            try
-            {
-                string LdapConnectionString = $"ldap.forumsys.com";
-                LdapDirectoryIdentifier Ldap = new LdapDirectoryIdentifier(LdapConnectionString, 389);
-                LdapConnection Connection = new LdapConnection(Ldap)
-                {
-                    AuthType = AuthType.Basic
-                };
-                Connection.SessionOptions.ProtocolVersion = 3;
-                string LdapUsername = $"cn={Username},dc=example,dc=com";
-                NetworkCredential Credential = new NetworkCredential(LdapUsername, Password);
-                Connection.Bind(Credential);
 
+            if (Username.Equals("admin") && Password.Equals("123456"))
+            {
                 return new ResultModel<AuthenticateModel>()
                 {
                     ResultCode = HttpStatusCode.OK.GetHashCode(),
@@ -43,14 +33,46 @@ namespace GpscWebApi.Controllers
                     }
                 };
             }
-            catch (Exception ex)
+            return new ResultModel<AuthenticateModel>()
             {
-                return new ResultModel<AuthenticateModel>()
+                ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+                Message = "",
+                Result = new AuthenticateModel()
                 {
-                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                    Message = "Unauthorize"
-                };
-            }
+                    UserCode = ""
+                }
+            };
+            //try
+            //{
+            //    string LdapConnectionString = $"ldap.forumsys.com";
+            //    LdapDirectoryIdentifier Ldap = new LdapDirectoryIdentifier(LdapConnectionString, 389);
+            //    LdapConnection Connection = new LdapConnection(Ldap)
+            //    {
+            //        AuthType = AuthType.Basic
+            //    };
+            //    Connection.SessionOptions.ProtocolVersion = 3;
+            //    string LdapUsername = $"cn={Username},dc=example,dc=com";
+            //    NetworkCredential Credential = new NetworkCredential(LdapUsername, Password);
+            //    Connection.Bind(Credential);
+
+            //    return new ResultModel<AuthenticateModel>()
+            //    {
+            //        ResultCode = HttpStatusCode.OK.GetHashCode(),
+            //        Message = "",
+            //        Result = new AuthenticateModel()
+            //        {
+            //            UserCode = "UserCode123456"
+            //        }
+            //    };
+            //}
+            //catch (Exception ex)
+            //{
+            //    return new ResultModel<AuthenticateModel>()
+            //    {
+            //        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+            //        Message = "Unauthorize"
+            //    };
+            //}
 
             //NetworkCredential credential = new NetworkCredential("", "");
             

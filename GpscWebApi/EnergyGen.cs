@@ -17,11 +17,11 @@ namespace GpscWebApi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EnergyGen()
         {
-            this.Plants = new HashSet<Plant>();
+            this.EnergyPlantHists = new HashSet<EnergyPlantHist>();
         }
     
         public int ID { get; set; }
-        public string EnergyGen_Value { get; set; }
+        public decimal EnergyGen_Value { get; set; }
         public System.DateTime EnergyGen_LatestUpdate { get; set; }
         public string EnergyGen_Weather { get; set; }
         public string EnergyGen_Wind_String { get; set; }
@@ -33,6 +33,6 @@ namespace GpscWebApi
         public string EnergyGen_Icon_Url { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Plant> Plants { get; set; }
+        public virtual ICollection<EnergyPlantHist> EnergyPlantHists { get; set; }
     }
 }

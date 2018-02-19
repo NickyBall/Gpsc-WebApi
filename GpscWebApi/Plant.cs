@@ -14,11 +14,16 @@ namespace GpscWebApi
     
     public partial class Plant
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Plant()
+        {
+            this.EnergyPlantHists = new HashSet<EnergyPlantHist>();
+        }
+    
         public int ID { get; set; }
         public int CountryID { get; set; }
         public int CompanyID { get; set; }
         public int PlantTypeID { get; set; }
-        public int EnergyGenID { get; set; }
         public decimal Location_Latitude { get; set; }
         public decimal Location_Longitude { get; set; }
         public decimal Power_Gen { get; set; }
@@ -29,13 +34,14 @@ namespace GpscWebApi
         public decimal SharedHolder_Percentage { get; set; }
         public decimal Electricity_Gen { get; set; }
         public int Customer_Id { get; set; }
-        public System.DateTime CreatedBy { get; set; }
+        public System.DateTime CreatedAt { get; set; }
     
         public virtual Company Company { get; set; }
         public virtual Country Country { get; set; }
-        public virtual EnergyGen EnergyGen { get; set; }
+        public virtual Customer Customer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnergyPlantHist> EnergyPlantHists { get; set; }
         public virtual PlantType PlantType { get; set; }
         public virtual SharedHolder SharedHolder { get; set; }
-        public virtual Customer Customer { get; set; }
     }
 }

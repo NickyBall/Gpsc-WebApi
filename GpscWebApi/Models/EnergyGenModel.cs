@@ -7,8 +7,8 @@ namespace GpscWebApi.Models
 {
     public class EnergyGenModel
     {
-        public decimal EnergyValue { get; set; }
-        public decimal Target { get; set; }
+        public double EnergyValue { get; set; }
+        public double Target { get; set; }
         public DateTime TimeStamp { get; set; }
     }
 }
