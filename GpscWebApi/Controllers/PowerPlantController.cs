@@ -187,7 +187,134 @@ namespace GpscWebApi.Controllers
             DateTime EndDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
 
-            var hourly = Db.PlantEnergyGenHourlyViews.Where(a => a.Time_Stamp.Value > StartDate && a.Time_Stamp.Value < EndDate).OrderBy(a => a.Time_Stamp).Select(a => new
+            var hourly = Db.PlantEnergyGenHourlyViews.Where(a => a.Time_Stamp.Value >= StartDate && a.Time_Stamp.Value <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+            {
+                Index = a.Row,
+                EnergyValue = a.AverageEnergyGenValue.Value,
+                TimeStamp = a.Time_Stamp.Value
+            });
+            foreach (var record in hourly)
+            {
+                Models.Add(new EnergyGenModel()
+                {
+                    EnergyValue = (double)record.EnergyValue,
+                    Target = -1,
+                    TimeStamp = record.TimeStamp
+                });
+            }
+
+            ResultModel<List<EnergyGenModel>> Result = new ResultModel<List<EnergyGenModel>>()
+            {
+                ResultCode = HttpStatusCode.OK.GetHashCode(),
+                Message = "",
+                Result = Models
+            };
+
+            return Result;
+        }
+
+        [HttpPost]
+        public ResultModel<List<EnergyGenModel>> GetDailyEnergyGen([FromBody] JObject Body)
+        {
+            if (!CheckAuthorize(Body["UserCode"].ToString()))
+            {
+                return new ResultModel<List<EnergyGenModel>>()
+                {
+                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+                    Message = "Unauthorize."
+                };
+            }
+            int CompanyId = (int)Body["CompanyId"];
+            DateTime StartDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, 1);
+            DateTime EndDate = StartDate.AddMonths(1).AddDays(-1);
+            List<EnergyGenModel> Models = new List<EnergyGenModel>();
+
+            var hourly = Db.PlantEnergyGenDailyViews.Where(a => a.Time_Stamp.Value >= StartDate && a.Time_Stamp.Value <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+            {
+                Index = a.Row,
+                EnergyValue = a.AverageEnergyGenValue.Value,
+                TimeStamp = a.Time_Stamp.Value
+            });
+            foreach (var record in hourly)
+            {
+                Models.Add(new EnergyGenModel()
+                {
+                    EnergyValue = (double)record.EnergyValue,
+                    Target = -1,
+                    TimeStamp = record.TimeStamp
+                });
+            }
+
+            ResultModel<List<EnergyGenModel>> Result = new ResultModel<List<EnergyGenModel>>()
+            {
+                ResultCode = HttpStatusCode.OK.GetHashCode(),
+                Message = "",
+                Result = Models
+            };
+
+            return Result;
+        }
+
+        [HttpPost]
+        public ResultModel<List<EnergyGenModel>> GetMonthlyEnergyGen([FromBody] JObject Body)
+        {
+            if (!CheckAuthorize(Body["UserCode"].ToString()))
+            {
+                return new ResultModel<List<EnergyGenModel>>()
+                {
+                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+                    Message = "Unauthorize."
+                };
+            }
+            int CompanyId = (int)Body["CompanyId"];
+            
+            DateTime StartDate = new DateTime(DateTime.Today.Year - 1, 1, 1);
+            DateTime EndDate = StartDate.AddYears(1).AddMonths(-1);
+            List<EnergyGenModel> Models = new List<EnergyGenModel>();
+
+            var hourly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp.Value >= StartDate && a.Time_Stamp.Value <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+            {
+                Index = a.Row,
+                EnergyValue = a.AverageEnergyGenValue.Value,
+                TimeStamp = a.Time_Stamp.Value
+            });
+            foreach (var record in hourly)
+            {
+                Models.Add(new EnergyGenModel()
+                {
+                    EnergyValue = (double)record.EnergyValue,
+                    Target = -1,
+                    TimeStamp = record.TimeStamp
+                });
+            }
+
+            ResultModel<List<EnergyGenModel>> Result = new ResultModel<List<EnergyGenModel>>()
+            {
+                ResultCode = HttpStatusCode.OK.GetHashCode(),
+                Message = "",
+                Result = Models
+            };
+
+            return Result;
+        }
+
+        [HttpPost]
+        public ResultModel<List<EnergyGenModel>> GetYearlyEnergyGen([FromBody] JObject Body)
+        {
+            if (!CheckAuthorize(Body["UserCode"].ToString()))
+            {
+                return new ResultModel<List<EnergyGenModel>>()
+                {
+                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+                    Message = "Unauthorize."
+                };
+            }
+            int CompanyId = (int)Body["CompanyId"];
+            //DateTime StartDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 0, 0, 0);
+            //DateTime EndDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
+            List<EnergyGenModel> Models = new List<EnergyGenModel>();
+
+            var hourly = Db.PlantEnergyGenYearlyViews.Where(a => a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
             {
                 Index = a.Row,
                 EnergyValue = a.AverageEnergyGenValue.Value,
