@@ -15,11 +15,45 @@ namespace GpscWebApi.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AuthenticationController : ApiController
     {
+        private string CurrentDomainPath => "LDAP://DC=pttgrp,DC=corp";
+
         [HttpPost]
         public ResultModel<AuthenticateModel> Login([FromBody] JObject Body)
         {
             string Username = Body["Username"].ToString();
             string Password = Body["Password"].ToString();
+
+            //try
+            //{
+            //    DirectoryEntry de = new DirectoryEntry(CurrentDomainPath, Username, Password);
+            //    DirectorySearcher dsearch = new DirectorySearcher(de);
+            //    SearchResult res = null;
+            //    dsearch.PageSize = 100000;
+            //    res = dsearch.FindOne();
+
+            //    return new ResultModel<AuthenticateModel>()
+            //    {
+            //        ResultCode = HttpStatusCode.OK.GetHashCode(),
+            //        Message = "",
+            //        Result = new AuthenticateModel()
+            //        {
+            //            UserCode = "UserCode123456"
+            //        }
+            //    };
+            //}
+            //catch (Exception ex)
+            //{
+            //    return new ResultModel<AuthenticateModel>()
+            //    {
+            //        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+            //        Message = "",
+            //        Result = new AuthenticateModel()
+            //        {
+            //            UserCode = ""
+            //        }
+            //    };
+            //}
+
 
             if (Username.Equals("admin") && Password.Equals("123456"))
             {
@@ -42,16 +76,17 @@ namespace GpscWebApi.Controllers
                     UserCode = ""
                 }
             };
+
             //try
             //{
             //    string LdapConnectionString = $"ldap.forumsys.com";
-            //    LdapDirectoryIdentifier Ldap = new LdapDirectoryIdentifier(LdapConnectionString, 389);
+            //    LdapDirectoryIdentifier Ldap = new LdapDirectoryIdentifier("gpsc-web-p01.pttgrp.corp", 389);
             //    LdapConnection Connection = new LdapConnection(Ldap)
             //    {
             //        AuthType = AuthType.Basic
             //    };
             //    Connection.SessionOptions.ProtocolVersion = 3;
-            //    string LdapUsername = $"cn={Username},dc=example,dc=com";
+            //    string LdapUsername = $"cn={Username},DC=pttgrp,DC=corp";
             //    NetworkCredential Credential = new NetworkCredential(LdapUsername, Password);
             //    Connection.Bind(Credential);
 
@@ -70,12 +105,12 @@ namespace GpscWebApi.Controllers
             //    return new ResultModel<AuthenticateModel>()
             //    {
             //        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-            //        Message = "Unauthorize"
+            //        Message = ex.Message
             //    };
             //}
 
             //NetworkCredential credential = new NetworkCredential("", "");
-            
+
 
             //try
             //{
@@ -83,7 +118,7 @@ namespace GpscWebApi.Controllers
             //    DirectorySearcher Searcher = new DirectorySearcher(Entry)
             //    {
             //        Filter = $"(SAMAccountName={Username})",
-                    
+
             //    };
             //    Searcher.PropertiesToLoad.Add("cn");
             //    SearchResult ResultOfSearch = Searcher.FindOne();
@@ -94,7 +129,7 @@ namespace GpscWebApi.Controllers
             //        Result.ResultCode = HttpStatusCode.OK.GetHashCode();
             //        Result.UserCode = ResultPath;
             //    }
-                
+
             //}
             //catch (Exception ex)
             //{
@@ -106,7 +141,7 @@ namespace GpscWebApi.Controllers
             //    Result.ResultCode = HttpStatusCode.OK.GetHashCode();
             //    Result.UserCode = "UserCode123456";
             //}
-            
+
         }
     }
 }

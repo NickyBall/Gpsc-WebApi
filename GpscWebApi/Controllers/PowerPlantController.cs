@@ -280,10 +280,12 @@ namespace GpscWebApi.Controllers
             });
             foreach (var record in hourly)
             {
+                string YearMonth = $"{record.TimeStamp.Year}-{record.TimeStamp.Month.ToString().PadLeft(2, '0')}";
+                var Target = Db.EnergyGenTargets.Where(t => t.YearMonth.Equals(YearMonth)).ToList().FirstOrDefault().TargetValue;
                 Models.Add(new EnergyGenModel()
                 {
                     EnergyValue = (double)record.EnergyValue,
-                    Target = -1,
+                    Target = (double)Target,
                     TimeStamp = record.TimeStamp
                 });
             }
@@ -322,10 +324,12 @@ namespace GpscWebApi.Controllers
             });
             foreach (var record in hourly)
             {
+                string Year = record.TimeStamp.Year.ToString();
+                var Target = Db.EnergyGenTargets.Where(t => t.YearMonth.StartsWith(Year)).Average(c => c.TargetValue);
                 Models.Add(new EnergyGenModel()
                 {
                     EnergyValue = (double)record.EnergyValue,
-                    Target = -1,
+                    Target = (double)Target,
                     TimeStamp = record.TimeStamp
                 });
             }

@@ -215,6 +215,9 @@
     <Compile Include="EnergyGen.cs">
       <DependentUpon>PmsDevEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="EnergyGenTarget.cs">
+      <DependentUpon>PmsDevEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="EnergyPlantHist.cs">
       <DependentUpon>PmsDevEntity.tt</DependentUpon>
     </Compile>

@@ -97,3 +97,20 @@ function InsertEnergyPlantHistTable() {
            ,'$($CreatedBy)')"
     Invoke-Sqlcmd -Query $QueryString -ConnectionString $ConnectionString
 }
+
+function InsertEnergyGenTarget() {
+    [CmdletBinding()]
+    Param(
+        [Parameter(Mandatory=$true, Position=1)]
+        [string]$YearMonth,
+        [Parameter(Mandatory=$true, Position=2)]
+        [string]$Target
+    )
+    $QueryString = "INSERT INTO [dbo].[EnergyGenTarget]
+           ([YearMonth]
+           ,[TargetValue])
+     VALUES
+           ('$($YearMonth)'
+           ,$($Target))"
+    Invoke-Sqlcmd -Query $QueryString -ConnectionString $ConnectionString
+}

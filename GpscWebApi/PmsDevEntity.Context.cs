@@ -37,5 +37,6 @@ namespace GpscWebApi
         public virtual DbSet<PlantEnergyGenHourlyView> PlantEnergyGenHourlyViews { get; set; }
         public virtual DbSet<PlantEnergyGenMonthlyView> PlantEnergyGenMonthlyViews { get; set; }
         public virtual DbSet<PlantEnergyGenYearlyView> PlantEnergyGenYearlyViews { get; set; }
+        public virtual DbSet<EnergyGenTarget> EnergyGenTargets { get; set; }
     }
 }
