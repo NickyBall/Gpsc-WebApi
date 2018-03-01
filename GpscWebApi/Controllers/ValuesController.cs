@@ -7,13 +7,26 @@ using System.Web.Http;
 
 namespace GpscWebApi.Controllers
 {
-    [Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return FlushVersion();
+        }
+
+        List<string> FlushVersion()
+        {
+
+            var path = Environment.GetEnvironmentVariable("PATH");
+            List<string> Versions = new List<string>();
+            // get all
+            var enumerator = Environment.GetEnvironmentVariables().GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                Versions.Add($"{enumerator.Key,5}:{enumerator.Value,100}");
+            }
+            return Versions;
         }
 
         // GET api/values/5

@@ -1,5 +1,6 @@
 ﻿$Password = '$$Dv781@pp'
-$ConnectionString = "Data Source=kow.cloudapp.net;Initial Catalog=pms_dev;Persist Security Info=True;User ID=sa;Password=$($Password);MultipleActiveResultSets=True;Application Name=EntityFramework"
+#$ConnectionString = "Data Source=kow.cloudapp.net;Initial Catalog=pms_dev;Persist Security Info=True;User ID=sa;Password=$($Password);MultipleActiveResultSets=True;Application Name=EntityFramework"
+$ConnectionString = "Data Source=10.232.108.219;Initial Catalog=GPSC-Plant-monitoring_Test;Persist Security Info=True;User ID=gpscplantmonitorusrtst;Password=cgpscplantmonitorusrtst"
 
 function InsertEnerygyGenTable() {
     [CmdletBinding()] 
@@ -21,7 +22,7 @@ function InsertEnerygyGenTable() {
            ,[EnergyGen_Icon]
            ,[EnergyGen_Icon_Url])
      VALUES
-           ('$($EnergyGenValue)'
+           ($($EnergyGenValue)
            ,'$($EnergyLatestUpdate)'
            ,'Weather'
            ,'Wind String'
@@ -57,7 +58,7 @@ function InsertPlantTable() {
            ,[SharedHolder_Percentage]
            ,[Electricity_Gen]
            ,[Customer_Id]
-           ,[CreatedBy])
+           ,[CreatedAt])
      VALUES
            (1
            ,5
@@ -89,8 +90,8 @@ function InsertEnergyPlantHistTable() {
     )
     $QueryString = "INSERT INTO [dbo].[EnergyPlantHist]
            ([PlantId]
-           ,[EnerygyGenId]
-           ,[CreatedBy])
+           ,[EnergyGenId]
+           ,[CreatedAt])
      VALUES (
            $($PlantId)
            ,$($EnergyGenId)

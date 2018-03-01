@@ -344,6 +344,21 @@ namespace GpscWebApi.Controllers
             return Result;
         }
 
+        [HttpGet]
+        public List<string> FlushVersion()
+        {
+
+            var path = Environment.GetEnvironmentVariable("PATH");
+            List<string> Versions = new List<string>();
+            // get all
+            var enumerator = Environment.GetEnvironmentVariables().GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                Versions.Add($"{enumerator.Key,5}:{enumerator.Value,100}");
+            }
+            return Versions;
+        }
+
         private bool CheckAuthorize(string UserCode) => UserCode.Equals("UserCode123456");
     }
 

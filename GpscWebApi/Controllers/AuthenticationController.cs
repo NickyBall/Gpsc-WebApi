@@ -23,40 +23,14 @@ namespace GpscWebApi.Controllers
             string Username = Body["Username"].ToString();
             string Password = Body["Password"].ToString();
 
-            //try
-            //{
-            //    DirectoryEntry de = new DirectoryEntry(CurrentDomainPath, Username, Password);
-            //    DirectorySearcher dsearch = new DirectorySearcher(de);
-            //    SearchResult res = null;
-            //    dsearch.PageSize = 100000;
-            //    res = dsearch.FindOne();
-
-            //    return new ResultModel<AuthenticateModel>()
-            //    {
-            //        ResultCode = HttpStatusCode.OK.GetHashCode(),
-            //        Message = "",
-            //        Result = new AuthenticateModel()
-            //        {
-            //            UserCode = "UserCode123456"
-            //        }
-            //    };
-            //}
-            //catch (Exception ex)
-            //{
-            //    return new ResultModel<AuthenticateModel>()
-            //    {
-            //        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-            //        Message = "",
-            //        Result = new AuthenticateModel()
-            //        {
-            //            UserCode = ""
-            //        }
-            //    };
-            //}
-
-
-            if (Username.Equals("admin") && Password.Equals("123456"))
+            try
             {
+                DirectoryEntry de = new DirectoryEntry(CurrentDomainPath, Username, Password);
+                DirectorySearcher dsearch = new DirectorySearcher(de);
+                SearchResult res = null;
+                dsearch.PageSize = 100000;
+                res = dsearch.FindOne();
+
                 return new ResultModel<AuthenticateModel>()
                 {
                     ResultCode = HttpStatusCode.OK.GetHashCode(),
@@ -67,15 +41,41 @@ namespace GpscWebApi.Controllers
                     }
                 };
             }
-            return new ResultModel<AuthenticateModel>()
+            catch (Exception ex)
             {
-                ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                Message = "",
-                Result = new AuthenticateModel()
+                return new ResultModel<AuthenticateModel>()
                 {
-                    UserCode = ""
-                }
-            };
+                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+                    Message = "",
+                    Result = new AuthenticateModel()
+                    {
+                        UserCode = ""
+                    }
+                };
+            }
+
+
+            //if (Username.Equals("admin") && Password.Equals("123456"))
+            //{
+            //    return new ResultModel<AuthenticateModel>()
+            //    {
+            //        ResultCode = HttpStatusCode.OK.GetHashCode(),
+            //        Message = "",
+            //        Result = new AuthenticateModel()
+            //        {
+            //            UserCode = "UserCode123456"
+            //        }
+            //    };
+            //}
+            //return new ResultModel<AuthenticateModel>()
+            //{
+            //    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+            //    Message = "",
+            //    Result = new AuthenticateModel()
+            //    {
+            //        UserCode = ""
+            //    }
+            //};
 
             //try
             //{

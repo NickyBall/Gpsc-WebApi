@@ -324,6 +324,7 @@
     <Content Include="PmsDevEntity.edmx.diagram">
       <DependentUpon>PmsDevEntity.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\pms-api-dev - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\pms-api-dev - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
