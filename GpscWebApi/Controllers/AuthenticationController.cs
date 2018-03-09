@@ -1,4 +1,7 @@
-﻿using GpscWebApi.Models;
+﻿using GpscWebApi.Identities;
+using GpscWebApi.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -7,6 +10,7 @@ using System.DirectoryServices.Protocols;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -54,5 +58,26 @@ namespace GpscWebApi.Controllers
                 };
             }
         }
+
+        //[HttpPost]
+        //public async Task<ResultModel<string>> Register([FromBody] JObject Body)
+        //{
+        //    ApplicationUserManager UserManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        //    ApplicationUser User = new ApplicationUser()
+        //    {
+        //        UserName = Body["Username"].ToString(),
+        //        Email = Body["Email"].ToString(),
+        //        FirstName = Body["Firstname"].ToString(),
+        //        LastName = Body["Lastname"].ToString(),
+        //        JoinDate = DateTime.UtcNow
+        //    };
+        //    IdentityResult Result = await UserManager.CreateAsync(User, Body["Password"].ToString());
+        //    return new ResultModel<string>()
+        //    {
+        //        ResultCode = HttpStatusCode.BadRequest.GetHashCode(),
+        //        Message = "Something went wrong",
+        //        Result = ""
+        //    };
+        //}
     }
 }
