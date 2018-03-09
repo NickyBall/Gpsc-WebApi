@@ -13,10 +13,10 @@ namespace GpscWebApi
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class pms_devEntities : DbContext
+    public partial class GpscEntities : DbContext
     {
-        public pms_devEntities()
-            : base("name=pms_devEntities")
+        public GpscEntities()
+            : base("name=GpscEntities")
         {
         }
     
@@ -29,6 +29,7 @@ namespace GpscWebApi
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<EnergyGen> EnergyGens { get; set; }
+        public virtual DbSet<EnergyGenTarget> EnergyGenTargets { get; set; }
         public virtual DbSet<EnergyPlantHist> EnergyPlantHists { get; set; }
         public virtual DbSet<Plant> Plants { get; set; }
         public virtual DbSet<PlantType> PlantTypes { get; set; }
@@ -37,6 +38,5 @@ namespace GpscWebApi
         public virtual DbSet<PlantEnergyGenHourlyView> PlantEnergyGenHourlyViews { get; set; }
         public virtual DbSet<PlantEnergyGenMonthlyView> PlantEnergyGenMonthlyViews { get; set; }
         public virtual DbSet<PlantEnergyGenYearlyView> PlantEnergyGenYearlyViews { get; set; }
-        public virtual DbSet<EnergyGenTarget> EnergyGenTargets { get; set; }
     }
 }

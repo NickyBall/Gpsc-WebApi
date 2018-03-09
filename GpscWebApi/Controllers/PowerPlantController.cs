@@ -15,12 +15,12 @@ namespace GpscWebApi.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PowerPlantController : ApiController
     {
-        pms_devEntities _Db;
-        pms_devEntities Db
+        GpscEntities _Db;
+        GpscEntities Db
         {
             get
             {
-                if (_Db == null) _Db = new pms_devEntities();
+                if (_Db == null) _Db = new GpscEntities();
                 return _Db;
             }
             set => _Db = value;
@@ -267,7 +267,7 @@ namespace GpscWebApi.Controllers
                 };
             }
             int CompanyId = (int)Body["CompanyId"];
-            
+
             DateTime StartDate = new DateTime(DateTime.Today.Year - 1, 1, 1);
             DateTime EndDate = StartDate.AddYears(1).AddMonths(-1);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();

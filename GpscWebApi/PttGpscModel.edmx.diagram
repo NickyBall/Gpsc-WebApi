@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6a4470824e81428496911eed40a68518" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Company" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Country" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Customer" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EnergyGen" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EnergyGenTarget" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EnergyPlantHist" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Plant" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PlantType" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SharedHolder" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PlantEnergyGenDailyView" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PlantEnergyGenHourlyView" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PlantEnergyGenMonthlyView" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PlantEnergyGenYearlyView" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Plant_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Plant_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Plant_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_EnergyPlantHist_EnergyGen" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_EnergyPlantHist_Plant" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Plant_PlantType" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Plant_SharedHolder" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

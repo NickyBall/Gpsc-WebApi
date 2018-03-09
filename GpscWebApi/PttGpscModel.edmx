@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="pms_devModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="ID" />
@@ -101,7 +101,7 @@
           <Property Name="Gpsc_Share" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenDailyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenDailyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenDailyView">
           <Key>
             <PropertyRef Name="PlantId" />
@@ -112,7 +112,7 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenDailyView' does not have
           <Property Name="Time_Stamp" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenHourlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenHourlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenHourlyView">
           <Key>
             <PropertyRef Name="PlantId" />
@@ -123,7 +123,7 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenHourlyView' does not hav
           <Property Name="Time_Stamp" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenMonthlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenMonthlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenMonthlyView">
           <Key>
             <PropertyRef Name="PlantId" />
@@ -134,7 +134,7 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenMonthlyView' does not ha
           <Property Name="Time_Stamp" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenYearlyView">
           <Key>
             <PropertyRef Name="PlantId" />
@@ -228,7 +228,7 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="pms_devModelStoreContainer">
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
@@ -299,89 +299,47 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
             <End Role="Plant" EntitySet="Plant" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="pms_devModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="pms_devEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Companies" EntityType="pms_devModel.Company" />
-          <EntitySet Name="Countries" EntityType="pms_devModel.Country" />
-          <EntitySet Name="Customers" EntityType="pms_devModel.Customer" />
-          <EntitySet Name="EnergyGens" EntityType="pms_devModel.EnergyGen" />
-          <EntitySet Name="EnergyPlantHists" EntityType="pms_devModel.EnergyPlantHist" />
-          <EntitySet Name="Plants" EntityType="pms_devModel.Plant" />
-          <EntitySet Name="PlantTypes" EntityType="pms_devModel.PlantType" />
-          <EntitySet Name="SharedHolders" EntityType="pms_devModel.SharedHolder" />
-          <EntitySet Name="PlantEnergyGenDailyViews" EntityType="pms_devModel.PlantEnergyGenDailyView" />
-          <EntitySet Name="PlantEnergyGenHourlyViews" EntityType="pms_devModel.PlantEnergyGenHourlyView" />
-          <EntitySet Name="PlantEnergyGenMonthlyViews" EntityType="pms_devModel.PlantEnergyGenMonthlyView" />
-          <EntitySet Name="PlantEnergyGenYearlyViews" EntityType="pms_devModel.PlantEnergyGenYearlyView" />
-          <AssociationSet Name="FK_Plant_Company" Association="pms_devModel.FK_Plant_Company">
-            <End Role="Company" EntitySet="Companies" />
-            <End Role="Plant" EntitySet="Plants" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Plant_Country" Association="pms_devModel.FK_Plant_Country">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="Plant" EntitySet="Plants" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Plant_Customer" Association="pms_devModel.FK_Plant_Customer">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Plant" EntitySet="Plants" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EnergyPlantHist_EnergyGen" Association="pms_devModel.FK_EnergyPlantHist_EnergyGen">
-            <End Role="EnergyGen" EntitySet="EnergyGens" />
-            <End Role="EnergyPlantHist" EntitySet="EnergyPlantHists" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EnergyPlantHist_Plant" Association="pms_devModel.FK_EnergyPlantHist_Plant">
-            <End Role="Plant" EntitySet="Plants" />
-            <End Role="EnergyPlantHist" EntitySet="EnergyPlantHists" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Plant_PlantType" Association="pms_devModel.FK_Plant_PlantType">
-            <End Role="PlantType" EntitySet="PlantTypes" />
-            <End Role="Plant" EntitySet="Plants" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Plant_SharedHolder" Association="pms_devModel.FK_Plant_SharedHolder">
-            <End Role="SharedHolder" EntitySet="SharedHolders" />
-            <End Role="Plant" EntitySet="Plants" />
-          </AssociationSet>
-          <EntitySet Name="EnergyGenTargets" EntityType="pms_devModel.EnergyGenTarget" />
-        </EntityContainer>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Company_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Company_Logo_Path" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Capacity" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Company_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Company_Logo_Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Capacity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="COD" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PPA" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Plants" Relationship="pms_devModel.FK_Plant_Company" FromRole="Company" ToRole="Plant" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_Company" FromRole="Company" ToRole="Plant" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Country_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Country_Latitude" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="Country_Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <NavigationProperty Name="Plants" Relationship="pms_devModel.FK_Plant_Country" FromRole="Country" ToRole="Plant" />
+          <Property Name="Country_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country_Latitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Country_Longitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_Country" FromRole="Country" ToRole="Plant" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Customer_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Plants" Relationship="pms_devModel.FK_Plant_Customer" FromRole="Customer" ToRole="Plant" />
+          <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_Customer" FromRole="Customer" ToRole="Plant" />
         </EntityType>
         <EntityType Name="EnergyGen">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EnergyGen_Value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="EnergyGen_Value" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="EnergyGen_LatestUpdate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EnergyGen_Weather" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EnergyGen_Wind_String" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -391,7 +349,15 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
           <Property Name="EnergyGen_History_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EnergyGen_Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EnergyGen_Icon_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="EnergyPlantHists" Relationship="pms_devModel.FK_EnergyPlantHist_EnergyGen" FromRole="EnergyGen" ToRole="EnergyPlantHist" />
+          <NavigationProperty Name="EnergyPlantHists" Relationship="Self.FK_EnergyPlantHist_EnergyGen" FromRole="EnergyGen" ToRole="EnergyPlantHist" />
+        </EntityType>
+        <EntityType Name="EnergyGenTarget">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YearMonth" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TargetValue" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
         </EntityType>
         <EntityType Name="EnergyPlantHist">
           <Key>
@@ -401,8 +367,8 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
           <Property Name="PlantId" Type="Int32" Nullable="false" />
           <Property Name="EnergyGenId" Type="Int32" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="EnergyGen" Relationship="pms_devModel.FK_EnergyPlantHist_EnergyGen" FromRole="EnergyPlantHist" ToRole="EnergyGen" />
-          <NavigationProperty Name="Plant" Relationship="pms_devModel.FK_EnergyPlantHist_Plant" FromRole="EnergyPlantHist" ToRole="Plant" />
+          <NavigationProperty Name="EnergyGen" Relationship="Self.FK_EnergyPlantHist_EnergyGen" FromRole="EnergyPlantHist" ToRole="EnergyGen" />
+          <NavigationProperty Name="Plant" Relationship="Self.FK_EnergyPlantHist_Plant" FromRole="EnergyPlantHist" ToRole="Plant" />
         </EntityType>
         <EntityType Name="Plant">
           <Key>
@@ -412,40 +378,40 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
           <Property Name="CountryID" Type="Int32" Nullable="false" />
           <Property Name="CompanyID" Type="Int32" Nullable="false" />
           <Property Name="PlantTypeID" Type="Int32" Nullable="false" />
-          <Property Name="Location_Latitude" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="Location_Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="Power_Gen" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Plant_Layout_Path" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Irradiation" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="AMB_Temp" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Location_Latitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Location_Longitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Power_Gen" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Plant_Layout_Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Irradiation" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AMB_Temp" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="SharedHolder_Id" Type="Int32" Nullable="false" />
-          <Property Name="SharedHolder_Percentage" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="Electricity_Gen" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SharedHolder_Percentage" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Electricity_Gen" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Customer_Id" Type="Int32" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Company" Relationship="pms_devModel.FK_Plant_Company" FromRole="Plant" ToRole="Company" />
-          <NavigationProperty Name="Country" Relationship="pms_devModel.FK_Plant_Country" FromRole="Plant" ToRole="Country" />
-          <NavigationProperty Name="Customer" Relationship="pms_devModel.FK_Plant_Customer" FromRole="Plant" ToRole="Customer" />
-          <NavigationProperty Name="EnergyPlantHists" Relationship="pms_devModel.FK_EnergyPlantHist_Plant" FromRole="Plant" ToRole="EnergyPlantHist" />
-          <NavigationProperty Name="PlantType" Relationship="pms_devModel.FK_Plant_PlantType" FromRole="Plant" ToRole="PlantType" />
-          <NavigationProperty Name="SharedHolder" Relationship="pms_devModel.FK_Plant_SharedHolder" FromRole="Plant" ToRole="SharedHolder" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Plant_Company" FromRole="Plant" ToRole="Company" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Plant_Country" FromRole="Plant" ToRole="Country" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Plant_Customer" FromRole="Plant" ToRole="Customer" />
+          <NavigationProperty Name="EnergyPlantHists" Relationship="Self.FK_EnergyPlantHist_Plant" FromRole="Plant" ToRole="EnergyPlantHist" />
+          <NavigationProperty Name="PlantType" Relationship="Self.FK_Plant_PlantType" FromRole="Plant" ToRole="PlantType" />
+          <NavigationProperty Name="SharedHolder" Relationship="Self.FK_Plant_SharedHolder" FromRole="Plant" ToRole="SharedHolder" />
         </EntityType>
         <EntityType Name="PlantType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PlantType_Type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Plants" Relationship="pms_devModel.FK_Plant_PlantType" FromRole="PlantType" ToRole="Plant" />
+          <Property Name="PlantType_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_PlantType" FromRole="PlantType" ToRole="Plant" />
         </EntityType>
         <EntityType Name="SharedHolder">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SharedHolder_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Gpsc_Share" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <NavigationProperty Name="Plants" Relationship="pms_devModel.FK_Plant_SharedHolder" FromRole="SharedHolder" ToRole="Plant" />
+          <Property Name="SharedHolder_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gpsc_Share" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_SharedHolder" FromRole="SharedHolder" ToRole="Plant" />
         </EntityType>
         <EntityType Name="PlantEnergyGenDailyView">
           <Key>
@@ -484,8 +450,8 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
           <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_Plant_Company">
-          <End Type="pms_devModel.Company" Role="Company" Multiplicity="1" />
-          <End Type="pms_devModel.Plant" Role="Plant" Multiplicity="*" />
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
               <PropertyRef Name="ID" />
@@ -496,8 +462,8 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Plant_Country">
-          <End Type="pms_devModel.Country" Role="Country" Multiplicity="1" />
-          <End Type="pms_devModel.Plant" Role="Plant" Multiplicity="*" />
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="Id" />
@@ -508,8 +474,8 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Plant_Customer">
-          <End Type="pms_devModel.Customer" Role="Customer" Multiplicity="1" />
-          <End Type="pms_devModel.Plant" Role="Plant" Multiplicity="*" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="Id" />
@@ -520,8 +486,8 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EnergyPlantHist_EnergyGen">
-          <End Type="pms_devModel.EnergyGen" Role="EnergyGen" Multiplicity="1" />
-          <End Type="pms_devModel.EnergyPlantHist" Role="EnergyPlantHist" Multiplicity="*" />
+          <End Role="EnergyGen" Type="Self.EnergyGen" Multiplicity="1" />
+          <End Role="EnergyPlantHist" Type="Self.EnergyPlantHist" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EnergyGen">
               <PropertyRef Name="ID" />
@@ -532,8 +498,8 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EnergyPlantHist_Plant">
-          <End Type="pms_devModel.Plant" Role="Plant" Multiplicity="1" />
-          <End Type="pms_devModel.EnergyPlantHist" Role="EnergyPlantHist" Multiplicity="*" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="1" />
+          <End Role="EnergyPlantHist" Type="Self.EnergyPlantHist" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Plant">
               <PropertyRef Name="ID" />
@@ -544,8 +510,8 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Plant_PlantType">
-          <End Type="pms_devModel.PlantType" Role="PlantType" Multiplicity="1" />
-          <End Type="pms_devModel.Plant" Role="Plant" Multiplicity="*" />
+          <End Role="PlantType" Type="Self.PlantType" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PlantType">
               <PropertyRef Name="Id" />
@@ -556,8 +522,8 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Plant_SharedHolder">
-          <End Type="pms_devModel.SharedHolder" Role="SharedHolder" Multiplicity="1" />
-          <End Type="pms_devModel.Plant" Role="Plant" Multiplicity="*" />
+          <End Role="SharedHolder" Type="Self.SharedHolder" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SharedHolder">
               <PropertyRef Name="Id" />
@@ -567,161 +533,196 @@ warning 6002: The table/view 'pms_dev.dbo.PlantEnergyGenYearlyView' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="EnergyGenTarget">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="YearMonth" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="TargetValue" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-        </EntityType>
-        </Schema>
+        <EntityContainer Name="GpscEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="EnergyGens" EntityType="Self.EnergyGen" />
+          <EntitySet Name="EnergyGenTargets" EntityType="Self.EnergyGenTarget" />
+          <EntitySet Name="EnergyPlantHists" EntityType="Self.EnergyPlantHist" />
+          <EntitySet Name="Plants" EntityType="Self.Plant" />
+          <EntitySet Name="PlantTypes" EntityType="Self.PlantType" />
+          <EntitySet Name="SharedHolders" EntityType="Self.SharedHolder" />
+          <EntitySet Name="PlantEnergyGenDailyViews" EntityType="Self.PlantEnergyGenDailyView" />
+          <EntitySet Name="PlantEnergyGenHourlyViews" EntityType="Self.PlantEnergyGenHourlyView" />
+          <EntitySet Name="PlantEnergyGenMonthlyViews" EntityType="Self.PlantEnergyGenMonthlyView" />
+          <EntitySet Name="PlantEnergyGenYearlyViews" EntityType="Self.PlantEnergyGenYearlyView" />
+          <AssociationSet Name="FK_Plant_Company" Association="Self.FK_Plant_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_Country" Association="Self.FK_Plant_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_Customer" Association="Self.FK_Plant_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyPlantHist_EnergyGen" Association="Self.FK_EnergyPlantHist_EnergyGen">
+            <End Role="EnergyGen" EntitySet="EnergyGens" />
+            <End Role="EnergyPlantHist" EntitySet="EnergyPlantHists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyPlantHist_Plant" Association="Self.FK_EnergyPlantHist_Plant">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="EnergyPlantHist" EntitySet="EnergyPlantHists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_PlantType" Association="Self.FK_Plant_PlantType">
+            <End Role="PlantType" EntitySet="PlantTypes" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_SharedHolder" Association="Self.FK_Plant_SharedHolder">
+            <End Role="SharedHolder" EntitySet="SharedHolders" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="pms_devModelStoreContainer" CdmEntityContainer="pms_devEntities">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="GpscEntities">
           <EntitySetMapping Name="Companies">
-            <EntityTypeMapping TypeName="pms_devModel.Company">
+            <EntityTypeMapping TypeName="Model.Company">
               <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="PPA" ColumnName="PPA" />
-                <ScalarProperty Name="COD" ColumnName="COD" />
-                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-                <ScalarProperty Name="Company_Logo_Path" ColumnName="Company_Logo_Path" />
-                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+                <ScalarProperty Name="Company_Logo_Path" ColumnName="Company_Logo_Path" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+                <ScalarProperty Name="PPA" ColumnName="PPA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries">
-            <EntityTypeMapping TypeName="pms_devModel.Country">
+            <EntityTypeMapping TypeName="Model.Country">
               <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="Country_Longitude" ColumnName="Country_Longitude" />
-                <ScalarProperty Name="Country_Latitude" ColumnName="Country_Latitude" />
-                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="Country_Latitude" ColumnName="Country_Latitude" />
+                <ScalarProperty Name="Country_Longitude" ColumnName="Country_Longitude" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="pms_devModel.Customer">
+            <EntityTypeMapping TypeName="Model.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EnergyGens">
-            <EntityTypeMapping TypeName="pms_devModel.EnergyGen">
+            <EntityTypeMapping TypeName="Model.EnergyGen">
               <MappingFragment StoreEntitySet="EnergyGen">
-                <ScalarProperty Name="EnergyGen_Icon_Url" ColumnName="EnergyGen_Icon_Url" />
-                <ScalarProperty Name="EnergyGen_Icon" ColumnName="EnergyGen_Icon" />
-                <ScalarProperty Name="EnergyGen_History_Url" ColumnName="EnergyGen_History_Url" />
-                <ScalarProperty Name="EnergyGen_Forecast_Url" ColumnName="EnergyGen_Forecast_Url" />
-                <ScalarProperty Name="EnergyGen_UV" ColumnName="EnergyGen_UV" />
-                <ScalarProperty Name="EnergyGen_Solarradiation" ColumnName="EnergyGen_Solarradiation" />
-                <ScalarProperty Name="EnergyGen_Wind_String" ColumnName="EnergyGen_Wind_String" />
-                <ScalarProperty Name="EnergyGen_Weather" ColumnName="EnergyGen_Weather" />
-                <ScalarProperty Name="EnergyGen_LatestUpdate" ColumnName="EnergyGen_LatestUpdate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="EnergyGen_Value" ColumnName="EnergyGen_Value" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EnergyPlantHists">
-            <EntityTypeMapping TypeName="pms_devModel.EnergyPlantHist">
-              <MappingFragment StoreEntitySet="EnergyPlantHist">
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="EnergyGenId" ColumnName="EnergyGenId" />
-                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Plants">
-            <EntityTypeMapping TypeName="pms_devModel.Plant">
-              <MappingFragment StoreEntitySet="Plant">
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
-                <ScalarProperty Name="Electricity_Gen" ColumnName="Electricity_Gen" />
-                <ScalarProperty Name="SharedHolder_Percentage" ColumnName="SharedHolder_Percentage" />
-                <ScalarProperty Name="SharedHolder_Id" ColumnName="SharedHolder_Id" />
-                <ScalarProperty Name="AMB_Temp" ColumnName="AMB_Temp" />
-                <ScalarProperty Name="Irradiation" ColumnName="Irradiation" />
-                <ScalarProperty Name="Plant_Layout_Path" ColumnName="Plant_Layout_Path" />
-                <ScalarProperty Name="Power_Gen" ColumnName="Power_Gen" />
-                <ScalarProperty Name="Location_Longitude" ColumnName="Location_Longitude" />
-                <ScalarProperty Name="Location_Latitude" ColumnName="Location_Latitude" />
-                <ScalarProperty Name="PlantTypeID" ColumnName="PlantTypeID" />
-                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
-                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlantTypes">
-            <EntityTypeMapping TypeName="pms_devModel.PlantType">
-              <MappingFragment StoreEntitySet="PlantType">
-                <ScalarProperty Name="PlantType_Type" ColumnName="PlantType_Type" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SharedHolders">
-            <EntityTypeMapping TypeName="pms_devModel.SharedHolder">
-              <MappingFragment StoreEntitySet="SharedHolder">
-                <ScalarProperty Name="Gpsc_Share" ColumnName="Gpsc_Share" />
-                <ScalarProperty Name="SharedHolder_Name" ColumnName="SharedHolder_Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlantEnergyGenDailyViews">
-            <EntityTypeMapping TypeName="pms_devModel.PlantEnergyGenDailyView">
-              <MappingFragment StoreEntitySet="PlantEnergyGenDailyView">
-                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
-                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
-                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="Row" ColumnName="Row" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlantEnergyGenHourlyViews">
-            <EntityTypeMapping TypeName="pms_devModel.PlantEnergyGenHourlyView">
-              <MappingFragment StoreEntitySet="PlantEnergyGenHourlyView">
-                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
-                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
-                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="Row" ColumnName="Row" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlantEnergyGenMonthlyViews">
-            <EntityTypeMapping TypeName="pms_devModel.PlantEnergyGenMonthlyView">
-              <MappingFragment StoreEntitySet="PlantEnergyGenMonthlyView">
-                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
-                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
-                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="Row" ColumnName="Row" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlantEnergyGenYearlyViews">
-            <EntityTypeMapping TypeName="pms_devModel.PlantEnergyGenYearlyView">
-              <MappingFragment StoreEntitySet="PlantEnergyGenYearlyView">
-                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
-                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
-                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="EnergyGen_LatestUpdate" ColumnName="EnergyGen_LatestUpdate" />
+                <ScalarProperty Name="EnergyGen_Weather" ColumnName="EnergyGen_Weather" />
+                <ScalarProperty Name="EnergyGen_Wind_String" ColumnName="EnergyGen_Wind_String" />
+                <ScalarProperty Name="EnergyGen_Solarradiation" ColumnName="EnergyGen_Solarradiation" />
+                <ScalarProperty Name="EnergyGen_UV" ColumnName="EnergyGen_UV" />
+                <ScalarProperty Name="EnergyGen_Forecast_Url" ColumnName="EnergyGen_Forecast_Url" />
+                <ScalarProperty Name="EnergyGen_History_Url" ColumnName="EnergyGen_History_Url" />
+                <ScalarProperty Name="EnergyGen_Icon" ColumnName="EnergyGen_Icon" />
+                <ScalarProperty Name="EnergyGen_Icon_Url" ColumnName="EnergyGen_Icon_Url" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EnergyGenTargets">
-            <EntityTypeMapping TypeName="pms_devModel.EnergyGenTarget">
+            <EntityTypeMapping TypeName="Model.EnergyGenTarget">
               <MappingFragment StoreEntitySet="EnergyGenTarget">
-                <ScalarProperty Name="TargetValue" ColumnName="TargetValue" />
-                <ScalarProperty Name="YearMonth" ColumnName="YearMonth" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="YearMonth" ColumnName="YearMonth" />
+                <ScalarProperty Name="TargetValue" ColumnName="TargetValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnergyPlantHists">
+            <EntityTypeMapping TypeName="Model.EnergyPlantHist">
+              <MappingFragment StoreEntitySet="EnergyPlantHist">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="EnergyGenId" ColumnName="EnergyGenId" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plants">
+            <EntityTypeMapping TypeName="Model.Plant">
+              <MappingFragment StoreEntitySet="Plant">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="PlantTypeID" ColumnName="PlantTypeID" />
+                <ScalarProperty Name="Location_Latitude" ColumnName="Location_Latitude" />
+                <ScalarProperty Name="Location_Longitude" ColumnName="Location_Longitude" />
+                <ScalarProperty Name="Power_Gen" ColumnName="Power_Gen" />
+                <ScalarProperty Name="Plant_Layout_Path" ColumnName="Plant_Layout_Path" />
+                <ScalarProperty Name="Irradiation" ColumnName="Irradiation" />
+                <ScalarProperty Name="AMB_Temp" ColumnName="AMB_Temp" />
+                <ScalarProperty Name="SharedHolder_Id" ColumnName="SharedHolder_Id" />
+                <ScalarProperty Name="SharedHolder_Percentage" ColumnName="SharedHolder_Percentage" />
+                <ScalarProperty Name="Electricity_Gen" ColumnName="Electricity_Gen" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantTypes">
+            <EntityTypeMapping TypeName="Model.PlantType">
+              <MappingFragment StoreEntitySet="PlantType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PlantType_Type" ColumnName="PlantType_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SharedHolders">
+            <EntityTypeMapping TypeName="Model.SharedHolder">
+              <MappingFragment StoreEntitySet="SharedHolder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SharedHolder_Name" ColumnName="SharedHolder_Name" />
+                <ScalarProperty Name="Gpsc_Share" ColumnName="Gpsc_Share" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantEnergyGenDailyViews">
+            <EntityTypeMapping TypeName="Model.PlantEnergyGenDailyView">
+              <MappingFragment StoreEntitySet="PlantEnergyGenDailyView">
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
+                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantEnergyGenHourlyViews">
+            <EntityTypeMapping TypeName="Model.PlantEnergyGenHourlyView">
+              <MappingFragment StoreEntitySet="PlantEnergyGenHourlyView">
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
+                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantEnergyGenMonthlyViews">
+            <EntityTypeMapping TypeName="Model.PlantEnergyGenMonthlyView">
+              <MappingFragment StoreEntitySet="PlantEnergyGenMonthlyView">
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
+                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantEnergyGenYearlyViews">
+            <EntityTypeMapping TypeName="Model.PlantEnergyGenYearlyView">
+              <MappingFragment StoreEntitySet="PlantEnergyGenYearlyView">
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
+                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
