@@ -28,19 +28,6 @@ namespace GpscWebApi
 
         }
 
-        public void ConfigureAuth(IAppBuilder app)
-        {
-            HttpConfiguration httpConfig = new HttpConfiguration();
-
-            ConfigureOAuthTokenGeneration(app);
-
-            ConfigureWebApi(httpConfig);
-
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-
-            app.UseWebApi(httpConfig);
-        }
-
         private void ConfigureOAuthTokenGeneration(IAppBuilder app)
         {
             // Configure the db context and user manager to use a single instance per request
