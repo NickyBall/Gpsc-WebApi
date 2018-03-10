@@ -294,6 +294,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="PttGpscModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
