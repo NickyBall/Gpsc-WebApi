@@ -13,6 +13,7 @@ using System.Web.Http.Cors;
 namespace GpscWebApi.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [Authorize]
     public class PowerPlantController : ApiController
     {
         GpscEntities _Db;
@@ -27,6 +28,7 @@ namespace GpscWebApi.Controllers
         }
 
         [HttpPost]
+        
         public ResultModel<List<CountryModel>> GetAllCountry([FromBody] JObject Body)
         {
             if (!CheckAuthorize(Body["UserCode"].ToString()))
