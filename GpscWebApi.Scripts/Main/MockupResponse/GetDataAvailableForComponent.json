@@ -1,0 +1,803 @@
+{
+    "statusCode": 200,
+    "baseFields": [
+        {
+            "baseField": "A",
+            "longName": "AC Current",
+            "source": "Measured",
+            "unit": "A",
+            "aggregations": [
+                {
+                    "shortName": "A_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "A_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "A_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "AphA",
+            "longName": "AC Phase A Current",
+            "source": "Measured",
+            "unit": "A",
+            "aggregations": [
+                {
+                    "shortName": "AphA_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "AphA_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "AphA_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "AphB",
+            "longName": "AC Phase B Current",
+            "source": "Measured",
+            "unit": "A",
+            "aggregations": [
+                {
+                    "shortName": "AphB_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "AphB_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "AphB_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "AphC",
+            "longName": "AC Phase C Current",
+            "source": "Measured",
+            "unit": "A",
+            "aggregations": [
+                {
+                    "shortName": "AphC_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "AphC_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "AphC_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "DCA",
+            "longName": "DC Current",
+            "source": "Measured",
+            "unit": "A",
+            "aggregations": [
+                {
+                    "shortName": "DCA_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "DCA_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "DCA_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "DCV",
+            "longName": "DC Voltage",
+            "source": "Measured",
+            "unit": "V",
+            "aggregations": [
+                {
+                    "shortName": "DCV_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "DCV_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "DCV_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "DCW",
+            "longName": "DC Power",
+            "source": "Measured",
+            "unit": "W",
+            "aggregations": [
+                {
+                    "shortName": "DCW_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "DCW_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "DCW_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "Hz",
+            "longName": "AC Frequency",
+            "source": "Measured",
+            "unit": "Hz",
+            "aggregations": [
+                {
+                    "shortName": "Hz_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "Hz_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "Hz_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "LimitW",
+            "longName": "AC Power Limit",
+            "source": "Measured",
+            "unit": "W",
+            "aggregations": [
+                {
+                    "shortName": "LimitW_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "LimitW_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "LimitW_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "PF",
+            "longName": "AC Power Factor",
+            "source": "Measured",
+            "unit": "",
+            "aggregations": [
+                {
+                    "shortName": "PF_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "PF_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "PF_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "PI_m",
+            "longName": "Performance Index",
+            "source": "Modeled",
+            "unit": "",
+            "aggregations": [
+                {
+                    "shortName": "PI_m",
+                    "aggregation": "avg"
+                }
+            ],
+            "fieldParameters": [
+                {
+                    "param": "modelType",
+                    "values": [
+                        "simple"
+                    ]
+                },
+                {
+                    "param": "irradianceSource",
+                    "values": [
+                        "weatherStation"
+                    ]
+                },
+                {
+                    "param": "inverterClipping",
+                    "values": [
+                        "true",
+                        "false"
+                    ]
+                }
+            ],
+            "granularities": [
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "PPV",
+            "longName": "AC Voltage L-L",
+            "source": "Measured",
+            "unit": "V",
+            "aggregations": [
+                {
+                    "shortName": "PPV_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "PPV_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "PPV_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "PPVphAB",
+            "longName": "AC Phase A to Phase B Voltage",
+            "source": "Measured",
+            "unit": "V",
+            "aggregations": [
+                {
+                    "shortName": "PPVphAB_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "PPVphAB_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "PPVphAB_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "PPVphBC",
+            "longName": "AC Phase B to Phase C Voltage",
+            "source": "Measured",
+            "unit": "V",
+            "aggregations": [
+                {
+                    "shortName": "PPVphBC_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "PPVphBC_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "PPVphBC_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "PPVphCA",
+            "longName": "AC Phase C to Phase A Voltage",
+            "source": "Measured",
+            "unit": "V",
+            "aggregations": [
+                {
+                    "shortName": "PPVphCA_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "PPVphCA_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "PPVphCA_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "TmpAmb",
+            "longName": "Temperature Ambient",
+            "source": "Measured",
+            "unit": "&#176;C",
+            "aggregations": [
+                {
+                    "shortName": "TmpAmb_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "TmpAmb_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "TmpAmb_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "TmpCab",
+            "longName": "Temperature Internal",
+            "source": "Measured",
+            "unit": "&#176;C",
+            "aggregations": [
+                {
+                    "shortName": "TmpCab_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "TmpCab_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "TmpCab_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "TmpSnk",
+            "longName": "Temperature Heat Sink",
+            "source": "Measured",
+            "unit": "&#176;C",
+            "aggregations": [
+                {
+                    "shortName": "TmpSnk_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "TmpSnk_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "TmpSnk_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "VA",
+            "longName": "AC Apparent Power",
+            "source": "Measured",
+            "unit": "VA",
+            "aggregations": [
+                {
+                    "shortName": "VA_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "VA_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "VA_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "VAR",
+            "longName": "AC Reactive Power",
+            "source": "Measured",
+            "unit": "VAR",
+            "aggregations": [
+                {
+                    "shortName": "VAR_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "VAR_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "VAR_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "W",
+            "longName": "AC Power",
+            "source": "Measured",
+            "unit": "W",
+            "aggregations": [
+                {
+                    "shortName": "W_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "W_max",
+                    "aggregation": "max"
+                },
+                {
+                    "shortName": "W_min",
+                    "aggregation": "min"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "W_m",
+            "longName": "AC Power",
+            "source": "Modeled",
+            "unit": "W",
+            "aggregations": [
+                {
+                    "shortName": "W_m_avg",
+                    "aggregation": "avg"
+                }
+            ],
+            "fieldParameters": [
+                {
+                    "param": "modelType",
+                    "values": [
+                        "simple"
+                    ]
+                },
+                {
+                    "param": "irradianceSource",
+                    "values": [
+                        "weatherStation"
+                    ]
+                },
+                {
+                    "param": "inverterClipping",
+                    "values": [
+                        "true",
+                        "false"
+                    ]
+                }
+            ],
+            "granularities": [
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "W_no",
+            "longName": "AC Power Normalized",
+            "source": "Modeled",
+            "unit": "W_ac/W_dc",
+            "aggregations": [
+                {
+                    "shortName": "W_no_avg",
+                    "aggregation": "avg"
+                },
+                {
+                    "shortName": "W_no_min",
+                    "aggregation": "min"
+                },
+                {
+                    "shortName": "W_no_max",
+                    "aggregation": "max"
+                }
+            ],
+            "granularities": [
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "Wh",
+            "longName": "AC Energy",
+            "source": "Measured",
+            "unit": "Wh",
+            "aggregations": [
+                {
+                    "shortName": "Wh_sum",
+                    "aggregation": "sum"
+                }
+            ],
+            "granularities": [
+                "latest",
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "Wh_m",
+            "longName": "AC Energy",
+            "source": "Modeled",
+            "unit": "Wh",
+            "aggregations": [
+                {
+                    "shortName": "Wh_m_sum",
+                    "aggregation": "sum"
+                }
+            ],
+            "fieldParameters": [
+                {
+                    "param": "modelType",
+                    "values": [
+                        "simple"
+                    ]
+                },
+                {
+                    "param": "irradianceSource",
+                    "values": [
+                        "weatherStation"
+                    ]
+                },
+                {
+                    "param": "inverterClipping",
+                    "values": [
+                        "true",
+                        "false"
+                    ]
+                }
+            ],
+            "granularities": [
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        },
+        {
+            "baseField": "Wh_no",
+            "longName": "AC Energy Normalized",
+            "source": "Modeled",
+            "unit": "Wh_ac/W_dc",
+            "aggregations": [
+                {
+                    "shortName": "Wh_no_sum",
+                    "aggregation": "sum"
+                }
+            ],
+            "granularities": [
+                "1min",
+                "5min",
+                "15min",
+                "hourly",
+                "daily",
+                "monthly",
+                "yearly"
+            ]
+        }
+    ]
+}
