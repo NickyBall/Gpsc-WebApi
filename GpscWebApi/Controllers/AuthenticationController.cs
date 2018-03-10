@@ -11,6 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -59,25 +60,31 @@ namespace GpscWebApi.Controllers
             }
         }
 
-        //[HttpPost]
-        //public async Task<ResultModel<string>> Register([FromBody] JObject Body)
-        //{
-        //    ApplicationUserManager UserManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-        //    ApplicationUser User = new ApplicationUser()
-        //    {
-        //        UserName = Body["Username"].ToString(),
-        //        Email = Body["Email"].ToString(),
-        //        FirstName = Body["Firstname"].ToString(),
-        //        LastName = Body["Lastname"].ToString(),
-        //        JoinDate = DateTime.UtcNow
-        //    };
-        //    IdentityResult Result = await UserManager.CreateAsync(User, Body["Password"].ToString());
-        //    return new ResultModel<string>()
-        //    {
-        //        ResultCode = HttpStatusCode.BadRequest.GetHashCode(),
-        //        Message = "Something went wrong",
-        //        Result = ""
-        //    };
-        //}
+        [HttpPost]
+        public async Task<ResultModel<string>> Register([FromBody] JObject Body)
+        {
+            ApplicationUserManager UserManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            ApplicationUser User = new ApplicationUser()
+            {
+                UserName = Body["Username"].ToString(),
+                Email = Body["Email"].ToString(),
+                FirstName = Body["Firstname"].ToString(),
+                LastName = Body["Lastname"].ToString(),
+                JoinDate = DateTime.UtcNow
+            };
+            IdentityResult Result = await UserManager.CreateAsync(User, Body["Password"].ToString());
+            if (Result.Succeeded) return new ResultModel<string>()
+            {
+                ResultCode = HttpStatusCode.OK.GetHashCode(),
+                Message = $"{User.UserName} has been successfully registered.",
+                Result = ""
+            };
+            return new ResultModel<string>()
+            {
+                ResultCode = HttpStatusCode.BadRequest.GetHashCode(),
+                Message = "Something went wrong",
+                Result = ""
+            };
+        }
     }
 }
