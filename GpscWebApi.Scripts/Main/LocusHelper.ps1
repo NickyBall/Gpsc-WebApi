@@ -8,8 +8,8 @@
         "username" = $Username;
         "password" = $Password;
     }
-    $response = Invoke-WebRequest -Uri $url -Method Post -Body $Params -ContentType "application/x-www-form-urlencoded"
-    return $response | ConvertFrom-Json
+    $response = Invoke-WebRequest -Uri $url -Method Post -Body $Params -ContentType "application/x-www-form-urlencoded" | ConvertFrom-Json
+    return $response
 }
 
 function GetComponentsForPartner($AccessToken, $PartnerId) {
@@ -17,6 +17,24 @@ function GetComponentsForPartner($AccessToken, $PartnerId) {
     $HeaderParams = @{
         "Authorization" = "Bearer $($AccessToken)"
     }
-    $response = Invoke-WebRequest -Uri $url -Method Get -Headers $HeaderParams
-    return $response | ConvertFrom-Json
+    $response = Invoke-WebRequest -Uri $url -Method Get -Headers $HeaderParams | ConvertFrom-Json
+    return $response
+}
+
+function GetDataAvailableForComponent($AccessToken, $ComponentId) {
+    $url = "https://api.locusenergy.com/v3/components/$($ComponentId)/dataavailable"
+    $HeaderParams = @{
+        "Authorization" = "Bearer $($AccessToken)"
+    }
+    $response = Invoke-WebRequest -Uri $url -Method Get -Headers $HeaderParams | ConvertFrom-Json
+    return $response
+}
+
+function GetDataForComponent($AccessToken, $ComponentId) {
+    $url = "https://api.locusenergy.com/v3/components/$($ComponentId)/data"
+    $HeaderParams = @{
+        "Authorization" = "Bearer $($AccessToken)"
+    }
+    $response = Invoke-WebRequest -Uri $url -Method Get -Headers $HeaderParams | ConvertFrom-Json
+    return $response
 }
