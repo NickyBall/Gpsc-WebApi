@@ -30,6 +30,18 @@ namespace GpscWebApi.Controllers
             string Username = Body["Username"].ToString();
             string Password = Body["Password"].ToString();
 
+            ApplicationUserManager UserManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            ApplicationUser User = await UserManager.FindByNameAsync(Username);
+
+            // Check Lockout
+            if (User != null && UserManager.SupportsUserLockout && UserManager.IsLockedOut(User.Id)) return new ResultModel<AuthenticateModel>()
+            {
+                ResultCode = HttpStatusCode.Forbidden.GetHashCode(),
+                Message = $"{User.UserName} has been suspended.",
+                Result = null
+            };
+
+            // LDAP Authentication
             try
             {
                 DirectoryEntry de = new DirectoryEntry(CurrentDomainPath, Username, Password);
@@ -37,58 +49,14 @@ namespace GpscWebApi.Controllers
                 SearchResult res = null;
                 dsearch.PageSize = 100000;
                 res = dsearch.FindOne();
-
-                ApplicationUserManager UserManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                ApplicationUser User = await UserManager.FindAsync(Username, Password);
-                if (User == null)
-                {
-                    User = new ApplicationUser()
-                    {
-                        UserName = Username,
-                        JoinDate = DateTime.UtcNow
-                    };
-                    IdentityResult Result = await UserManager.CreateAsync(User, Password);
-                }
-
-                TokenResponseModel TokenRes = new TokenResponseModel();
-
-                using (var client = new HttpClient())
-                {
-                    var values = new Dictionary<string, string>
-                    {
-                        {"grant_type", "password"},
-                        {"username", Username },
-                        {"password", Password }
-                    };
-                    var BodyParam = new FormUrlEncodedContent(values);
-                    client.BaseAddress = new Uri("https://gpscweb.pttgrp.com");
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
-                    var response = await client.PostAsync("GPSC-Plant-monitoring-API_Test/token", BodyParam);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string outputJson = await response.Content.ReadAsStringAsync();
-                        TokenRes = JsonConvert.DeserializeObject<TokenResponseModel>(outputJson);
-                    }
-                }
-
-                return new ResultModel<AuthenticateModel>()
-                {
-                    ResultCode = HttpStatusCode.OK.GetHashCode(),
-                    Message = "",
-                    Result = new AuthenticateModel()
-                    {
-                        UserCode = "UserCode123456",
-                        AccessToken = TokenRes.access_token
-                    }
-                };
             }
             catch (Exception ex)
             {
+                if (User != null && UserManager.SupportsUserLockout) await UserManager.AccessFailedAsync(User.Id);
                 return new ResultModel<AuthenticateModel>()
                 {
                     ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                    Message = $"{ex.ToString()}",
+                    Message = $"No User",
                     Result = new AuthenticateModel()
                     {
                         UserCode = "",
@@ -96,33 +64,91 @@ namespace GpscWebApi.Controllers
                     }
                 };
             }
-        }
 
-        [HttpPost]
-        public async Task<ResultModel<string>> Register([FromBody] JObject Body)
-        {
-            ApplicationUserManager UserManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            ApplicationUser User = new ApplicationUser()
+            // Register if null
+            if (User == null)
             {
-                UserName = Body["Username"].ToString(),
-                Email = Body["Email"].ToString(),
-                FirstName = Body["Firstname"].ToString(),
-                LastName = Body["Lastname"].ToString(),
-                JoinDate = DateTime.UtcNow
-            };
-            IdentityResult Result = await UserManager.CreateAsync(User, Body["Password"].ToString());
-            if (Result.Succeeded) return new ResultModel<string>()
+                User = new ApplicationUser()
+                {
+                    UserName = Username,
+                    JoinDate = DateTime.UtcNow
+                };
+                IdentityResult Result = await UserManager.CreateAsync(User, Password);
+            }
+
+            // Check Lockout Enable?
+            if (UserManager.SupportsUserLockout)
+            {
+                // Check Password Correct?
+                if (await UserManager.CheckPasswordAsync(User, Password)) await UserManager.ResetAccessFailedCountAsync(User.Id);
+                else
+                {
+                    await UserManager.AccessFailedAsync(User.Id);
+                    return new ResultModel<AuthenticateModel>()
+                    {
+                        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+                        Message = $"Username or Password is incorrect.",
+                        Result = new AuthenticateModel()
+                        {
+                            UserCode = "",
+                            AccessToken = ""
+                        }
+                    };
+                }
+            }
+
+            // Get Token
+            TokenResponseModel TokenRes = new TokenResponseModel();
+
+            using (var client = new HttpClient())
+            {
+                var values = new Dictionary<string, string>()
+                                {
+                                    {"grant_type", "password"},
+                                    {"username", Username },
+                                    {"password", Password }
+                                };
+                var BodyParam = new FormUrlEncodedContent(values);
+                client.BaseAddress = new Uri("https://gpscweb.pttgrp.com");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
+
+                // Post for Token
+                try
+                {
+                    var response = await client.PostAsync("GPSC-Plant-monitoring-API_Test/token", BodyParam);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string outputJson = await response.Content.ReadAsStringAsync();
+                        TokenRes = JsonConvert.DeserializeObject<TokenResponseModel>(outputJson);
+                    }
+                }
+                catch
+                {
+                    return new ResultModel<AuthenticateModel>()
+                    {
+                        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+                        Message = $"Authorization Fail.",
+                        Result = new AuthenticateModel()
+                        {
+                            UserCode = "",
+                            AccessToken = ""
+                        }
+                    };
+                }
+            }
+
+            return new ResultModel<AuthenticateModel>()
             {
                 ResultCode = HttpStatusCode.OK.GetHashCode(),
-                Message = $"{User.UserName} has been successfully registered.",
-                Result = ""
+                Message = "",
+                Result = new AuthenticateModel()
+                {
+                    UserCode = "UserCode123456",
+                    AccessToken = TokenRes.access_token
+                }
             };
-            return new ResultModel<string>()
-            {
-                ResultCode = HttpStatusCode.BadRequest.GetHashCode(),
-                Message = "Something went wrong",
-                Result = ""
-            };
+
         }
     }
 }

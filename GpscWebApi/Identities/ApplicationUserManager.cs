@@ -19,7 +19,12 @@ namespace GpscWebApi.Identities
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var appDbContext = context.Get<ApplicationDbContext>();
-            var appUserManager = new ApplicationUserManager(new UserStore<ApplicationUser>(appDbContext));
+            var appUserManager = new ApplicationUserManager(new UserStore<ApplicationUser>(appDbContext))
+            {
+                UserLockoutEnabledByDefault = true,
+                MaxFailedAccessAttemptsBeforeLockout = 3,
+                DefaultAccountLockoutTimeSpan = TimeSpan.FromDays(365*200)
+            };
 
             return appUserManager;
         }
