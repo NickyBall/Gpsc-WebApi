@@ -2,6 +2,7 @@
 using GpscWebApi.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.DirectoryServices.Protocols;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -23,7 +25,7 @@ namespace GpscWebApi.Controllers
         private string CurrentDomainPath => "LDAP://DC=pttgrp,DC=corp";
 
         [HttpPost]
-        public ResultModel<AuthenticateModel> Login([FromBody] JObject Body)
+        public async Task<ResultModel<AuthenticateModel>> Login([FromBody] JObject Body)
         {
             string Username = Body["Username"].ToString();
             string Password = Body["Password"].ToString();
@@ -36,13 +38,48 @@ namespace GpscWebApi.Controllers
                 dsearch.PageSize = 100000;
                 res = dsearch.FindOne();
 
+                ApplicationUserManager UserManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                ApplicationUser User = await UserManager.FindAsync(Username, Password);
+                if (User == null)
+                {
+                    User = new ApplicationUser()
+                    {
+                        UserName = Username,
+                        JoinDate = DateTime.UtcNow
+                    };
+                    IdentityResult Result = await UserManager.CreateAsync(User, Password);
+                }
+
+                TokenResponseModel TokenRes = new TokenResponseModel();
+
+                using (var client = new HttpClient())
+                {
+                    var values = new Dictionary<string, string>
+                    {
+                        {"grant_type", "password"},
+                        {"username", Username },
+                        {"password", Password }
+                    };
+                    var BodyParam = new FormUrlEncodedContent(values);
+                    client.BaseAddress = new Uri("https://gpscweb.pttgrp.com");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
+                    var response = await client.PostAsync("GPSC-Plant-monitoring-API_Test/token", BodyParam);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string outputJson = await response.Content.ReadAsStringAsync();
+                        TokenRes = JsonConvert.DeserializeObject<TokenResponseModel>(outputJson);
+                    }
+                }
+
                 return new ResultModel<AuthenticateModel>()
                 {
                     ResultCode = HttpStatusCode.OK.GetHashCode(),
                     Message = "",
                     Result = new AuthenticateModel()
                     {
-                        UserCode = "UserCode123456"
+                        UserCode = "UserCode123456",
+                        AccessToken = TokenRes.access_token
                     }
                 };
             }
@@ -51,10 +88,11 @@ namespace GpscWebApi.Controllers
                 return new ResultModel<AuthenticateModel>()
                 {
                     ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                    Message = "",
+                    Message = $"{ex.ToString()}",
                     Result = new AuthenticateModel()
                     {
-                        UserCode = ""
+                        UserCode = "",
+                        AccessToken = ""
                     }
                 };
             }

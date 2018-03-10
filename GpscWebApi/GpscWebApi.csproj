@@ -261,6 +261,7 @@
     <Compile Include="Identities\ApplicationDbContext.cs" />
     <Compile Include="Identities\ApplicationUser.cs" />
     <Compile Include="Identities\ApplicationUserManager.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuthenticateModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
@@ -270,6 +271,7 @@
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\PlantModel.cs" />
     <Compile Include="Models\SharedHolderModel.cs" />
+    <Compile Include="Models\TokenResponseModel.cs" />
     <Compile Include="Plant.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
