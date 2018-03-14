@@ -31,14 +31,14 @@ namespace GpscWebApi.Controllers
         
         public ResultModel<List<CountryModel>> GetAllCountry([FromBody] JObject Body)
         {
-            if (!CheckAuthorize(Body["UserCode"].ToString()))
-            {
-                return new ResultModel<List<CountryModel>>()
-                {
-                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                    Message = "Unauthorize."
-                };
-            }
+            //if (!CheckAuthorize(Body["UserCode"].ToString()))
+            //{
+            //    return new ResultModel<List<CountryModel>>()
+            //    {
+            //        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+            //        Message = "Unauthorize."
+            //    };
+            //}
 
             DbSet<Country> CountryEntity = Db.Countries;
             List<CountryModel> Countries = CountryEntity.Select(c => new CountryModel()
@@ -63,14 +63,14 @@ namespace GpscWebApi.Controllers
         [HttpPost]
         public ResultModel<List<PlantModel>> GetPlantByCountry([FromBody] JObject Body)
         {
-            if (!CheckAuthorize(Body["UserCode"].ToString()))
-            {
-                return new ResultModel<List<PlantModel>>()
-                {
-                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                    Message = "Unauthorize."
-                };
-            }
+            //if (!CheckAuthorize(Body["UserCode"].ToString()))
+            //{
+            //    return new ResultModel<List<PlantModel>>()
+            //    {
+            //        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+            //        Message = "Unauthorize."
+            //    };
+            //}
             int CountryId = (int)Body["CountryId"];
 
             List<Plant> Plants = Db.Countries.FirstOrDefault(c => c.Id == CountryId).Plants.ToList();
@@ -120,14 +120,14 @@ namespace GpscWebApi.Controllers
         [HttpPost]
         public ResultModel<PlantModel> GetPlantInfo([FromBody] JObject Body)
         {
-            if (!CheckAuthorize(Body["UserCode"].ToString()))
-            {
-                return new ResultModel<PlantModel>()
-                {
-                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                    Message = "Unauthorize."
-                };
-            }
+            //if (!CheckAuthorize(Body["UserCode"].ToString()))
+            //{
+            //    return new ResultModel<PlantModel>()
+            //    {
+            //        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+            //        Message = "Unauthorize."
+            //    };
+            //}
             int PlantId = (int)Body["PlantId"];
 
             Plant Plant = Db.Plants.FirstOrDefault(p => p.ID == PlantId);
@@ -176,14 +176,14 @@ namespace GpscWebApi.Controllers
         [HttpPost]
         public ResultModel<List<EnergyGenModel>> GetHourlyEnergyGen([FromBody] JObject Body)
         {
-            if (!CheckAuthorize(Body["UserCode"].ToString()))
-            {
-                return new ResultModel<List<EnergyGenModel>>()
-                {
-                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                    Message = "Unauthorize."
-                };
-            }
+            //if (!CheckAuthorize(Body["UserCode"].ToString()))
+            //{
+            //    return new ResultModel<List<EnergyGenModel>>()
+            //    {
+            //        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+            //        Message = "Unauthorize."
+            //    };
+            //}
             int CompanyId = (int)Body["CompanyId"];
             DateTime StartDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 0, 0, 0);
             DateTime EndDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
@@ -218,14 +218,14 @@ namespace GpscWebApi.Controllers
         [HttpPost]
         public ResultModel<List<EnergyGenModel>> GetDailyEnergyGen([FromBody] JObject Body)
         {
-            if (!CheckAuthorize(Body["UserCode"].ToString()))
-            {
-                return new ResultModel<List<EnergyGenModel>>()
-                {
-                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                    Message = "Unauthorize."
-                };
-            }
+            //if (!CheckAuthorize(Body["UserCode"].ToString()))
+            //{
+            //    return new ResultModel<List<EnergyGenModel>>()
+            //    {
+            //        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+            //        Message = "Unauthorize."
+            //    };
+            //}
             int CompanyId = (int)Body["CompanyId"];
             DateTime StartDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, 1);
             DateTime EndDate = StartDate.AddMonths(1).AddDays(-1);
@@ -260,14 +260,14 @@ namespace GpscWebApi.Controllers
         [HttpPost]
         public ResultModel<List<EnergyGenModel>> GetMonthlyEnergyGen([FromBody] JObject Body)
         {
-            if (!CheckAuthorize(Body["UserCode"].ToString()))
-            {
-                return new ResultModel<List<EnergyGenModel>>()
-                {
-                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                    Message = "Unauthorize."
-                };
-            }
+            //if (!CheckAuthorize(Body["UserCode"].ToString()))
+            //{
+            //    return new ResultModel<List<EnergyGenModel>>()
+            //    {
+            //        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+            //        Message = "Unauthorize."
+            //    };
+            //}
             int CompanyId = (int)Body["CompanyId"];
 
             DateTime StartDate = new DateTime(DateTime.Today.Year - 1, 1, 1);
@@ -305,14 +305,14 @@ namespace GpscWebApi.Controllers
         [HttpPost]
         public ResultModel<List<EnergyGenModel>> GetYearlyEnergyGen([FromBody] JObject Body)
         {
-            if (!CheckAuthorize(Body["UserCode"].ToString()))
-            {
-                return new ResultModel<List<EnergyGenModel>>()
-                {
-                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                    Message = "Unauthorize."
-                };
-            }
+            //if (!CheckAuthorize(Body["UserCode"].ToString()))
+            //{
+            //    return new ResultModel<List<EnergyGenModel>>()
+            //    {
+            //        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+            //        Message = "Unauthorize."
+            //    };
+            //}
             int CompanyId = (int)Body["CompanyId"];
             //DateTime StartDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 0, 0, 0);
             //DateTime EndDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
@@ -361,7 +361,7 @@ namespace GpscWebApi.Controllers
             return Versions;
         }
 
-        private bool CheckAuthorize(string UserCode) => UserCode.Equals("UserCode123456");
+        //private bool CheckAuthorize(string UserCode) => UserCode.Equals("UserCode123456");
     }
 
 }
