@@ -25,6 +25,15 @@
         <AssociationConnector Association="Model.FK_EnergyPlantHist_Plant" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Plant_PlantType" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Plant_SharedHolder" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.AspNetRole" Width="1.5" PointX="5.375" PointY="11.5" />
+        <EntityTypeShape EntityType="Model.AspNetUserClaim" Width="1.5" PointX="9.875" PointY="10" />
+        <EntityTypeShape EntityType="Model.AspNetUserLogin" Width="1.5" PointX="9.875" PointY="12.75" />
+        <EntityTypeShape EntityType="Model.AspNetUser" Width="1.5" PointX="7.625" PointY="10.125" />
+        <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="Model.AspNetUserRoles" />
+        <EntityTypeShape EntityType="Model.TranLocu" Width="1.5" PointX="10.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

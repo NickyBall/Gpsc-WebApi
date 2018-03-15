@@ -73,7 +73,7 @@ namespace GpscWebApi.Controllers
             //}
             int CountryId = (int)Body["CountryId"];
 
-            List<Plant> Plants = Db.Countries.FirstOrDefault(c => c.Id == CountryId).Plants.ToList();
+            List<Plant> Plants = Db.Countries.FirstOrDefault(c => c.Id == CountryId).Plants.OrderBy(p => p.Order).ToList();
             List<PlantModel> PlantModels = Plants.Select(p => new PlantModel()
             {
                 PlantId = p.ID,
@@ -85,7 +85,8 @@ namespace GpscWebApi.Controllers
                     CompanyLogo = p.Company.Company_Logo_Path,
                     Capacity = p.Company.Capacity,
                     COD = p.Company.COD,
-                    PPA = p.Company.PPA
+                    PPA = p.Company.PPA,
+                    IsEnabled = p.Company.IsEnabled
                 },
                 Customer = new CustomerModel()
                 {
@@ -106,7 +107,8 @@ namespace GpscWebApi.Controllers
                     SharedHolderName = p.SharedHolder.SharedHolder_Name,
                     GpscShared = p.SharedHolder.Gpsc_Share
                 },
-                SharedHolderPercentage = p.SharedHolder_Percentage
+                SharedHolderPercentage = p.SharedHolder_Percentage,
+                Order = p.Order
             }).ToList();
 
             return new ResultModel<List<PlantModel>>()

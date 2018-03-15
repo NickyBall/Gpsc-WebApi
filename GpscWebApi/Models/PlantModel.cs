@@ -17,5 +17,6 @@ namespace GpscWebApi.Models
         public SharedHolderModel SharedHolder { get; set; }
         public decimal SharedHolderPercentage { get; set; }
         public string PlantType { get; set; }
+        public int Order { get; set; }
     }
 }

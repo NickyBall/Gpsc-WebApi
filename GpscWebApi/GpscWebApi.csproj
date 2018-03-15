@@ -52,6 +52,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>6002</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -233,6 +234,18 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Company.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
@@ -244,6 +257,9 @@
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EnergyGen.cs">
@@ -316,6 +332,9 @@
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="TranLocu.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -383,7 +402,7 @@
     <Content Include="Uploads\ICHINOSEKI.png" />
     <Content Include="Uploads\IRPC.png" />
     <Content Include="Uploads\NNEG.png" />
-    <Content Include="Uploads\RPCL.png" />
+    <Content Include="Uploads\RPLC.png" />
     <Content Include="Uploads\SSE1.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

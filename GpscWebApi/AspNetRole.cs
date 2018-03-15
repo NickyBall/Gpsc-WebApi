@@ -12,23 +12,18 @@ namespace GpscWebApi
     using System;
     using System.Collections.Generic;
     
-    public partial class Company
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Company()
+        public AspNetRole()
         {
-            this.Plants = new HashSet<Plant>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int ID { get; set; }
-        public string Company_Name { get; set; }
-        public string Company_Logo_Path { get; set; }
-        public decimal Capacity { get; set; }
-        public System.DateTime COD { get; set; }
-        public System.DateTime PPA { get; set; }
-        public int IsEnabled { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Plant> Plants { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

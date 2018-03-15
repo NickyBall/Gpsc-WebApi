@@ -13,5 +13,6 @@ namespace GpscWebApi.Models
         public decimal Capacity { get; set; }
         public DateTime COD { get; set; }
         public DateTime PPA { get; set; }
+        public int IsEnabled { get; set; }
     }
 }
