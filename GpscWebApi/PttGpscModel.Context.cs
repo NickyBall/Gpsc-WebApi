@@ -12,6 +12,8 @@ namespace GpscWebApi
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class GpscEntities : DbContext
     {
@@ -44,5 +46,14 @@ namespace GpscWebApi
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<TranLocu> TranLocus { get; set; }
+    
+        public virtual int SPX_Update_Summary(Nullable<int> plantId)
+        {
+            var plantIdParameter = plantId.HasValue ?
+                new ObjectParameter("PlantId", plantId) :
+                new ObjectParameter("PlantId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Summary", plantIdParameter);
+        }
     }
 }

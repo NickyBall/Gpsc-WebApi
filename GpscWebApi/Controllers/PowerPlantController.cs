@@ -49,7 +49,8 @@ namespace GpscWebApi.Controllers
                 {
                     Lat = c.Country_Latitude,
                     Lng = c.Country_Longitude
-                }
+                },
+                PlantCount = c.Plants.Count
             }).ToList();
 
             return new ResultModel<List<CountryModel>>()
@@ -98,9 +99,13 @@ namespace GpscWebApi.Controllers
                     Lat = p.Location_Latitude,
                     Lng = p.Location_Longitude
                 },
+                PlantTypeId = p.PlantTypeID,
                 PlantType = p.PlantType.PlantType_Type,
+                PlantLocation = p.Location_Name,
                 PowerGen = p.Power_Gen,
                 ElectricGen = p.Electricity_Gen,
+                Irradiation = p.Irradiation,
+                AMB_Temp = p.AMB_Temp,
                 SharedHolder = new SharedHolderModel()
                 {
                     SharedHolderId = p.SharedHolder.Id,
@@ -156,9 +161,13 @@ namespace GpscWebApi.Controllers
                     Lat = Plant.Location_Latitude,
                     Lng = Plant.Location_Longitude
                 },
+                PlantTypeId = Plant.PlantTypeID,
                 PlantType = Plant.PlantType.PlantType_Type,
+                PlantLocation = Plant.Location_Name,
                 PowerGen = Plant.Power_Gen,
                 ElectricGen = Plant.Electricity_Gen,
+                Irradiation = Plant.Irradiation,
+                AMB_Temp = Plant.AMB_Temp,
                 SharedHolder = new SharedHolderModel()
                 {
                     SharedHolderId = Plant.SharedHolder.Id,
@@ -187,8 +196,8 @@ namespace GpscWebApi.Controllers
             //    };
             //}
             int CompanyId = (int)Body["CompanyId"];
-            DateTime StartDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 0, 0, 0);
-            DateTime EndDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
+            DateTime StartDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 0, 0, 0);
+            DateTime EndDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
 
             var hourly = Db.PlantEnergyGenHourlyViews.Where(a => a.Time_Stamp.Value >= StartDate && a.Time_Stamp.Value <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
@@ -229,7 +238,7 @@ namespace GpscWebApi.Controllers
             //    };
             //}
             int CompanyId = (int)Body["CompanyId"];
-            DateTime StartDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, 1);
+            DateTime StartDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             DateTime EndDate = StartDate.AddMonths(1).AddDays(-1);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
 
@@ -272,7 +281,7 @@ namespace GpscWebApi.Controllers
             //}
             int CompanyId = (int)Body["CompanyId"];
 
-            DateTime StartDate = new DateTime(DateTime.Today.Year - 1, 1, 1);
+            DateTime StartDate = new DateTime(DateTime.Today.Year, 1, 1);
             DateTime EndDate = StartDate.AddYears(1).AddMonths(-1);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
 

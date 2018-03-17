@@ -36,6 +36,7 @@ namespace GpscWebApi
         public int Customer_Id { get; set; }
         public System.DateTime CreatedAt { get; set; }
         public int Order { get; set; }
+        public string Location_Name { get; set; }
     
         public virtual Company Company { get; set; }
         public virtual Country Country { get; set; }

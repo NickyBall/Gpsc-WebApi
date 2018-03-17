@@ -10,5 +10,6 @@ namespace GpscWebApi.Models
         public int CountryId { get; set; }
         public string CountryName { get; set; }
         public LocationModel Location { get; set; }
+        public int PlantCount { get; set; }
     }
 }

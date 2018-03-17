@@ -150,6 +150,7 @@
           <Property Name="Customer_Id" Type="int" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
           <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="Location_Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PlantType">
           <Key>
@@ -177,6 +178,7 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="FlagImport" Type="varchar" MaxLength="5" />
           <Property Name="Id" Type="varchar" MaxLength="50" />
+          <Property Name="PlantId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenDailyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -362,6 +364,9 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SPX_Update_Summary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PlantId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -553,6 +558,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           <NavigationProperty Name="PlantType" Relationship="Self.FK_Plant_PlantType" FromRole="Plant" ToRole="PlantType" />
           <NavigationProperty Name="SharedHolder" Relationship="Self.FK_Plant_SharedHolder" FromRole="Plant" ToRole="SharedHolder" />
           <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="Location_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PlantType">
           <Key>
@@ -751,6 +757,9 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
           <EntitySet Name="TranLocus" EntityType="Model.TranLocu" />
+          <FunctionImport Name="SPX_Update_Summary">
+            <Parameter Name="PlantId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -857,6 +866,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="FlagImport" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PlantId" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -934,6 +944,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           <EntitySetMapping Name="Plants">
             <EntityTypeMapping TypeName="Model.Plant">
               <MappingFragment StoreEntitySet="Plant">
+                <ScalarProperty Name="Location_Name" ColumnName="Location_Name" />
                 <ScalarProperty Name="Order" ColumnName="Order" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
@@ -1079,6 +1090,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           <EntitySetMapping Name="TranLocus">
             <EntityTypeMapping TypeName="Model.TranLocu">
               <MappingFragment StoreEntitySet="TranLocus">
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FlagImport" ColumnName="FlagImport" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -1089,6 +1101,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPX_Update_Summary" FunctionName="Model.Store.SPX_Update_Summary" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

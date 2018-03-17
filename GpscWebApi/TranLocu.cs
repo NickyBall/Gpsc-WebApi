@@ -21,5 +21,6 @@ namespace GpscWebApi
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string FlagImport { get; set; }
         public string Id { get; set; }
+        public Nullable<int> PlantId { get; set; }
     }
 }
