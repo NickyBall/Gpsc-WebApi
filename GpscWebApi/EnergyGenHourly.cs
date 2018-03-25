@@ -12,11 +12,13 @@ namespace GpscWebApi
     using System;
     using System.Collections.Generic;
     
-    public partial class PlantEnergyGenMonthlyView
+    public partial class EnergyGenHourly
     {
-        public Nullable<long> Row { get; set; }
+        public int Id { get; set; }
         public int PlantId { get; set; }
-        public decimal AverageEnergyGenValue { get; set; }
-        public System.DateTime Time_Stamp { get; set; }
+        public decimal Energy_Value { get; set; }
+        public System.DateTime Energy_LatestUpdate { get; set; }
+    
+        public virtual Plant Plant { get; set; }
     }
 }

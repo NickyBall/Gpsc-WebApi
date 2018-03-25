@@ -49,6 +49,11 @@ namespace GpscWebApi
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<GeneralInfoImage> GeneralInfoImages { get; set; }
         public virtual DbSet<PlantLayoutImage> PlantLayoutImages { get; set; }
+        public virtual DbSet<EnergyGenDaily> EnergyGenDailies { get; set; }
+        public virtual DbSet<EnergyGenHourly> EnergyGenHourlies { get; set; }
+        public virtual DbSet<EnergyGenMonthly> EnergyGenMonthlies { get; set; }
+        public virtual DbSet<EnergyGenYearly> EnergyGenYearlies { get; set; }
+        public virtual DbSet<PlantEnergyGenYearTarget> PlantEnergyGenYearTargets { get; set; }
     
         public virtual int SPX_Update_Summary(Nullable<int> plantId)
         {

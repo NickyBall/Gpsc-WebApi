@@ -113,6 +113,33 @@
           <Property Name="EnergyGen_Icon" Type="nvarchar" MaxLength="50" />
           <Property Name="EnergyGen_Icon_Url" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="EnergyGenDaily">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlantId" Type="int" Nullable="false" />
+          <Property Name="Energy_Value" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Energy_LatestUpdate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EnergyGenHourly">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlantId" Type="int" Nullable="false" />
+          <Property Name="Energy_Value" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Energy_LatestUpdate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EnergyGenMonthly">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlantId" Type="int" Nullable="false" />
+          <Property Name="Energy_Value" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Energy_LatestUpdate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="EnergyGenTarget">
           <Key>
             <PropertyRef Name="Id" />
@@ -121,6 +148,15 @@
           <Property Name="YearMonth" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="TargetValue" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="PlantId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EnergyGenYearly">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PlantId" Type="int" Nullable="false" />
+          <Property Name="Energy_Value" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Energy_LatestUpdate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="EnergyPlantHist">
           <Key>
@@ -208,50 +244,70 @@
           <Property Name="FlagImport" Type="varchar" MaxLength="5" />
           <Property Name="Id" Type="varchar" MaxLength="50" />
           <Property Name="PlantId" Type="int" />
+          <Property Name="Granularity" Type="varchar" MaxLength="32" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenDailyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenDailyView">
           <Key>
             <PropertyRef Name="PlantId" />
+            
+            
           </Key>
           <Property Name="Row" Type="bigint" />
           <Property Name="PlantId" Type="int" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="38" Scale="6" />
-          <Property Name="Time_Stamp" Type="datetime" />
+          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Time_Stamp" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenHourlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenHourlyView">
           <Key>
             <PropertyRef Name="PlantId" />
+            
+            
           </Key>
           <Property Name="Row" Type="bigint" />
           <Property Name="PlantId" Type="int" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="38" Scale="6" />
-          <Property Name="Time_Stamp" Type="datetime" />
+          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Time_Stamp" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenMonthlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenMonthlyView">
           <Key>
             <PropertyRef Name="PlantId" />
+            
+            
           </Key>
           <Property Name="Row" Type="bigint" />
           <Property Name="PlantId" Type="int" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="38" Scale="6" />
-          <Property Name="Time_Stamp" Type="datetime" />
+          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Time_Stamp" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenYearlyView">
           <Key>
             <PropertyRef Name="PlantId" />
+            
+            
           </Key>
           <Property Name="Row" Type="bigint" />
           <Property Name="PlantId" Type="int" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="38" Scale="6" />
-          <Property Name="Time_Stamp" Type="datetime" />
+          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Time_Stamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearTarget' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PlantEnergyGenYearTarget">
+          <Key>
+            <PropertyRef Name="PlantId" />
+          </Key>
+          <Property Name="Row" Type="bigint" />
+          <Property Name="Total" Type="decimal" Precision="38" Scale="4" />
+          <Property Name="YearTarget" Type="nvarchar" MaxLength="5" />
+          <Property Name="PlantId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -309,6 +365,42 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EnergyGenDaily_Plant">
+          <End Role="Plant" Type="Self.Plant" Multiplicity="1" />
+          <End Role="EnergyGenDaily" Type="Self.EnergyGenDaily" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenDaily">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyGenHourly_Plant">
+          <End Role="Plant" Type="Self.Plant" Multiplicity="1" />
+          <End Role="EnergyGenHourly" Type="Self.EnergyGenHourly" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenHourly">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyGenMonthly_Plant">
+          <End Role="Plant" Type="Self.Plant" Multiplicity="1" />
+          <End Role="EnergyGenMonthly" Type="Self.EnergyGenMonthly" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenMonthly">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EnergyGenTarget_Plant">
           <End Role="Plant" Type="Self.Plant" Multiplicity="1" />
           <End Role="EnergyGenTarget" Type="Self.EnergyGenTarget" Multiplicity="*" />
@@ -317,6 +409,18 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="EnergyGenTarget">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyGenYearly_Plant">
+          <End Role="Plant" Type="Self.Plant" Multiplicity="1" />
+          <End Role="EnergyGenYearly" Type="Self.EnergyGenYearly" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenYearly">
               <PropertyRef Name="PlantId" />
             </Dependent>
           </ReferentialConstraint>
@@ -478,7 +582,11 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EnergyGen" EntityType="Self.EnergyGen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnergyGenDaily" EntityType="Self.EnergyGenDaily" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnergyGenHourly" EntityType="Self.EnergyGenHourly" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnergyGenMonthly" EntityType="Self.EnergyGenMonthly" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EnergyGenTarget" EntityType="Self.EnergyGenTarget" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnergyGenYearly" EntityType="Self.EnergyGenYearly" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EnergyPlantHist" EntityType="Self.EnergyPlantHist" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneralInfoImage" EntityType="Self.GeneralInfoImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plant" EntityType="Self.Plant" Schema="dbo" store:Type="Tables" />
@@ -519,6 +627,14 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
     [PlantEnergyGenYearlyView].[Time_Stamp] AS [Time_Stamp]
     FROM [dbo].[PlantEnergyGenYearlyView] AS [PlantEnergyGenYearlyView]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="PlantEnergyGenYearTarget" EntityType="Self.PlantEnergyGenYearTarget" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PlantEnergyGenYearTarget].[Row] AS [Row], 
+    [PlantEnergyGenYearTarget].[Total] AS [Total], 
+    [PlantEnergyGenYearTarget].[YearTarget] AS [YearTarget], 
+    [PlantEnergyGenYearTarget].[PlantId] AS [PlantId]
+    FROM [dbo].[PlantEnergyGenYearTarget] AS [PlantEnergyGenYearTarget]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -535,9 +651,25 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
+          <AssociationSet Name="FK_EnergyGenDaily_Plant" Association="Self.FK_EnergyGenDaily_Plant">
+            <End Role="Plant" EntitySet="Plant" />
+            <End Role="EnergyGenDaily" EntitySet="EnergyGenDaily" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyGenHourly_Plant" Association="Self.FK_EnergyGenHourly_Plant">
+            <End Role="Plant" EntitySet="Plant" />
+            <End Role="EnergyGenHourly" EntitySet="EnergyGenHourly" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyGenMonthly_Plant" Association="Self.FK_EnergyGenMonthly_Plant">
+            <End Role="Plant" EntitySet="Plant" />
+            <End Role="EnergyGenMonthly" EntitySet="EnergyGenMonthly" />
+          </AssociationSet>
           <AssociationSet Name="FK_EnergyGenTarget_Plant" Association="Self.FK_EnergyGenTarget_Plant">
             <End Role="Plant" EntitySet="Plant" />
             <End Role="EnergyGenTarget" EntitySet="EnergyGenTarget" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyGenYearly_Plant" Association="Self.FK_EnergyGenYearly_Plant">
+            <End Role="Plant" EntitySet="Plant" />
+            <End Role="EnergyGenYearly" EntitySet="EnergyGenYearly" />
           </AssociationSet>
           <AssociationSet Name="FK_EnergyPlantHist_EnergyGen" Association="Self.FK_EnergyPlantHist_EnergyGen">
             <End Role="EnergyGen" EntitySet="EnergyGen" />
@@ -681,6 +813,10 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           <NavigationProperty Name="EnergyGenTargets" Relationship="Model.FK_EnergyGenTarget_Plant" FromRole="Plant" ToRole="EnergyGenTarget" />
           <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="LatestTemperature" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EnergyGenDailies" Relationship="Model.FK_EnergyGenDaily_Plant" FromRole="Plant" ToRole="EnergyGenDaily" />
+          <NavigationProperty Name="EnergyGenHourlies" Relationship="Model.FK_EnergyGenHourly_Plant" FromRole="Plant" ToRole="EnergyGenHourly" />
+          <NavigationProperty Name="EnergyGenMonthlies" Relationship="Model.FK_EnergyGenMonthly_Plant" FromRole="Plant" ToRole="EnergyGenMonthly" />
+          <NavigationProperty Name="EnergyGenYearlies" Relationship="Model.FK_EnergyGenYearly_Plant" FromRole="Plant" ToRole="EnergyGenYearly" />
         </EntityType>
         <EntityType Name="PlantType">
           <Key>
@@ -705,8 +841,8 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           </Key>
           <Property Name="Row" Type="Int64" />
           <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="38" Scale="6" />
-          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
+          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Time_Stamp" Type="DateTime" Precision="3" Nullable="false" />
         </EntityType>
         <EntityType Name="PlantEnergyGenHourlyView">
           <Key>
@@ -714,8 +850,8 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           </Key>
           <Property Name="Row" Type="Int64" />
           <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="38" Scale="6" />
-          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
+          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Time_Stamp" Type="DateTime" Precision="3" Nullable="false" />
         </EntityType>
         <EntityType Name="PlantEnergyGenMonthlyView">
           <Key>
@@ -723,8 +859,8 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           </Key>
           <Property Name="Row" Type="Int64" />
           <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="38" Scale="6" />
-          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
+          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Time_Stamp" Type="DateTime" Precision="3" Nullable="false" />
         </EntityType>
         <EntityType Name="PlantEnergyGenYearlyView">
           <Key>
@@ -732,8 +868,8 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           </Key>
           <Property Name="Row" Type="Int64" />
           <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="38" Scale="6" />
-          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
+          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Time_Stamp" Type="DateTime" Precision="3" Nullable="false" />
         </EntityType>
         <Association Name="FK_Plant_Company">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
@@ -931,6 +1067,27 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
             <End Role="Company" EntitySet="Companies" />
             <End Role="PlantLayoutImage" EntitySet="PlantLayoutImages" />
           </AssociationSet>
+          <EntitySet Name="EnergyGenDailies" EntityType="Model.EnergyGenDaily" />
+          <EntitySet Name="EnergyGenHourlies" EntityType="Model.EnergyGenHourly" />
+          <EntitySet Name="EnergyGenMonthlies" EntityType="Model.EnergyGenMonthly" />
+          <EntitySet Name="EnergyGenYearlies" EntityType="Model.EnergyGenYearly" />
+          <AssociationSet Name="FK_EnergyGenDaily_Plant" Association="Model.FK_EnergyGenDaily_Plant">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="EnergyGenDaily" EntitySet="EnergyGenDailies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyGenHourly_Plant" Association="Model.FK_EnergyGenHourly_Plant">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="EnergyGenHourly" EntitySet="EnergyGenHourlies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyGenMonthly_Plant" Association="Model.FK_EnergyGenMonthly_Plant">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="EnergyGenMonthly" EntitySet="EnergyGenMonthlies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyGenYearly_Plant" Association="Model.FK_EnergyGenYearly_Plant">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="EnergyGenYearly" EntitySet="EnergyGenYearlies" />
+          </AssociationSet>
+          <EntitySet Name="PlantEnergyGenYearTargets" EntityType="Model.PlantEnergyGenYearTarget" />
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -1038,6 +1195,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           <Property Name="FlagImport" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PlantId" Type="Int32" />
+          <Property Name="Granularity" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_EnergyGenTarget_Plant">
           <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
@@ -1114,6 +1272,103 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="EnergyGenDaily">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+          <Property Name="Energy_Value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Energy_LatestUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Plant" Relationship="Model.FK_EnergyGenDaily_Plant" FromRole="EnergyGenDaily" ToRole="Plant" />
+        </EntityType>
+        <EntityType Name="EnergyGenHourly">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+          <Property Name="Energy_Value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Energy_LatestUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Plant" Relationship="Model.FK_EnergyGenHourly_Plant" FromRole="EnergyGenHourly" ToRole="Plant" />
+        </EntityType>
+        <EntityType Name="EnergyGenMonthly">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+          <Property Name="Energy_Value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Energy_LatestUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Plant" Relationship="Model.FK_EnergyGenMonthly_Plant" FromRole="EnergyGenMonthly" ToRole="Plant" />
+        </EntityType>
+        <EntityType Name="EnergyGenYearly">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+          <Property Name="Energy_Value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Energy_LatestUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Plant" Relationship="Model.FK_EnergyGenYearly_Plant" FromRole="EnergyGenYearly" ToRole="Plant" />
+        </EntityType>
+        <Association Name="FK_EnergyGenDaily_Plant">
+          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
+          <End Type="Model.EnergyGenDaily" Role="EnergyGenDaily" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenDaily">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyGenHourly_Plant">
+          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
+          <End Type="Model.EnergyGenHourly" Role="EnergyGenHourly" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenHourly">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyGenMonthly_Plant">
+          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
+          <End Type="Model.EnergyGenMonthly" Role="EnergyGenMonthly" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenMonthly">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyGenYearly_Plant">
+          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
+          <End Type="Model.EnergyGenYearly" Role="EnergyGenYearly" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenYearly">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PlantEnergyGenYearTarget">
+          <Key>
+            <PropertyRef Name="PlantId" />
+          </Key>
+          <Property Name="Row" Type="Int64" />
+          <Property Name="Total" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="YearTarget" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1339,6 +1594,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           <EntitySetMapping Name="TranLocus">
             <EntityTypeMapping TypeName="Model.TranLocu">
               <MappingFragment StoreEntitySet="TranLocus">
+                <ScalarProperty Name="Granularity" ColumnName="Granularity" />
                 <ScalarProperty Name="PlantId" ColumnName="PlantId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FlagImport" ColumnName="FlagImport" />
@@ -1402,6 +1658,56 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
                 <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnergyGenDailies">
+            <EntityTypeMapping TypeName="Model.EnergyGenDaily">
+              <MappingFragment StoreEntitySet="EnergyGenDaily">
+                <ScalarProperty Name="Energy_LatestUpdate" ColumnName="Energy_LatestUpdate" />
+                <ScalarProperty Name="Energy_Value" ColumnName="Energy_Value" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnergyGenHourlies">
+            <EntityTypeMapping TypeName="Model.EnergyGenHourly">
+              <MappingFragment StoreEntitySet="EnergyGenHourly">
+                <ScalarProperty Name="Energy_LatestUpdate" ColumnName="Energy_LatestUpdate" />
+                <ScalarProperty Name="Energy_Value" ColumnName="Energy_Value" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnergyGenMonthlies">
+            <EntityTypeMapping TypeName="Model.EnergyGenMonthly">
+              <MappingFragment StoreEntitySet="EnergyGenMonthly">
+                <ScalarProperty Name="Energy_LatestUpdate" ColumnName="Energy_LatestUpdate" />
+                <ScalarProperty Name="Energy_Value" ColumnName="Energy_Value" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnergyGenYearlies">
+            <EntityTypeMapping TypeName="Model.EnergyGenYearly">
+              <MappingFragment StoreEntitySet="EnergyGenYearly">
+                <ScalarProperty Name="Energy_LatestUpdate" ColumnName="Energy_LatestUpdate" />
+                <ScalarProperty Name="Energy_Value" ColumnName="Energy_Value" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantEnergyGenYearTargets">
+            <EntityTypeMapping TypeName="Model.PlantEnergyGenYearTarget">
+              <MappingFragment StoreEntitySet="PlantEnergyGenYearTarget">
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="YearTarget" ColumnName="YearTarget" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Row" ColumnName="Row" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

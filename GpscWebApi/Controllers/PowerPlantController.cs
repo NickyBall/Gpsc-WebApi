@@ -104,7 +104,7 @@ namespace GpscWebApi.Controllers
                 PlantTypeId = p.PlantTypeID,
                 PlantType = p.PlantType.PlantType_Type,
                 PlantLocation = p.Location_Name,
-                PowerGen = p.Power_Gen,
+                PowerGen = p.Power_Gen >= 0 ? p.Power_Gen : 0,
                 ElectricGen = p.Electricity_Gen,
                 Irradiation = p.Irradiation,
                 AMB_Temp = p.AMB_Temp,
@@ -170,7 +170,7 @@ namespace GpscWebApi.Controllers
                 PlantTypeId = Plant.PlantTypeID,
                 PlantType = Plant.PlantType.PlantType_Type,
                 PlantLocation = Plant.Location_Name,
-                PowerGen = Plant.Power_Gen,
+                PowerGen = Plant.Power_Gen >= 0 ? Plant.Power_Gen : 0,
                 ElectricGen = Plant.Electricity_Gen,
                 Irradiation = Plant.Irradiation,
                 AMB_Temp = Plant.AMB_Temp,
@@ -208,11 +208,11 @@ namespace GpscWebApi.Controllers
             DateTime EndDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
 
-            var hourly = Db.PlantEnergyGenHourlyViews.Where(a => a.Time_Stamp.Value >= StartDate && a.Time_Stamp.Value <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+            var hourly = Db.PlantEnergyGenHourlyViews.Where(a => a.Time_Stamp >= StartDate && a.Time_Stamp <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
             {
                 Index = a.Row,
-                EnergyValue = a.AverageEnergyGenValue.Value,
-                TimeStamp = a.Time_Stamp.Value
+                EnergyValue = a.AverageEnergyGenValue,
+                TimeStamp = a.Time_Stamp
             });
             foreach (var record in hourly)
             {
@@ -250,11 +250,11 @@ namespace GpscWebApi.Controllers
             DateTime EndDate = StartDate.AddMonths(1).AddDays(-1);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
 
-            var hourly = Db.PlantEnergyGenDailyViews.Where(a => a.Time_Stamp.Value >= StartDate && a.Time_Stamp.Value <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+            var hourly = Db.PlantEnergyGenDailyViews.Where(a => a.Time_Stamp >= StartDate && a.Time_Stamp <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
             {
                 Index = a.Row,
-                EnergyValue = a.AverageEnergyGenValue.Value,
-                TimeStamp = a.Time_Stamp.Value
+                EnergyValue = a.AverageEnergyGenValue,
+                TimeStamp = a.Time_Stamp
             });
             foreach (var record in hourly)
             {
@@ -294,14 +294,14 @@ namespace GpscWebApi.Controllers
             for (int i = 1; i <= 12; i++)
             {
                 DateTime RefDate = new DateTime(DateTime.Today.Year, i, 1);
-                var monthly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp.Value == RefDate && a.PlantId.Equals(CompanyId));
+                var monthly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp == RefDate && a.PlantId.Equals(CompanyId));
                 
 
                 string YearMonth = $"{RefDate.Year}-{i.ToString().PadLeft(2, '0')}";
                 var Target = Db.EnergyGenTargets.Where(t => t.YearMonth.Equals(YearMonth) && t.PlantId.Equals(CompanyId));
                 Models.Add(new EnergyGenModel()
                 {
-                    EnergyValue = (double)(monthly.Count() > 0 ? (monthly.FirstOrDefault().AverageEnergyGenValue.HasValue ? monthly.FirstOrDefault().AverageEnergyGenValue.Value : 0) : 0),
+                    EnergyValue = (double)(monthly.Count() > 0 ? monthly.FirstOrDefault().AverageEnergyGenValue : 0),
                     Target = (double)(Target.Count() > 0 ? Target.FirstOrDefault().TargetValue : 0),
                     TimeStamp = RefDate
                 });
@@ -332,33 +332,27 @@ namespace GpscWebApi.Controllers
             //DateTime StartDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 0, 0, 0);
             //DateTime EndDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
+            var Targets = Db.PlantEnergyGenYearTargets.Where(t => t.PlantId.Equals(CompanyId)).OrderBy(t => t.YearTarget);
 
-            var hourly = Db.PlantEnergyGenYearlyViews.Where(a => a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+            foreach (var Target in Targets)
             {
-                Index = a.Row,
-                EnergyValue = a.AverageEnergyGenValue.Value,
-                TimeStamp = a.Time_Stamp.Value
-            });
-            foreach (var record in hourly)
-            {
-                string Year = record.TimeStamp.Year.ToString();
-                var Target = Db.EnergyGenTargets.Where(t => t.YearMonth.StartsWith(Year)).Average(c => c.TargetValue);
+                DateTime TargetDate = new DateTime(Int16.Parse(Target.YearTarget), 1, 1);
+                DateTime EndDate = TargetDate.AddYears(1);
+                var yearly = Db.PlantEnergyGenYearlyViews.Where(p => p.PlantId.Equals(CompanyId) && p.Time_Stamp >= TargetDate && p.Time_Stamp < EndDate);
                 Models.Add(new EnergyGenModel()
                 {
-                    EnergyValue = (double)record.EnergyValue,
-                    Target = (double)Target,
-                    TimeStamp = record.TimeStamp
+                    EnergyValue = (double)(yearly.Count() > 0 ? yearly.FirstOrDefault().AverageEnergyGenValue : 0),
+                    Target = (double)Target.Total,
+                    TimeStamp = TargetDate
                 });
             }
 
-            ResultModel<List<EnergyGenModel>> Result = new ResultModel<List<EnergyGenModel>>()
+            return new ResultModel<List<EnergyGenModel>>()
             {
                 ResultCode = HttpStatusCode.OK.GetHashCode(),
                 Message = "",
                 Result = Models
             };
-
-            return Result;
         }
 
         [HttpGet]

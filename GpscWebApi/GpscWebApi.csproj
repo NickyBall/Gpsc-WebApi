@@ -265,7 +265,19 @@
     <Compile Include="EnergyGen.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EnergyGenDaily.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EnergyGenHourly.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EnergyGenMonthly.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EnergyGenTarget.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EnergyGenYearly.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EnergyPlantHist.cs">
@@ -304,6 +316,9 @@
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PlantEnergyGenYearlyView.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlantEnergyGenYearTarget.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PlantLayoutImage.cs">

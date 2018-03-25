@@ -22,5 +22,6 @@ namespace GpscWebApi
         public string FlagImport { get; set; }
         public string Id { get; set; }
         public Nullable<int> PlantId { get; set; }
+        public string Granularity { get; set; }
     }
 }

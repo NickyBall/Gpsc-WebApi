@@ -40,6 +40,15 @@
         <AssociationConnector Association="Model.FK_GeneralInfoImage_Company" />
         <EntityTypeShape EntityType="Model.PlantLayoutImage" Width="1.5" PointX="3" PointY="15" />
         <AssociationConnector Association="Model.FK_PlantLayoutImage_Company" />
+        <EntityTypeShape EntityType="Model.EnergyGenDaily" Width="1.5" PointX="5.25" PointY="22.625" />
+        <EntityTypeShape EntityType="Model.EnergyGenHourly" Width="1.5" PointX="5.25" PointY="14.5" />
+        <EntityTypeShape EntityType="Model.EnergyGenMonthly" Width="1.5" PointX="5.25" PointY="17.125" />
+        <EntityTypeShape EntityType="Model.EnergyGenYearly" Width="1.5" PointX="5.25" PointY="19.875" />
+        <AssociationConnector Association="Model.FK_EnergyGenDaily_Plant" />
+        <AssociationConnector Association="Model.FK_EnergyGenHourly_Plant" />
+        <AssociationConnector Association="Model.FK_EnergyGenMonthly_Plant" />
+        <AssociationConnector Association="Model.FK_EnergyGenYearly_Plant" />
+        <EntityTypeShape EntityType="Model.PlantEnergyGenYearTarget" Width="1.5" PointX="12.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

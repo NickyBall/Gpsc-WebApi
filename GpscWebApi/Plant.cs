@@ -19,6 +19,10 @@ namespace GpscWebApi
         {
             this.EnergyPlantHists = new HashSet<EnergyPlantHist>();
             this.EnergyGenTargets = new HashSet<EnergyGenTarget>();
+            this.EnergyGenDailies = new HashSet<EnergyGenDaily>();
+            this.EnergyGenHourlies = new HashSet<EnergyGenHourly>();
+            this.EnergyGenMonthlies = new HashSet<EnergyGenMonthly>();
+            this.EnergyGenYearlies = new HashSet<EnergyGenYearly>();
         }
     
         public int ID { get; set; }
@@ -50,5 +54,13 @@ namespace GpscWebApi
         public virtual SharedHolder SharedHolder { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnergyGenTarget> EnergyGenTargets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnergyGenDaily> EnergyGenDailies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnergyGenHourly> EnergyGenHourlies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnergyGenMonthly> EnergyGenMonthlies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnergyGenYearly> EnergyGenYearlies { get; set; }
     }
 }
