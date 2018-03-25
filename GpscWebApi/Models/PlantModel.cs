@@ -23,5 +23,6 @@ namespace GpscWebApi.Models
         public string PlantType { get; set; }
         public int Order { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public string LatestTemperature { get; set; }
     }
 }

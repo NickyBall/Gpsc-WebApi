@@ -115,6 +115,7 @@ namespace GpscWebApi.Controllers
                     GpscShared = p.SharedHolder.Gpsc_Share
                 },
                 SharedHolderPercentage = p.SharedHolder_Percentage,
+                LatestTemperature = p.LatestTemperature,
                 Order = p.Order
             }).ToList();
 
@@ -178,7 +179,8 @@ namespace GpscWebApi.Controllers
                     SharedHolderName = Plant.SharedHolder.SharedHolder_Name,
                     GpscShared = Plant.SharedHolder.Gpsc_Share
                 },
-                SharedHolderPercentage = Plant.SharedHolder_Percentage
+                SharedHolderPercentage = Plant.SharedHolder_Percentage,
+                LatestTemperature = Plant.LatestTemperature
             };
             return new ResultModel<PlantModel>()
             {

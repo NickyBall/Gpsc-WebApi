@@ -423,6 +423,7 @@
     <Content Include="Uploads\Logo\NNEG.png" />
     <Content Include="Uploads\Logo\RPLC.png" />
     <Content Include="Uploads\Logo\SSE1.png" />
+    <Content Include="Uploads\PlantLayout\CHPP\001.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -437,8 +438,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Uploads\PlantLayout\CHPP\Layout.docx" />
-    <Content Include="Uploads\PlantLayout\CHPP\Layout.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
