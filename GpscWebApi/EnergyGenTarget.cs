@@ -17,5 +17,8 @@ namespace GpscWebApi
         public int Id { get; set; }
         public string YearMonth { get; set; }
         public decimal TargetValue { get; set; }
+        public int PlantId { get; set; }
+    
+        public virtual Plant Plant { get; set; }
     }
 }

@@ -19,7 +19,7 @@ using System.Web.Http.Cors;
 
 namespace GpscWebApi.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
     public class AuthenticationController : ApiController
     {
         private string CurrentDomainPath => "LDAP://DC=pttgrp,DC=corp";

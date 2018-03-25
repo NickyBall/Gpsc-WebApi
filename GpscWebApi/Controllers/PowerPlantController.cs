@@ -12,7 +12,7 @@ using System.Web.Http.Cors;
 
 namespace GpscWebApi.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
     [Authorize]
     public class PowerPlantController : ApiController
     {
@@ -87,7 +87,8 @@ namespace GpscWebApi.Controllers
                     Capacity = p.Company.Capacity,
                     COD = p.Company.COD,
                     PPA = p.Company.PPA,
-                    IsEnabled = p.Company.IsEnabled
+                    IsEnabled = p.Company.IsEnabled,
+                    GeneralInfoImages = p.Company.GeneralInfoImages.Select(c => c.ImageUrl).ToList()
                 },
                 Customer = new CustomerModel()
                 {
@@ -106,6 +107,7 @@ namespace GpscWebApi.Controllers
                 ElectricGen = p.Electricity_Gen,
                 Irradiation = p.Irradiation,
                 AMB_Temp = p.AMB_Temp,
+                UpdatedAt = p.UpdatedAt,
                 SharedHolder = new SharedHolderModel()
                 {
                     SharedHolderId = p.SharedHolder.Id,
@@ -149,7 +151,8 @@ namespace GpscWebApi.Controllers
                     CompanyLogo = Plant.Company.Company_Logo_Path,
                     Capacity = Plant.Company.Capacity,
                     COD = Plant.Company.COD,
-                    PPA = Plant.Company.PPA
+                    PPA = Plant.Company.PPA,
+                    GeneralInfoImages = Plant.Company.GeneralInfoImages.Select(c => c.ImageUrl).ToList()
                 },
                 Customer = new CustomerModel()
                 {
@@ -168,6 +171,7 @@ namespace GpscWebApi.Controllers
                 ElectricGen = Plant.Electricity_Gen,
                 Irradiation = Plant.Irradiation,
                 AMB_Temp = Plant.AMB_Temp,
+                UpdatedAt = Plant.UpdatedAt,
                 SharedHolder = new SharedHolderModel()
                 {
                     SharedHolderId = Plant.SharedHolder.Id,
@@ -280,26 +284,22 @@ namespace GpscWebApi.Controllers
             //    };
             //}
             int CompanyId = (int)Body["CompanyId"];
-
-            DateTime StartDate = new DateTime(DateTime.Today.Year, 1, 1);
-            DateTime EndDate = StartDate.AddYears(1).AddMonths(-1);
+            
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
 
-            var hourly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp.Value >= StartDate && a.Time_Stamp.Value <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+            for (int i = 1; i <= 12; i++)
             {
-                Index = a.Row,
-                EnergyValue = a.AverageEnergyGenValue.Value,
-                TimeStamp = a.Time_Stamp.Value
-            });
-            foreach (var record in hourly)
-            {
-                string YearMonth = $"{record.TimeStamp.Year}-{record.TimeStamp.Month.ToString().PadLeft(2, '0')}";
-                var Target = Db.EnergyGenTargets.Where(t => t.YearMonth.Equals(YearMonth)).ToList().FirstOrDefault().TargetValue;
+                DateTime RefDate = new DateTime(DateTime.Today.Year, i, 1);
+                var monthly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp.Value == RefDate && a.PlantId.Equals(CompanyId));
+                
+
+                string YearMonth = $"{RefDate.Year}-{i.ToString().PadLeft(2, '0')}";
+                var Target = Db.EnergyGenTargets.Where(t => t.YearMonth.Equals(YearMonth) && t.PlantId.Equals(CompanyId));
                 Models.Add(new EnergyGenModel()
                 {
-                    EnergyValue = (double)record.EnergyValue,
-                    Target = (double)Target,
-                    TimeStamp = record.TimeStamp
+                    EnergyValue = (double)(monthly.Count() > 0 ? (monthly.FirstOrDefault().AverageEnergyGenValue.HasValue ? monthly.FirstOrDefault().AverageEnergyGenValue.Value : 0) : 0),
+                    Target = (double)(Target.Count() > 0 ? Target.FirstOrDefault().TargetValue : 0),
+                    TimeStamp = RefDate
                 });
             }
 

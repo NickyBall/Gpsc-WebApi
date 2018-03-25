@@ -271,6 +271,9 @@
     <Compile Include="EnergyPlantHist.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GeneralInfoImage.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -331,7 +334,16 @@
     <Compile Include="SharedHolder.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TranLocu.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
@@ -397,13 +409,20 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Uploads\BIC.png" />
-    <Content Include="Uploads\Chpp.png" />
-    <Content Include="Uploads\ICHINOSEKI.png" />
-    <Content Include="Uploads\IRPC.png" />
-    <Content Include="Uploads\NNEG.png" />
-    <Content Include="Uploads\RPLC.png" />
-    <Content Include="Uploads\SSE1.png" />
+    <Content Include="Uploads\Info\CHPP\001.jpg" />
+    <Content Include="Uploads\Info\CHPP\002.jpg" />
+    <Content Include="Uploads\Info\CHPP\003.jpg" />
+    <Content Include="Uploads\Info\CHPP\004.jpg" />
+    <Content Include="Uploads\Info\ISP1\001.jpg" />
+    <Content Include="Uploads\Info\ISP1\002.JPG" />
+    <Content Include="Uploads\Info\ISP1\003.JPG" />
+    <Content Include="Uploads\Logo\BIC.png" />
+    <Content Include="Uploads\Logo\CHPP.png" />
+    <Content Include="Uploads\Logo\ICHINOSEKI.png" />
+    <Content Include="Uploads\Logo\IRPC.png" />
+    <Content Include="Uploads\Logo\NNEG.png" />
+    <Content Include="Uploads\Logo\RPLC.png" />
+    <Content Include="Uploads\Logo\SSE1.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -418,9 +437,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Uploads\PlantLayout\CHPP\Layout.docx" />
+    <Content Include="Uploads\PlantLayout\CHPP\Layout.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\PlantLayout\ISP1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

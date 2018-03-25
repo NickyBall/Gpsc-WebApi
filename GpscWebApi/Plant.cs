@@ -18,6 +18,7 @@ namespace GpscWebApi
         public Plant()
         {
             this.EnergyPlantHists = new HashSet<EnergyPlantHist>();
+            this.EnergyGenTargets = new HashSet<EnergyGenTarget>();
         }
     
         public int ID { get; set; }
@@ -37,6 +38,8 @@ namespace GpscWebApi
         public System.DateTime CreatedAt { get; set; }
         public int Order { get; set; }
         public string Location_Name { get; set; }
+        public System.DateTime UpdatedAt { get; set; }
+        public string LatestTemperature { get; set; }
     
         public virtual Company Company { get; set; }
         public virtual Country Country { get; set; }
@@ -45,5 +48,7 @@ namespace GpscWebApi
         public virtual ICollection<EnergyPlantHist> EnergyPlantHists { get; set; }
         public virtual PlantType PlantType { get; set; }
         public virtual SharedHolder SharedHolder { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnergyGenTarget> EnergyGenTargets { get; set; }
     }
 }

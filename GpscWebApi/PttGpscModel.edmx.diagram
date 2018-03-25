@@ -34,6 +34,10 @@
         <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.AspNetUserRoles" />
         <EntityTypeShape EntityType="Model.TranLocu" Width="1.5" PointX="10.375" PointY="6.75" />
+        <AssociationConnector Association="Model.FK_EnergyGenTarget_Plant" />
+        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.GeneralInfoImage" Width="1.5" PointX="3" PointY="11.875" />
+        <AssociationConnector Association="Model.FK_GeneralInfoImage_Company" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

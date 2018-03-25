@@ -14,5 +14,6 @@ namespace GpscWebApi.Models
         public DateTime COD { get; set; }
         public DateTime PPA { get; set; }
         public int IsEnabled { get; set; }
+        public List<string> GeneralInfoImages { get; set; }
     }
 }
