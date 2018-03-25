@@ -306,6 +306,9 @@
     <Compile Include="PlantEnergyGenYearlyView.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PlantLayoutImage.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="PlantType.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>

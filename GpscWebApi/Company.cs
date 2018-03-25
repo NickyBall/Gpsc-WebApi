@@ -19,6 +19,7 @@ namespace GpscWebApi
         {
             this.Plants = new HashSet<Plant>();
             this.GeneralInfoImages = new HashSet<GeneralInfoImage>();
+            this.PlantLayoutImages = new HashSet<PlantLayoutImage>();
         }
     
         public int ID { get; set; }
@@ -33,5 +34,7 @@ namespace GpscWebApi
         public virtual ICollection<Plant> Plants { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GeneralInfoImage> GeneralInfoImages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PlantLayoutImage> PlantLayoutImages { get; set; }
     }
 }

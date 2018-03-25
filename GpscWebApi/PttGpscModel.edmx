@@ -163,6 +163,14 @@
           <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
           <Property Name="LatestTemperature" Type="text" />
         </EntityType>
+        <EntityType Name="PlantLayoutImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="PlantType">
           <Key>
             <PropertyRef Name="Id" />
@@ -409,6 +417,18 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PlantLayoutImage_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="PlantLayoutImage" Type="Self.PlantLayoutImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PlantLayoutImage">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -462,6 +482,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           <EntitySet Name="EnergyPlantHist" EntityType="Self.EnergyPlantHist" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneralInfoImage" EntityType="Self.GeneralInfoImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plant" EntityType="Self.Plant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlantLayoutImage" EntityType="Self.PlantLayoutImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlantType" EntityType="Self.PlantType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SharedHolder" EntityType="Self.SharedHolder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -550,6 +571,10 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
             <End Role="SharedHolder" EntitySet="SharedHolder" />
             <End Role="Plant" EntitySet="Plant" />
           </AssociationSet>
+          <AssociationSet Name="FK_PlantLayoutImage_Company" Association="Self.FK_PlantLayoutImage_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="PlantLayoutImage" EntitySet="PlantLayoutImage" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -568,6 +593,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_Company" FromRole="Company" ToRole="Plant" />
           <Property Name="IsEnabled" Type="Int32" Nullable="false" />
           <NavigationProperty Name="GeneralInfoImages" Relationship="Model.FK_GeneralInfoImage_Company" FromRole="Company" ToRole="GeneralInfoImage" />
+          <NavigationProperty Name="PlantLayoutImages" Relationship="Model.FK_PlantLayoutImage_Company" FromRole="Company" ToRole="PlantLayoutImage" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -900,6 +926,11 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
             <Parameter Name="location_name" Mode="In" Type="String" />
             <Parameter Name="api_data" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="PlantLayoutImages" EntityType="Model.PlantLayoutImage" />
+          <AssociationSet Name="FK_PlantLayoutImage_Company" Association="Model.FK_PlantLayoutImage_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="PlantLayoutImage" EntitySet="PlantLayoutImages" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -1058,6 +1089,27 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="GeneralInfoImage">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PlantLayoutImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="ImageUrl" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Company" Relationship="Model.FK_PlantLayoutImage_Company" FromRole="PlantLayoutImage" ToRole="Company" />
+        </EntityType>
+        <Association Name="FK_PlantLayoutImage_Company">
+          <End Type="Model.Company" Role="Company" Multiplicity="1" />
+          <End Type="Model.PlantLayoutImage" Role="PlantLayoutImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PlantLayoutImage">
               <PropertyRef Name="CompanyId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1344,6 +1396,15 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SPX_Update_Weather" FunctionName="Model.Store.SPX_Update_Weather" />
+          <EntitySetMapping Name="PlantLayoutImages">
+            <EntityTypeMapping TypeName="Model.PlantLayoutImage">
+              <MappingFragment StoreEntitySet="PlantLayoutImage">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

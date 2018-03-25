@@ -88,7 +88,8 @@ namespace GpscWebApi.Controllers
                     COD = p.Company.COD,
                     PPA = p.Company.PPA,
                     IsEnabled = p.Company.IsEnabled,
-                    GeneralInfoImages = p.Company.GeneralInfoImages.Select(c => c.ImageUrl).ToList()
+                    GeneralInfoImages = p.Company.GeneralInfoImages.Select(c => c.ImageUrl).ToList(),
+                    PlantLayoutImages = p.Company.PlantLayoutImages.Select(c => c.ImageUrl).ToList()
                 },
                 Customer = new CustomerModel()
                 {
@@ -153,7 +154,8 @@ namespace GpscWebApi.Controllers
                     Capacity = Plant.Company.Capacity,
                     COD = Plant.Company.COD,
                     PPA = Plant.Company.PPA,
-                    GeneralInfoImages = Plant.Company.GeneralInfoImages.Select(c => c.ImageUrl).ToList()
+                    GeneralInfoImages = Plant.Company.GeneralInfoImages.Select(c => c.ImageUrl).ToList(),
+                    PlantLayoutImages = Plant.Company.PlantLayoutImages.Select(c => c.ImageUrl).ToList()
                 },
                 Customer = new CustomerModel()
                 {

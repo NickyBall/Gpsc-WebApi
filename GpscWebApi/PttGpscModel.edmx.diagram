@@ -38,6 +38,8 @@
         <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="12.375" PointY="0.75" />
         <EntityTypeShape EntityType="Model.GeneralInfoImage" Width="1.5" PointX="3" PointY="11.875" />
         <AssociationConnector Association="Model.FK_GeneralInfoImage_Company" />
+        <EntityTypeShape EntityType="Model.PlantLayoutImage" Width="1.5" PointX="3" PointY="15" />
+        <AssociationConnector Association="Model.FK_PlantLayoutImage_Company" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

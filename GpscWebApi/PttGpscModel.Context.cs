@@ -48,6 +48,7 @@ namespace GpscWebApi
         public virtual DbSet<TranLocu> TranLocus { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<GeneralInfoImage> GeneralInfoImages { get; set; }
+        public virtual DbSet<PlantLayoutImage> PlantLayoutImages { get; set; }
     
         public virtual int SPX_Update_Summary(Nullable<int> plantId)
         {
