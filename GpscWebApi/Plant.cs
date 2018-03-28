@@ -44,6 +44,16 @@ namespace GpscWebApi
         public string Location_Name { get; set; }
         public System.DateTime UpdatedAt { get; set; }
         public string LatestTemperature { get; set; }
+        public string TimeZone { get; set; }
+        public double Power_Gen_Scale { get; set; }
+        public double Power_Gen_Min { get; set; }
+        public double Power_Gen_Max { get; set; }
+        public double Irradiation_Scale { get; set; }
+        public double Irradiation_Min { get; set; }
+        public double Irradiation_Max { get; set; }
+        public double AMB_Scale { get; set; }
+        public double AMB_Min { get; set; }
+        public double AMB_Max { get; set; }
     
         public virtual Company Company { get; set; }
         public virtual Country Country { get; set; }

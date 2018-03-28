@@ -105,9 +105,27 @@ namespace GpscWebApi.Controllers
                 PlantType = p.PlantType.PlantType_Type,
                 PlantLocation = p.Location_Name,
                 PowerGen = p.Power_Gen >= 0 ? p.Power_Gen : 0,
+                PowerGenPeriod = new PeriodModel()
+                {
+                    Min = p.Power_Gen_Min,
+                    Max = p.Power_Gen_Max,
+                    Scale = p.Power_Gen_Scale
+                },
                 ElectricGen = p.Electricity_Gen,
                 Irradiation = p.Irradiation,
+                IrradiationPeriod = new PeriodModel()
+                {
+                    Min = p.Irradiation_Min,
+                    Max = p.Irradiation_Max,
+                    Scale = p.Irradiation_Scale
+                },
                 AMB_Temp = p.AMB_Temp,
+                AMB_TempPeriod = new PeriodModel()
+                {
+                    Min = p.AMB_Min,
+                    Max = p.AMB_Max,
+                    Scale = p.AMB_Scale
+                },
                 UpdatedAt = p.UpdatedAt,
                 SharedHolder = new SharedHolderModel()
                 {
@@ -117,7 +135,8 @@ namespace GpscWebApi.Controllers
                 },
                 SharedHolderPercentage = p.SharedHolder_Percentage,
                 LatestTemperature = p.LatestTemperature,
-                Order = p.Order
+                Order = p.Order,
+                TimeZone = p.TimeZone
             }).ToList();
 
             return new ResultModel<List<PlantModel>>()
@@ -171,9 +190,27 @@ namespace GpscWebApi.Controllers
                 PlantType = Plant.PlantType.PlantType_Type,
                 PlantLocation = Plant.Location_Name,
                 PowerGen = Plant.Power_Gen >= 0 ? Plant.Power_Gen : 0,
+                PowerGenPeriod = new PeriodModel()
+                {
+                    Min = Plant.Power_Gen_Min,
+                    Max = Plant.Power_Gen_Max,
+                    Scale = Plant.Power_Gen_Scale
+                },
                 ElectricGen = Plant.Electricity_Gen,
                 Irradiation = Plant.Irradiation,
+                IrradiationPeriod = new PeriodModel()
+                {
+                    Min = Plant.Irradiation_Min,
+                    Max = Plant.Irradiation_Max,
+                    Scale = Plant.Irradiation_Scale
+                },
                 AMB_Temp = Plant.AMB_Temp,
+                AMB_TempPeriod = new PeriodModel()
+                {
+                    Min = Plant.AMB_Min,
+                    Max = Plant.AMB_Max,
+                    Scale = Plant.AMB_Scale
+                },
                 UpdatedAt = Plant.UpdatedAt,
                 SharedHolder = new SharedHolderModel()
                 {
@@ -182,7 +219,8 @@ namespace GpscWebApi.Controllers
                     GpscShared = Plant.SharedHolder.Gpsc_Share
                 },
                 SharedHolderPercentage = Plant.SharedHolder_Percentage,
-                LatestTemperature = Plant.LatestTemperature
+                LatestTemperature = Plant.LatestTemperature,
+                TimeZone = Plant.TimeZone
             };
             return new ResultModel<PlantModel>()
             {

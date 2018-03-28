@@ -13,9 +13,12 @@ namespace GpscWebApi.Models
         public CustomerModel Customer { get; set; }
         public LocationModel Location { get; set; }
         public decimal PowerGen { get; set; }
+        public PeriodModel PowerGenPeriod { get; set; }
         public decimal ElectricGen { get; set; }
         public decimal Irradiation { get; set; }
+        public PeriodModel IrradiationPeriod { get; set; }
         public decimal AMB_Temp { get; set; }
+        public PeriodModel AMB_TempPeriod { get; set; }
         public SharedHolderModel SharedHolder { get; set; }
         public decimal SharedHolderPercentage { get; set; }
         public string PlantLocation { get; set; }
@@ -24,5 +27,6 @@ namespace GpscWebApi.Models
         public int Order { get; set; }
         public DateTime UpdatedAt { get; set; }
         public string LatestTemperature { get; set; }
+        public string TimeZone { get; set; }
     }
 }

@@ -153,7 +153,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PlantId" Type="int" Nullable="false" />
           <Property Name="Energy_Value" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Energy_LatestUpdate" Type="datetime" Nullable="false" />
@@ -198,6 +198,16 @@
           <Property Name="Location_Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
           <Property Name="LatestTemperature" Type="text" />
+          <Property Name="TimeZone" Type="varchar" MaxLength="50" />
+          <Property Name="Power_Gen_Scale" Type="float" Nullable="false" />
+          <Property Name="Power_Gen_Min" Type="float" Nullable="false" />
+          <Property Name="Power_Gen_Max" Type="float" Nullable="false" />
+          <Property Name="Irradiation_Scale" Type="float" Nullable="false" />
+          <Property Name="Irradiation_Min" Type="float" Nullable="false" />
+          <Property Name="Irradiation_Max" Type="float" Nullable="false" />
+          <Property Name="AMB_Scale" Type="float" Nullable="false" />
+          <Property Name="AMB_Min" Type="float" Nullable="false" />
+          <Property Name="AMB_Max" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="PlantLayoutImage">
           <Key>
@@ -817,6 +827,16 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <NavigationProperty Name="EnergyGenHourlies" Relationship="Model.FK_EnergyGenHourly_Plant" FromRole="Plant" ToRole="EnergyGenHourly" />
           <NavigationProperty Name="EnergyGenMonthlies" Relationship="Model.FK_EnergyGenMonthly_Plant" FromRole="Plant" ToRole="EnergyGenMonthly" />
           <NavigationProperty Name="EnergyGenYearlies" Relationship="Model.FK_EnergyGenYearly_Plant" FromRole="Plant" ToRole="EnergyGenYearly" />
+          <Property Name="TimeZone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Power_Gen_Scale" Type="Double" Nullable="false" />
+          <Property Name="Power_Gen_Min" Type="Double" Nullable="false" />
+          <Property Name="Power_Gen_Max" Type="Double" Nullable="false" />
+          <Property Name="Irradiation_Scale" Type="Double" Nullable="false" />
+          <Property Name="Irradiation_Min" Type="Double" Nullable="false" />
+          <Property Name="Irradiation_Max" Type="Double" Nullable="false" />
+          <Property Name="AMB_Scale" Type="Double" Nullable="false" />
+          <Property Name="AMB_Min" Type="Double" Nullable="false" />
+          <Property Name="AMB_Max" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="PlantType">
           <Key>
@@ -1446,6 +1466,16 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <EntitySetMapping Name="Plants">
             <EntityTypeMapping TypeName="Model.Plant">
               <MappingFragment StoreEntitySet="Plant">
+                <ScalarProperty Name="AMB_Max" ColumnName="AMB_Max" />
+                <ScalarProperty Name="AMB_Min" ColumnName="AMB_Min" />
+                <ScalarProperty Name="AMB_Scale" ColumnName="AMB_Scale" />
+                <ScalarProperty Name="Irradiation_Max" ColumnName="Irradiation_Max" />
+                <ScalarProperty Name="Irradiation_Min" ColumnName="Irradiation_Min" />
+                <ScalarProperty Name="Irradiation_Scale" ColumnName="Irradiation_Scale" />
+                <ScalarProperty Name="Power_Gen_Max" ColumnName="Power_Gen_Max" />
+                <ScalarProperty Name="Power_Gen_Min" ColumnName="Power_Gen_Min" />
+                <ScalarProperty Name="Power_Gen_Scale" ColumnName="Power_Gen_Scale" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
                 <ScalarProperty Name="LatestTemperature" ColumnName="LatestTemperature" />
                 <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
                 <ScalarProperty Name="Location_Name" ColumnName="Location_Name" />
