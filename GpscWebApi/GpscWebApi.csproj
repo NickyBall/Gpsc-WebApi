@@ -250,9 +250,7 @@
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AuthenticationController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PowerPlantController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Country.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
@@ -443,6 +441,7 @@
     <Content Include="Uploads\Logo\RPLC.png" />
     <Content Include="Uploads\Logo\SSE1.png" />
     <Content Include="Uploads\PlantLayout\CHPP\001.jpg" />
+    <Content Include="Uploads\PlantLayout\ISP1\001.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -460,7 +459,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Uploads\PlantLayout\ISP1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -27,6 +27,7 @@ namespace GpscWebApi.Models
         public int Order { get; set; }
         public DateTime UpdatedAt { get; set; }
         public string LatestTemperature { get; set; }
+        public string ForecastTemperature { get; set; }
         public string TimeZone { get; set; }
     }
 }

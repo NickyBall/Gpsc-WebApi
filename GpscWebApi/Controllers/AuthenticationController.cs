@@ -50,7 +50,7 @@ namespace GpscWebApi.Controllers
                 dsearch.PageSize = 100000;
                 res = dsearch.FindOne();
             }
-            catch (Exception ex)
+            catch
             {
                 if (User != null && UserManager.SupportsUserLockout) await UserManager.AccessFailedAsync(User.Id);
                 return new ResultModel<AuthenticateModel>()
@@ -75,27 +75,34 @@ namespace GpscWebApi.Controllers
                 };
                 IdentityResult Result = await UserManager.CreateAsync(User, Password);
             }
-
-            // Check Lockout Enable?
-            if (UserManager.SupportsUserLockout)
+            else
             {
-                // Check Password Correct?
-                if (await UserManager.CheckPasswordAsync(User, Password)) await UserManager.ResetAccessFailedCountAsync(User.Id);
-                else
-                {
-                    await UserManager.AccessFailedAsync(User.Id);
-                    return new ResultModel<AuthenticateModel>()
-                    {
-                        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                        Message = $"Username or Password is incorrect.",
-                        Result = new AuthenticateModel()
-                        {
-                            UserCode = "",
-                            AccessToken = ""
-                        }
-                    };
-                }
+                //string ResetToken = await UserManager.GeneratePasswordResetTokenAsync(User.Id);
+                //var x = await UserManager.ResetPasswordAsync(User.Id, ResetToken, Password);
+                User.PasswordHash = UserManager.PasswordHasher.HashPassword(Password);
+                var x = await UserManager.UpdateAsync(User);
             }
+            
+            //// Check Lockout Enable?
+            //if (UserManager.SupportsUserLockout)
+            //{
+            //    // Check Password Correct?
+            //    if (await UserManager.CheckPasswordAsync(User, Password)) await UserManager.ResetAccessFailedCountAsync(User.Id);
+            //    else
+            //    {
+            //        await UserManager.AccessFailedAsync(User.Id);
+            //        return new ResultModel<AuthenticateModel>()
+            //        {
+            //            ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+            //            Message = $"Username or Password is incorrect.",
+            //            Result = new AuthenticateModel()
+            //            {
+            //                UserCode = "",
+            //                AccessToken = ""
+            //            }
+            //        };
+            //    }
+            //}
 
             // Get Token
             TokenResponseModel TokenRes = new TokenResponseModel();

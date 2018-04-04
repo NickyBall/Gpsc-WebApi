@@ -179,5 +179,14 @@ namespace GpscWebApi
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Weather", location_nameParameter, api_dataParameter);
         }
+    
+        public virtual int SPX_Util_ClearData(Nullable<int> plantId)
+        {
+            var plantIdParameter = plantId.HasValue ?
+                new ObjectParameter("PlantId", plantId) :
+                new ObjectParameter("PlantId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Util_ClearData", plantIdParameter);
+        }
     }
 }

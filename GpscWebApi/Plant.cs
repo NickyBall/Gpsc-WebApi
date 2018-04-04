@@ -54,6 +54,7 @@ namespace GpscWebApi
         public double AMB_Scale { get; set; }
         public double AMB_Min { get; set; }
         public double AMB_Max { get; set; }
+        public string ForecastTemperature { get; set; }
     
         public virtual Company Company { get; set; }
         public virtual Country Country { get; set; }
