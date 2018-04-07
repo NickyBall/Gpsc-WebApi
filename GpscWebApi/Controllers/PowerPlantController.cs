@@ -87,9 +87,10 @@ namespace GpscWebApi.Controllers
                     Capacity = p.Company.Capacity,
                     COD = p.Company.COD,
                     PPA = p.Company.PPA,
-                    IsEnabled = p.Company.IsEnabled,
+                    IsEnabled = p.IsEnabled,
                     GeneralInfoImages = p.Company.GeneralInfoImages.Select(c => c.ImageUrl).ToList(),
-                    PlantLayoutImages = p.Company.PlantLayoutImages.Select(c => c.ImageUrl).ToList()
+                    PlantLayoutImages = p.Company.PlantLayoutImages.Select(c => c.ImageUrl).ToList(),
+                    Cogen = p.Cogen
                 },
                 Customer = new CustomerModel()
                 {
@@ -175,7 +176,9 @@ namespace GpscWebApi.Controllers
                     COD = Plant.Company.COD,
                     PPA = Plant.Company.PPA,
                     GeneralInfoImages = Plant.Company.GeneralInfoImages.Select(c => c.ImageUrl).ToList(),
-                    PlantLayoutImages = Plant.Company.PlantLayoutImages.Select(c => c.ImageUrl).ToList()
+                    PlantLayoutImages = Plant.Company.PlantLayoutImages.Select(c => c.ImageUrl).ToList(),
+                    IsEnabled = Plant.IsEnabled,
+                    Cogen = Plant.Cogen
                 },
                 Customer = new CustomerModel()
                 {
@@ -260,7 +263,7 @@ namespace GpscWebApi.Controllers
                 {
                     EnergyValue = (double)record.EnergyValue,
                     Target = -1,
-                    TimeStamp = record.TimeStamp
+                    TimeStamp = record.TimeStamp.Value
                 });
             }
 
@@ -302,7 +305,7 @@ namespace GpscWebApi.Controllers
                 {
                     EnergyValue = (double)record.EnergyValue,
                     Target = -1,
-                    TimeStamp = record.TimeStamp
+                    TimeStamp = record.TimeStamp.Value
                 });
             }
 

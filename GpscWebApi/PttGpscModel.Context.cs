@@ -54,6 +54,9 @@ namespace GpscWebApi
         public virtual DbSet<EnergyGenMonthly> EnergyGenMonthlies { get; set; }
         public virtual DbSet<EnergyGenYearly> EnergyGenYearlies { get; set; }
         public virtual DbSet<PlantEnergyGenYearTarget> PlantEnergyGenYearTargets { get; set; }
+        public virtual DbSet<TranImportCHPP> TranImportCHPPs { get; set; }
+        public virtual DbSet<EnergyGen_20180405> EnergyGen_20180405 { get; set; }
+        public virtual DbSet<EnergyPlantHist_20180405> EnergyPlantHist_20180405 { get; set; }
     
         public virtual int SPX_Update_Summary(Nullable<int> plantId)
         {
@@ -187,6 +190,28 @@ namespace GpscWebApi
                 new ObjectParameter("PlantId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Util_ClearData", plantIdParameter);
+        }
+    
+        public virtual int SPX_Update_CHPP()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_CHPP");
+        }
+    
+        public virtual int SPX_Update_Weather2(string location_name, string api_data_current, string api_data_forecast)
+        {
+            var location_nameParameter = location_name != null ?
+                new ObjectParameter("location_name", location_name) :
+                new ObjectParameter("location_name", typeof(string));
+    
+            var api_data_currentParameter = api_data_current != null ?
+                new ObjectParameter("api_data_current", api_data_current) :
+                new ObjectParameter("api_data_current", typeof(string));
+    
+            var api_data_forecastParameter = api_data_forecast != null ?
+                new ObjectParameter("api_data_forecast", api_data_forecast) :
+                new ObjectParameter("api_data_forecast", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Weather2", location_nameParameter, api_data_currentParameter, api_data_forecastParameter);
         }
     }
 }

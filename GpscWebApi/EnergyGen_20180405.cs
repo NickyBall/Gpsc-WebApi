@@ -12,14 +12,8 @@ namespace GpscWebApi
     using System;
     using System.Collections.Generic;
     
-    public partial class EnergyGen
+    public partial class EnergyGen_20180405
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EnergyGen()
-        {
-            this.EnergyPlantHists = new HashSet<EnergyPlantHist>();
-        }
-    
         public int ID { get; set; }
         public decimal EnergyGen_Value { get; set; }
         public System.DateTime EnergyGen_LatestUpdate { get; set; }
@@ -31,9 +25,5 @@ namespace GpscWebApi
         public string EnergyGen_History_Url { get; set; }
         public string EnergyGen_Icon { get; set; }
         public string EnergyGen_Icon_Url { get; set; }
-        public string SysDesc { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnergyPlantHist> EnergyPlantHists { get; set; }
     }
 }

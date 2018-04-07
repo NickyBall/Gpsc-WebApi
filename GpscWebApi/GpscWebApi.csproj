@@ -278,7 +278,13 @@
     <Compile Include="EnergyGenYearly.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EnergyGen_20180405.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EnergyPlantHist.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EnergyPlantHist_20180405.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GeneralInfoImage.cs">
@@ -359,6 +365,9 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="sysdiagram.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TranImportCHPP.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TranLocu.cs">

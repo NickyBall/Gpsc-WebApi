@@ -49,6 +49,9 @@
         <AssociationConnector Association="Model.FK_EnergyGenMonthly_Plant" />
         <AssociationConnector Association="Model.FK_EnergyGenYearly_Plant" />
         <EntityTypeShape EntityType="Model.PlantEnergyGenYearTarget" Width="1.5" PointX="12.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.TranImportCHPP" Width="1.5" PointX="12.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.EnergyGen_20180405" Width="1.5" PointX="12.375" PointY="10.75" />
+        <EntityTypeShape EntityType="Model.EnergyPlantHist_20180405" Width="1.5" PointX="14.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
