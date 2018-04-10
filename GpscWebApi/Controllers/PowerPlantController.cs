@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
@@ -293,7 +294,7 @@ namespace GpscWebApi.Controllers
             DateTime EndDate = StartDate.AddMonths(1).AddDays(-1);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
 
-            var hourly = Db.PlantEnergyGenDailyViews.Where(a => a.Time_Stamp >= StartDate && a.Time_Stamp <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+            var hourly = Db.PlantEnergyGenDailyViews.Where(a => a.Time_Stamp.Value >= StartDate && a.Time_Stamp.Value <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
             {
                 Index = a.Row,
                 EnergyValue = a.AverageEnergyGenValue,
@@ -337,7 +338,7 @@ namespace GpscWebApi.Controllers
             for (int i = 1; i <= 12; i++)
             {
                 DateTime RefDate = new DateTime(DateTime.Today.Year, i, 1);
-                var monthly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp == RefDate && a.PlantId.Equals(CompanyId));
+                var monthly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp.Value.Year == RefDate.Year && a.Time_Stamp.Value.Month == RefDate.Month && a.PlantId.Equals(CompanyId));
                 
 
                 string YearMonth = $"{RefDate.Year}-{i.ToString().PadLeft(2, '0')}";
@@ -375,27 +376,42 @@ namespace GpscWebApi.Controllers
             //DateTime StartDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 0, 0, 0);
             //DateTime EndDate = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
-            var Targets = Db.PlantEnergyGenYearTargets.Where(t => t.PlantId.Equals(CompanyId)).OrderBy(t => t.YearTarget);
-
-            foreach (var Target in Targets)
+            try
             {
-                DateTime TargetDate = new DateTime(Int16.Parse(Target.YearTarget), 1, 1);
-                DateTime EndDate = TargetDate.AddYears(1);
-                var yearly = Db.PlantEnergyGenYearlyViews.Where(p => p.PlantId.Equals(CompanyId) && p.Time_Stamp >= TargetDate && p.Time_Stamp < EndDate);
-                Models.Add(new EnergyGenModel()
+                DateTime Nowadays = DateTime.Now;
+                var YearMin = Int16.Parse(ConfigurationManager.AppSettings["PowerPlant_YearMin"]);
+                var YearMax = Int16.Parse(ConfigurationManager.AppSettings["PowerPlant_YearMax"]);
+
+                for (int i = (Nowadays.Year - YearMin); i <= (Nowadays.Year + YearMax); i++)
                 {
-                    EnergyValue = (double)(yearly.Count() > 0 ? yearly.FirstOrDefault().AverageEnergyGenValue : 0),
-                    Target = (double)Target.Total,
-                    TimeStamp = TargetDate
-                });
+                    var Target = Db.PlantEnergyGenYearTargets.Where(t => t.PlantId.Equals(CompanyId) && t.YearTarget == i.ToString());
+                    var yearly = Db.PlantEnergyGenYearlyViews.Where(p => p.PlantId.Equals(CompanyId) && p.Time_Stamp.Value.Year == i);
+                    Models.Add(new EnergyGenModel()
+                    {
+                        EnergyValue = (double)(yearly.Count() > 0 ? yearly.FirstOrDefault().AverageEnergyGenValue : 0),
+                        Target = (double)(Target.Count() > 0 ? Target.FirstOrDefault().Total : 0),
+                        TimeStamp = new DateTime(i, 1, 1)
+                    });
+                }
+
+                return new ResultModel<List<EnergyGenModel>>()
+                {
+                    ResultCode = HttpStatusCode.OK.GetHashCode(),
+                    Message = "",
+                    Result = Models
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ResultModel<List<EnergyGenModel>>()
+                {
+                    ResultCode = HttpStatusCode.OK.GetHashCode(),
+                    Message = ex.Message,
+                    Result = null
+                };
             }
 
-            return new ResultModel<List<EnergyGenModel>>()
-            {
-                ResultCode = HttpStatusCode.OK.GetHashCode(),
-                Message = "",
-                Result = Models
-            };
+            
         }
 
         [HttpGet]
