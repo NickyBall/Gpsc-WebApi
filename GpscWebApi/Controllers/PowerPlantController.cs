@@ -294,21 +294,28 @@ namespace GpscWebApi.Controllers
             DateTime EndDate = StartDate.AddMonths(1).AddDays(-1);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
 
-            var hourly = Db.PlantEnergyGenDailyViews.Where(a => a.Time_Stamp.Value >= StartDate && a.Time_Stamp.Value <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+            for (int i = StartDate.Day; i <= EndDate.Day; i++)
             {
-                Index = a.Row,
-                EnergyValue = a.AverageEnergyGenValue,
-                TimeStamp = a.Time_Stamp
-            });
-            foreach (var record in hourly)
-            {
+                DateTime CurrentDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, i);
+                var hourly = Db.PlantEnergyGenDailyViews.Where(a => 
+                    a.Time_Stamp.Value.Year == CurrentDate.Year && 
+                    a.Time_Stamp.Value.Month == CurrentDate.Month &&
+                    a.Time_Stamp.Value.Day == CurrentDate.Day &&
+                    a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+                        {
+                            Index = a.Row,
+                            EnergyValue = a.AverageEnergyGenValue,
+                            TimeStamp = a.Time_Stamp
+                        });
                 Models.Add(new EnergyGenModel()
                 {
-                    EnergyValue = (double)record.EnergyValue,
+                    EnergyValue = hourly.Count() > 0 ? (double)hourly.FirstOrDefault().EnergyValue : 0,
                     Target = -1,
-                    TimeStamp = record.TimeStamp.Value
+                    TimeStamp = CurrentDate
                 });
             }
+
+            
 
             ResultModel<List<EnergyGenModel>> Result = new ResultModel<List<EnergyGenModel>>()
             {
