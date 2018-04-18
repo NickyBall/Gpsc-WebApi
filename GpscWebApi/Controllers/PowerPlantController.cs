@@ -302,21 +302,35 @@ namespace GpscWebApi.Controllers
             DateTime EndDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
             List<EnergyGenModel> Models = new List<EnergyGenModel>();
 
-            var hourly = Db.PlantEnergyGenHourlyViews.Where(a => a.Time_Stamp >= StartDate && a.Time_Stamp <= EndDate && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+            var StartHour = Int16.Parse(ConfigurationManager.AppSettings["PowerPlant_Hourly_Start"]);
+            var EndHour = Int16.Parse(ConfigurationManager.AppSettings["PowerPlant_Hourly_End"]);
+
+            for (int i = StartHour; i <= EndHour; i++)
             {
-                Index = a.Row,
-                EnergyValue = a.AverageEnergyGenValue,
-                TimeStamp = a.Time_Stamp
-            });
-            foreach (var record in hourly)
-            {
+                DateTime CurrentHour = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, i, 0, 0);
+
+                var hourly = Db.PlantEnergyGenHourlyViews.Where(a =>
+                        a.Time_Stamp.Year == CurrentHour.Year &&
+                        a.Time_Stamp.Month == CurrentHour.Month &&
+                        a.Time_Stamp.Day == CurrentHour.Day &&
+                        a.Time_Stamp.Hour == CurrentHour.Hour &&
+                        a.PlantId.Equals(CompanyId)
+                );
+                //.OrderBy(a => a.Time_Stamp).Select(a => new
+                //{
+                //    Index = a.Row,
+                //    EnergyValue = a.AverageEnergyGenValue,
+                //    TimeStamp = a.Time_Stamp
+                //});
                 Models.Add(new EnergyGenModel()
                 {
-                    EnergyValue = (double)record.EnergyValue,
+                    EnergyValue = hourly.Count() > 0 ? (double)hourly.FirstOrDefault().AverageEnergyGenValue : 0,
                     Target = -1,
-                    TimeStamp = record.TimeStamp
+                    TimeStamp = CurrentHour
                 });
             }
+
+            
 
             ResultModel<List<EnergyGenModel>> Result = new ResultModel<List<EnergyGenModel>>()
             {
