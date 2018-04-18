@@ -213,5 +213,44 @@ namespace GpscWebApi
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Weather2", location_nameParameter, api_data_currentParameter, api_data_forecastParameter);
         }
+    
+        public virtual int SPX_Update_Cal_Daily(Nullable<int> p_plant_id, Nullable<System.DateTime> p_chk_date)
+        {
+            var p_plant_idParameter = p_plant_id.HasValue ?
+                new ObjectParameter("p_plant_id", p_plant_id) :
+                new ObjectParameter("p_plant_id", typeof(int));
+    
+            var p_chk_dateParameter = p_chk_date.HasValue ?
+                new ObjectParameter("p_chk_date", p_chk_date) :
+                new ObjectParameter("p_chk_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Cal_Daily", p_plant_idParameter, p_chk_dateParameter);
+        }
+    
+        public virtual int SPX_Update_Cal_Monthly(Nullable<int> p_plant_id, Nullable<System.DateTime> p_chk_date)
+        {
+            var p_plant_idParameter = p_plant_id.HasValue ?
+                new ObjectParameter("p_plant_id", p_plant_id) :
+                new ObjectParameter("p_plant_id", typeof(int));
+    
+            var p_chk_dateParameter = p_chk_date.HasValue ?
+                new ObjectParameter("p_chk_date", p_chk_date) :
+                new ObjectParameter("p_chk_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Cal_Monthly", p_plant_idParameter, p_chk_dateParameter);
+        }
+    
+        public virtual int SPX_Update_Cal_Yearly(Nullable<int> p_plant_id, Nullable<System.DateTime> p_chk_date)
+        {
+            var p_plant_idParameter = p_plant_id.HasValue ?
+                new ObjectParameter("p_plant_id", p_plant_id) :
+                new ObjectParameter("p_plant_id", typeof(int));
+    
+            var p_chk_dateParameter = p_chk_date.HasValue ?
+                new ObjectParameter("p_chk_date", p_chk_date) :
+                new ObjectParameter("p_chk_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Cal_Yearly", p_plant_idParameter, p_chk_dateParameter);
+        }
     }
 }

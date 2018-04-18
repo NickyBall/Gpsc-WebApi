@@ -19,6 +19,11 @@ namespace GpscWebApi.Models
         public PeriodModel IrradiationPeriod { get; set; }
         public decimal AMB_Temp { get; set; }
         public PeriodModel AMB_TempPeriod { get; set; }
+        public PeriodModel HourlyPeriod { get; set; }
+        public PeriodModel DailyPeriod { get; set; }
+        public PeriodModel MonthlyPeriod { get; set; }
+        public PeriodModel YearlyPeriod { get; set; }
+        public int UnitScale { get; set; }
         public SharedHolderModel SharedHolder { get; set; }
         public decimal SharedHolderPercentage { get; set; }
         public string PlantLocation { get; set; }

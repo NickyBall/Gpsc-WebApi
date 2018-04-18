@@ -128,6 +128,31 @@ namespace GpscWebApi.Controllers
                     Max = p.AMB_Max,
                     Scale = p.AMB_Scale
                 },
+                HourlyPeriod = new PeriodModel()
+                {
+                    Min = p.Hourly_Min,
+                    Max = p.Hourly_Max,
+                    Scale = p.Hourly_Scale
+                },
+                DailyPeriod = new PeriodModel()
+                {
+                    Min = p.Daily_Min,
+                    Max = p.Daily_Max,
+                    Scale = p.Daily_Scale
+                },
+                MonthlyPeriod = new PeriodModel()
+                {
+                    Min = p.Monthly_Min,
+                    Max = p.Monthly_Max,
+                    Scale = p.Monthly_Scale
+                },
+                YearlyPeriod = new PeriodModel()
+                {
+                    Min = p.Yearly_Min,
+                    Max = p.Yearly_Max,
+                    Scale = p.Yearly_Scale
+                },
+                UnitScale = p.UnitScale.HasValue ? p.UnitScale.Value : 1,
                 UpdatedAt = p.UpdatedAt,
                 SharedHolder = new SharedHolderModel()
                 {
@@ -216,6 +241,31 @@ namespace GpscWebApi.Controllers
                     Max = Plant.AMB_Max,
                     Scale = Plant.AMB_Scale
                 },
+                HourlyPeriod = new PeriodModel()
+                {
+                    Min = Plant.Hourly_Min,
+                    Max = Plant.Hourly_Max,
+                    Scale = Plant.Hourly_Scale
+                },
+                DailyPeriod = new PeriodModel()
+                {
+                    Min = Plant.Daily_Min,
+                    Max = Plant.Daily_Max,
+                    Scale = Plant.Daily_Scale
+                },
+                MonthlyPeriod = new PeriodModel()
+                {
+                    Min = Plant.Monthly_Min,
+                    Max = Plant.Monthly_Max,
+                    Scale = Plant.Monthly_Scale
+                },
+                YearlyPeriod = new PeriodModel()
+                {
+                    Min = Plant.Yearly_Min,
+                    Max = Plant.Yearly_Max,
+                    Scale = Plant.Yearly_Scale
+                },
+                UnitScale = Plant.UnitScale.HasValue ? Plant.UnitScale.Value : 1,
                 UpdatedAt = Plant.UpdatedAt,
                 SharedHolder = new SharedHolderModel()
                 {
@@ -264,7 +314,7 @@ namespace GpscWebApi.Controllers
                 {
                     EnergyValue = (double)record.EnergyValue,
                     Target = -1,
-                    TimeStamp = record.TimeStamp.Value
+                    TimeStamp = record.TimeStamp
                 });
             }
 
@@ -298,9 +348,9 @@ namespace GpscWebApi.Controllers
             {
                 DateTime CurrentDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, i);
                 var hourly = Db.PlantEnergyGenDailyViews.Where(a => 
-                    a.Time_Stamp.Value.Year == CurrentDate.Year && 
-                    a.Time_Stamp.Value.Month == CurrentDate.Month &&
-                    a.Time_Stamp.Value.Day == CurrentDate.Day &&
+                    a.Time_Stamp.Year == CurrentDate.Year && 
+                    a.Time_Stamp.Month == CurrentDate.Month &&
+                    a.Time_Stamp.Day == CurrentDate.Day &&
                     a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
                         {
                             Index = a.Row,
@@ -345,7 +395,7 @@ namespace GpscWebApi.Controllers
             for (int i = 1; i <= 12; i++)
             {
                 DateTime RefDate = new DateTime(DateTime.Today.Year, i, 1);
-                var monthly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp.Value.Year == RefDate.Year && a.Time_Stamp.Value.Month == RefDate.Month && a.PlantId.Equals(CompanyId));
+                var monthly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp.Year == RefDate.Year && a.Time_Stamp.Month == RefDate.Month && a.PlantId.Equals(CompanyId));
                 
 
                 string YearMonth = $"{RefDate.Year}-{i.ToString().PadLeft(2, '0')}";
@@ -392,7 +442,7 @@ namespace GpscWebApi.Controllers
                 for (int i = (Nowadays.Year - YearMin); i <= (Nowadays.Year + YearMax); i++)
                 {
                     var Target = Db.PlantEnergyGenYearTargets.Where(t => t.PlantId.Equals(CompanyId) && t.YearTarget == i.ToString());
-                    var yearly = Db.PlantEnergyGenYearlyViews.Where(p => p.PlantId.Equals(CompanyId) && p.Time_Stamp.Value.Year == i);
+                    var yearly = Db.PlantEnergyGenYearlyViews.Where(p => p.PlantId.Equals(CompanyId) && p.Time_Stamp.Year == i);
                     Models.Add(new EnergyGenModel()
                     {
                         EnergyValue = (double)(yearly.Count() > 0 ? yearly.FirstOrDefault().AverageEnergyGenValue : 0),

@@ -57,6 +57,19 @@ namespace GpscWebApi
         public string ForecastTemperature { get; set; }
         public int IsEnabled { get; set; }
         public string Cogen { get; set; }
+        public Nullable<int> UnitScale { get; set; }
+        public int Hourly_Min { get; set; }
+        public int Hourly_Max { get; set; }
+        public int Hourly_Scale { get; set; }
+        public int Daily_Min { get; set; }
+        public int Daily_Max { get; set; }
+        public int Daily_Scale { get; set; }
+        public int Monthly_Min { get; set; }
+        public int Monthly_Max { get; set; }
+        public int Monthly_Scale { get; set; }
+        public int Yearly_Min { get; set; }
+        public int Yearly_Max { get; set; }
+        public int Yearly_Scale { get; set; }
     
         public virtual Company Company { get; set; }
         public virtual Country Country { get; set; }

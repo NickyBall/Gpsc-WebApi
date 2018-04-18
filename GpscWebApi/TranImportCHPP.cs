@@ -24,5 +24,10 @@ namespace GpscWebApi
         public Nullable<System.DateTime> LatestUpdated { get; set; }
         public string SrcFileName { get; set; }
         public string Flag_Updated { get; set; }
+        public Nullable<System.DateTime> DataDateTime_Hourly { get; set; }
+        public Nullable<System.DateTime> DataDateTime_Parsed { get; set; }
+        public Nullable<System.DateTime> DataDateTime_Daily { get; set; }
+        public Nullable<System.DateTime> DataDateTime_Monthly { get; set; }
+        public Nullable<System.DateTime> DataDateTime_Yearly { get; set; }
     }
 }
