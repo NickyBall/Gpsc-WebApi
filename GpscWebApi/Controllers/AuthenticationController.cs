@@ -42,28 +42,28 @@ namespace GpscWebApi.Controllers
             };
 
             // LDAP Authentication
-            try
-            {
-                DirectoryEntry de = new DirectoryEntry(CurrentDomainPath, Username, Password);
-                DirectorySearcher dsearch = new DirectorySearcher(de);
-                SearchResult res = null;
-                dsearch.PageSize = 100000;
-                res = dsearch.FindOne();
-            }
-            catch
-            {
-                if (User != null && UserManager.SupportsUserLockout) await UserManager.AccessFailedAsync(User.Id);
-                return new ResultModel<AuthenticateModel>()
-                {
-                    ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
-                    Message = $"No User",
-                    Result = new AuthenticateModel()
-                    {
-                        UserCode = "",
-                        AccessToken = ""
-                    }
-                };
-            }
+            //try
+            //{
+            //    DirectoryEntry de = new DirectoryEntry(CurrentDomainPath, Username, Password);
+            //    DirectorySearcher dsearch = new DirectorySearcher(de);
+            //    SearchResult res = null;
+            //    dsearch.PageSize = 100000;
+            //    res = dsearch.FindOne();
+            //}
+            //catch
+            //{
+            //    if (User != null && UserManager.SupportsUserLockout) await UserManager.AccessFailedAsync(User.Id);
+            //    return new ResultModel<AuthenticateModel>()
+            //    {
+            //        ResultCode = HttpStatusCode.Unauthorized.GetHashCode(),
+            //        Message = $"No User",
+            //        Result = new AuthenticateModel()
+            //        {
+            //            UserCode = "",
+            //            AccessToken = ""
+            //        }
+            //    };
+            //}
 
             // Register if null
             if (User == null)

@@ -121,7 +121,7 @@ namespace GpscWebApi.Controllers
                     Max = p.Irradiation_Max,
                     Scale = p.Irradiation_Scale
                 },
-                AMB_Temp = p.AMB_Temp,
+                AMB_Temp = Math.Round(p.AMB_Temp),
                 AMB_TempPeriod = new PeriodModel()
                 {
                     Min = p.AMB_Min,
@@ -234,7 +234,7 @@ namespace GpscWebApi.Controllers
                     Max = Plant.Irradiation_Max,
                     Scale = Plant.Irradiation_Scale
                 },
-                AMB_Temp = Plant.AMB_Temp,
+                AMB_Temp = Math.Round(Plant.AMB_Temp),
                 AMB_TempPeriod = new PeriodModel()
                 {
                     Min = Plant.AMB_Min,
@@ -315,16 +315,16 @@ namespace GpscWebApi.Controllers
                         a.Time_Stamp.Day == CurrentHour.Day &&
                         a.Time_Stamp.Hour == CurrentHour.Hour &&
                         a.PlantId.Equals(CompanyId)
-                );
-                //.OrderBy(a => a.Time_Stamp).Select(a => new
-                //{
-                //    Index = a.Row,
-                //    EnergyValue = a.AverageEnergyGenValue,
-                //    TimeStamp = a.Time_Stamp
-                //});
+                )
+                .OrderBy(a => a.Time_Stamp).Select(a => new
+                {
+                    Index = a.Row,
+                    EnergyValue = a.AverageEnergyGenValue,
+                    TimeStamp = a.Time_Stamp
+                });
                 Models.Add(new EnergyGenModel()
                 {
-                    EnergyValue = hourly.Count() > 0 ? (double)hourly.FirstOrDefault().AverageEnergyGenValue : 0,
+                    EnergyValue = hourly.Count() > 0 ? (double)hourly.FirstOrDefault().EnergyValue : 0,
                     Target = -1,
                     TimeStamp = CurrentHour
                 });
@@ -409,14 +409,19 @@ namespace GpscWebApi.Controllers
             for (int i = 1; i <= 12; i++)
             {
                 DateTime RefDate = new DateTime(DateTime.Today.Year, i, 1);
-                var monthly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp.Year == RefDate.Year && a.Time_Stamp.Month == RefDate.Month && a.PlantId.Equals(CompanyId));
+                var monthly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp.Year == RefDate.Year && a.Time_Stamp.Month == RefDate.Month && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+                {
+                    Index = a.Row,
+                    EnergyValue = a.AverageEnergyGenValue,
+                    TimeStamp = a.Time_Stamp
+                });
                 
 
                 string YearMonth = $"{RefDate.Year}-{i.ToString().PadLeft(2, '0')}";
                 var Target = Db.EnergyGenTargets.Where(t => t.YearMonth.Equals(YearMonth) && t.PlantId.Equals(CompanyId));
                 Models.Add(new EnergyGenModel()
                 {
-                    EnergyValue = (double)(monthly.Count() > 0 ? monthly.FirstOrDefault().AverageEnergyGenValue : 0),
+                    EnergyValue = (double)(monthly.Count() > 0 ? monthly.FirstOrDefault().EnergyValue : 0),
                     Target = (double)(Target.Count() > 0 ? Target.FirstOrDefault().TargetValue : 0),
                     TimeStamp = RefDate
                 });
@@ -456,10 +461,15 @@ namespace GpscWebApi.Controllers
                 for (int i = (Nowadays.Year - YearMin); i <= (Nowadays.Year + YearMax); i++)
                 {
                     var Target = Db.PlantEnergyGenYearTargets.Where(t => t.PlantId.Equals(CompanyId) && t.YearTarget == i.ToString());
-                    var yearly = Db.PlantEnergyGenYearlyViews.Where(p => p.PlantId.Equals(CompanyId) && p.Time_Stamp.Year == i);
+                    var yearly = Db.PlantEnergyGenYearlyViews.Where(p => p.PlantId.Equals(CompanyId) && p.Time_Stamp.Year == i).OrderBy(a => a.Time_Stamp).Select(a => new
+                    {
+                        Index = a.Row,
+                        EnergyValue = a.AverageEnergyGenValue,
+                        TimeStamp = a.Time_Stamp
+                    });
                     Models.Add(new EnergyGenModel()
                     {
-                        EnergyValue = (double)(yearly.Count() > 0 ? yearly.FirstOrDefault().AverageEnergyGenValue : 0),
+                        EnergyValue = (double)(yearly.Count() > 0 ? yearly.FirstOrDefault().EnergyValue : 0),
                         Target = (double)(Target.Count() > 0 ? Target.FirstOrDefault().Total : 0),
                         TimeStamp = new DateTime(i, 1, 1)
                     });
