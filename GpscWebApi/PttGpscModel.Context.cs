@@ -57,6 +57,7 @@ namespace GpscWebApi
         public virtual DbSet<TranImportCHPP> TranImportCHPPs { get; set; }
         public virtual DbSet<EnergyGen_20180405> EnergyGen_20180405 { get; set; }
         public virtual DbSet<EnergyPlantHist_20180405> EnergyPlantHist_20180405 { get; set; }
+        public virtual DbSet<TranImportCHPP_20180425> TranImportCHPP_20180425 { get; set; }
     
         public virtual int SPX_Update_Summary(Nullable<int> plantId)
         {
@@ -192,9 +193,13 @@ namespace GpscWebApi
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Util_ClearData", plantIdParameter);
         }
     
-        public virtual int SPX_Update_CHPP()
+        public virtual int SPX_Update_CHPP(Nullable<System.DateTime> p_datetime)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_CHPP");
+            var p_datetimeParameter = p_datetime.HasValue ?
+                new ObjectParameter("p_datetime", p_datetime) :
+                new ObjectParameter("p_datetime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_CHPP", p_datetimeParameter);
         }
     
         public virtual int SPX_Update_Weather2(string location_name, string api_data_current, string api_data_forecast)

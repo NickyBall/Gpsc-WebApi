@@ -52,6 +52,7 @@
         <EntityTypeShape EntityType="Model.TranImportCHPP" Width="1.5" PointX="12.375" PointY="6.75" />
         <EntityTypeShape EntityType="Model.EnergyGen_20180405" Width="1.5" PointX="12.375" PointY="10.75" />
         <EntityTypeShape EntityType="Model.EnergyPlantHist_20180405" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.TranImportCHPP_20180425" Width="1.5" PointX="14.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

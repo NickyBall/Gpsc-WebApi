@@ -80,6 +80,7 @@
           <Property Name="COD" Type="datetime" Nullable="false" />
           <Property Name="PPA" Type="datetime" Nullable="false" />
           <Property Name="IsEnabled" Type="int" Nullable="false" />
+          <Property Name="NavTitle" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -89,6 +90,8 @@
           <Property Name="Country_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Country_Latitude" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="Country_Longitude" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="type_img_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="type_img_2" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -313,6 +316,28 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.EnergyPlantHist_201
           <Property Name="DataDateTime_Monthly" Type="datetime" />
           <Property Name="DataDateTime_Yearly" Type="datetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.TranImportCHPP_20180425' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TranImportCHPP_20180425">
+          <Key>
+            <PropertyRef Name="SeqNo" />
+          </Key>
+          <Property Name="SeqNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="W_avg" Type="varchar" MaxLength="50" />
+          <Property Name="POAI_avg" Type="varchar" MaxLength="50" />
+          <Property Name="Wh_sum" Type="varchar" MaxLength="50" />
+          <Property Name="TmpAmb_avg" Type="varchar" MaxLength="50" />
+          <Property Name="DataDateTime" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LatestUpdated" Type="datetime" />
+          <Property Name="SrcFileName" Type="varchar" MaxLength="255" />
+          <Property Name="Flag_Updated" Type="varchar" MaxLength="1" />
+          <Property Name="DataDateTime_Hourly" Type="datetime" />
+          <Property Name="DataDateTime_Parsed" Type="datetime" />
+          <Property Name="DataDateTime_Daily" Type="datetime" />
+          <Property Name="DataDateTime_Monthly" Type="datetime" />
+          <Property Name="DataDateTime_Yearly" Type="datetime" />
+        </EntityType>
         <EntityType Name="TranLocus">
           <Key>
             <PropertyRef Name="SeqNo" />
@@ -332,52 +357,44 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenDaily
         <EntityType Name="PlantEnergyGenDailyView">
           <Key>
             <PropertyRef Name="PlantId" />
-            
-            
           </Key>
           <Property Name="Row" Type="bigint" />
           <Property Name="PlantId" Type="int" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Time_Stamp" Type="datetime" Nullable="false" />
+          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Time_Stamp" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenHourlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenHourlyView">
           <Key>
             <PropertyRef Name="PlantId" />
-            
-            
           </Key>
           <Property Name="Row" Type="bigint" />
           <Property Name="PlantId" Type="int" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Time_Stamp" Type="datetime" Nullable="false" />
+          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Time_Stamp" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenMonthlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenMonthlyView">
           <Key>
             <PropertyRef Name="PlantId" />
-            
-            
           </Key>
           <Property Name="Row" Type="bigint" />
           <Property Name="PlantId" Type="int" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Time_Stamp" Type="datetime" Nullable="false" />
+          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Time_Stamp" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenYearlyView">
           <Key>
             <PropertyRef Name="PlantId" />
-            
-            
           </Key>
           <Property Name="Row" Type="bigint" />
           <Property Name="PlantId" Type="int" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Time_Stamp" Type="datetime" Nullable="false" />
+          <Property Name="AverageEnergyGenValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Time_Stamp" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearTarget' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -615,6 +632,12 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           </ReferentialConstraint>
         </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="FX_CHPP_GetDiffHour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="p_datetime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="FX_CHPP_GetLastHour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="p_datetime" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -657,7 +680,9 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <Parameter Name="p_plant_id" Type="int" Mode="In" />
           <Parameter Name="p_chk_date" Type="date" Mode="In" />
         </Function>
-        <Function Name="SPX_Update_CHPP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPX_Update_CHPP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_datetime" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="SPX_Update_Summary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PlantId" Type="int" Mode="In" />
         </Function>
@@ -720,6 +745,25 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
     [EnergyPlantHist_20180405].[EnergyGenId] AS [EnergyGenId], 
     [EnergyPlantHist_20180405].[CreatedAt] AS [CreatedAt]
     FROM [dbo].[EnergyPlantHist_20180405] AS [EnergyPlantHist_20180405]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TranImportCHPP_20180425" EntityType="Self.TranImportCHPP_20180425" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TranImportCHPP_20180425].[SeqNo] AS [SeqNo], 
+    [TranImportCHPP_20180425].[W_avg] AS [W_avg], 
+    [TranImportCHPP_20180425].[POAI_avg] AS [POAI_avg], 
+    [TranImportCHPP_20180425].[Wh_sum] AS [Wh_sum], 
+    [TranImportCHPP_20180425].[TmpAmb_avg] AS [TmpAmb_avg], 
+    [TranImportCHPP_20180425].[DataDateTime] AS [DataDateTime], 
+    [TranImportCHPP_20180425].[CreatedDate] AS [CreatedDate], 
+    [TranImportCHPP_20180425].[LatestUpdated] AS [LatestUpdated], 
+    [TranImportCHPP_20180425].[SrcFileName] AS [SrcFileName], 
+    [TranImportCHPP_20180425].[Flag_Updated] AS [Flag_Updated], 
+    [TranImportCHPP_20180425].[DataDateTime_Hourly] AS [DataDateTime_Hourly], 
+    [TranImportCHPP_20180425].[DataDateTime_Parsed] AS [DataDateTime_Parsed], 
+    [TranImportCHPP_20180425].[DataDateTime_Daily] AS [DataDateTime_Daily], 
+    [TranImportCHPP_20180425].[DataDateTime_Monthly] AS [DataDateTime_Monthly], 
+    [TranImportCHPP_20180425].[DataDateTime_Yearly] AS [DataDateTime_Yearly]
+    FROM [dbo].[TranImportCHPP_20180425] AS [TranImportCHPP_20180425]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="PlantEnergyGenDailyView" EntityType="Self.PlantEnergyGenDailyView" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -852,6 +896,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <Property Name="IsEnabled" Type="Int32" Nullable="false" />
           <NavigationProperty Name="GeneralInfoImages" Relationship="Model.FK_GeneralInfoImage_Company" FromRole="Company" ToRole="GeneralInfoImage" />
           <NavigationProperty Name="PlantLayoutImages" Relationship="Model.FK_PlantLayoutImage_Company" FromRole="Company" ToRole="PlantLayoutImage" />
+          <Property Name="NavTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -862,6 +907,8 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <Property Name="Country_Latitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="Country_Longitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_Country" FromRole="Country" ToRole="Plant" />
+          <Property Name="type_img_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type_img_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -994,8 +1041,8 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           </Key>
           <Property Name="Row" Type="Int64" />
           <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Time_Stamp" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="PlantEnergyGenHourlyView">
           <Key>
@@ -1003,8 +1050,8 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           </Key>
           <Property Name="Row" Type="Int64" />
           <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Time_Stamp" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="PlantEnergyGenMonthlyView">
           <Key>
@@ -1012,8 +1059,8 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           </Key>
           <Property Name="Row" Type="Int64" />
           <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Time_Stamp" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="PlantEnergyGenYearlyView">
           <Key>
@@ -1021,8 +1068,8 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           </Key>
           <Property Name="Row" Type="Int64" />
           <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Time_Stamp" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_Plant_Company">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
@@ -1247,7 +1294,9 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <EntitySet Name="TranImportCHPPs" EntityType="Model.TranImportCHPP" />
           <EntitySet Name="EnergyGen_20180405" EntityType="Model.EnergyGen_20180405" />
           <EntitySet Name="EnergyPlantHist_20180405" EntityType="Model.EnergyPlantHist_20180405" />
-          <FunctionImport Name="SPX_Update_CHPP" />
+          <FunctionImport Name="SPX_Update_CHPP" >
+          <Parameter Name="p_datetime" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="SPX_Update_Weather2">
             <Parameter Name="location_name" Mode="In" Type="String" />
             <Parameter Name="api_data_current" Mode="In" Type="String" />
@@ -1265,6 +1314,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
             <Parameter Name="p_plant_id" Mode="In" Type="Int32" />
             <Parameter Name="p_chk_date" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="TranImportCHPP_20180425" EntityType="Model.TranImportCHPP_20180425" />
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -1596,6 +1646,26 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <Property Name="EnergyGenId" Type="Int32" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="TranImportCHPP_20180425">
+          <Key>
+            <PropertyRef Name="SeqNo" />
+          </Key>
+          <Property Name="SeqNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="W_avg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POAI_avg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Wh_sum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TmpAmb_avg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DataDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LatestUpdated" Type="DateTime" Precision="3" />
+          <Property Name="SrcFileName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Flag_Updated" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DataDateTime_Hourly" Type="DateTime" Precision="3" />
+          <Property Name="DataDateTime_Parsed" Type="DateTime" Precision="3" />
+          <Property Name="DataDateTime_Daily" Type="DateTime" Precision="3" />
+          <Property Name="DataDateTime_Monthly" Type="DateTime" Precision="3" />
+          <Property Name="DataDateTime_Yearly" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1605,6 +1675,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <EntitySetMapping Name="Companies">
             <EntityTypeMapping TypeName="Model.Company">
               <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="NavTitle" ColumnName="NavTitle" />
                 <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
@@ -1618,6 +1689,8 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="Model.Country">
               <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="type_img_2" ColumnName="type_img_2" />
+                <ScalarProperty Name="type_img_1" ColumnName="type_img_1" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
                 <ScalarProperty Name="Country_Latitude" ColumnName="Country_Latitude" />
@@ -2019,6 +2092,27 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <FunctionImportMapping FunctionImportName="SPX_Update_Cal_Daily" FunctionName="Model.Store.SPX_Update_Cal_Daily" />
           <FunctionImportMapping FunctionImportName="SPX_Update_Cal_Monthly" FunctionName="Model.Store.SPX_Update_Cal_Monthly" />
           <FunctionImportMapping FunctionImportName="SPX_Update_Cal_Yearly" FunctionName="Model.Store.SPX_Update_Cal_Yearly" />
+          <EntitySetMapping Name="TranImportCHPP_20180425">
+            <EntityTypeMapping TypeName="Model.TranImportCHPP_20180425">
+              <MappingFragment StoreEntitySet="TranImportCHPP_20180425">
+                <ScalarProperty Name="DataDateTime_Yearly" ColumnName="DataDateTime_Yearly" />
+                <ScalarProperty Name="DataDateTime_Monthly" ColumnName="DataDateTime_Monthly" />
+                <ScalarProperty Name="DataDateTime_Daily" ColumnName="DataDateTime_Daily" />
+                <ScalarProperty Name="DataDateTime_Parsed" ColumnName="DataDateTime_Parsed" />
+                <ScalarProperty Name="DataDateTime_Hourly" ColumnName="DataDateTime_Hourly" />
+                <ScalarProperty Name="Flag_Updated" ColumnName="Flag_Updated" />
+                <ScalarProperty Name="SrcFileName" ColumnName="SrcFileName" />
+                <ScalarProperty Name="LatestUpdated" ColumnName="LatestUpdated" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DataDateTime" ColumnName="DataDateTime" />
+                <ScalarProperty Name="TmpAmb_avg" ColumnName="TmpAmb_avg" />
+                <ScalarProperty Name="Wh_sum" ColumnName="Wh_sum" />
+                <ScalarProperty Name="POAI_avg" ColumnName="POAI_avg" />
+                <ScalarProperty Name="W_avg" ColumnName="W_avg" />
+                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

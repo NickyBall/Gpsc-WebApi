@@ -17,5 +17,6 @@ namespace GpscWebApi.Models
         public List<string> GeneralInfoImages { get; set; }
         public List<string> PlantLayoutImages { get; set; }
         public string Cogen { get; set; }
+        public string NavTitle { get; set; }
     }
 }

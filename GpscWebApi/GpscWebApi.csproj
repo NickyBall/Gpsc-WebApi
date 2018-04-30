@@ -370,6 +370,9 @@
     <Compile Include="TranImportCHPP.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TranImportCHPP_20180425.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TranLocu.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>

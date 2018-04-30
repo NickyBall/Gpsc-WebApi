@@ -29,6 +29,7 @@ namespace GpscWebApi
         public System.DateTime COD { get; set; }
         public System.DateTime PPA { get; set; }
         public int IsEnabled { get; set; }
+        public string NavTitle { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plant> Plants { get; set; }

@@ -51,7 +51,9 @@ namespace GpscWebApi.Controllers
                     Lat = c.Country_Latitude,
                     Lng = c.Country_Longitude
                 },
-                PlantCount = c.Plants.Count
+                PlantCount = c.Plants.Count,
+                ImgType1 = c.type_img_1,
+                ImgType2 = c.type_img_2
             }).ToList();
 
             return new ResultModel<List<CountryModel>>()
@@ -91,7 +93,8 @@ namespace GpscWebApi.Controllers
                     IsEnabled = p.IsEnabled,
                     GeneralInfoImages = p.Company.GeneralInfoImages.Select(c => c.ImageUrl).ToList(),
                     PlantLayoutImages = p.Company.PlantLayoutImages.Select(c => c.ImageUrl).ToList(),
-                    Cogen = p.Cogen
+                    Cogen = p.Cogen,
+                    NavTitle = p.Company.NavTitle
                 },
                 Customer = new CustomerModel()
                 {
@@ -204,7 +207,8 @@ namespace GpscWebApi.Controllers
                     GeneralInfoImages = Plant.Company.GeneralInfoImages.Select(c => c.ImageUrl).ToList(),
                     PlantLayoutImages = Plant.Company.PlantLayoutImages.Select(c => c.ImageUrl).ToList(),
                     IsEnabled = Plant.IsEnabled,
-                    Cogen = Plant.Cogen
+                    Cogen = Plant.Cogen,
+                    NavTitle = Plant.Company.NavTitle
                 },
                 Customer = new CustomerModel()
                 {
@@ -310,10 +314,10 @@ namespace GpscWebApi.Controllers
                 DateTime CurrentHour = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, i, 0, 0);
 
                 var hourly = Db.PlantEnergyGenHourlyViews.Where(a =>
-                        a.Time_Stamp.Year == CurrentHour.Year &&
-                        a.Time_Stamp.Month == CurrentHour.Month &&
-                        a.Time_Stamp.Day == CurrentHour.Day &&
-                        a.Time_Stamp.Hour == CurrentHour.Hour &&
+                        a.Time_Stamp.Value.Year == CurrentHour.Year &&
+                        a.Time_Stamp.Value.Month == CurrentHour.Month &&
+                        a.Time_Stamp.Value.Day == CurrentHour.Day &&
+                        a.Time_Stamp.Value.Hour == CurrentHour.Hour &&
                         a.PlantId.Equals(CompanyId)
                 )
                 .OrderBy(a => a.Time_Stamp).Select(a => new
@@ -362,9 +366,9 @@ namespace GpscWebApi.Controllers
             {
                 DateTime CurrentDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, i);
                 var hourly = Db.PlantEnergyGenDailyViews.Where(a => 
-                    a.Time_Stamp.Year == CurrentDate.Year && 
-                    a.Time_Stamp.Month == CurrentDate.Month &&
-                    a.Time_Stamp.Day == CurrentDate.Day &&
+                    a.Time_Stamp.Value.Year == CurrentDate.Year && 
+                    a.Time_Stamp.Value.Month == CurrentDate.Month &&
+                    a.Time_Stamp.Value.Day == CurrentDate.Day &&
                     a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
                         {
                             Index = a.Row,
@@ -409,7 +413,7 @@ namespace GpscWebApi.Controllers
             for (int i = 1; i <= 12; i++)
             {
                 DateTime RefDate = new DateTime(DateTime.Today.Year, i, 1);
-                var monthly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp.Year == RefDate.Year && a.Time_Stamp.Month == RefDate.Month && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
+                var monthly = Db.PlantEnergyGenMonthlyViews.Where(a => a.Time_Stamp.Value.Year == RefDate.Year && a.Time_Stamp.Value.Month == RefDate.Month && a.PlantId.Equals(CompanyId)).OrderBy(a => a.Time_Stamp).Select(a => new
                 {
                     Index = a.Row,
                     EnergyValue = a.AverageEnergyGenValue,
@@ -461,7 +465,7 @@ namespace GpscWebApi.Controllers
                 for (int i = (Nowadays.Year - YearMin); i <= (Nowadays.Year + YearMax); i++)
                 {
                     var Target = Db.PlantEnergyGenYearTargets.Where(t => t.PlantId.Equals(CompanyId) && t.YearTarget == i.ToString());
-                    var yearly = Db.PlantEnergyGenYearlyViews.Where(p => p.PlantId.Equals(CompanyId) && p.Time_Stamp.Year == i).OrderBy(a => a.Time_Stamp).Select(a => new
+                    var yearly = Db.PlantEnergyGenYearlyViews.Where(p => p.PlantId.Equals(CompanyId) && p.Time_Stamp.Value.Year == i).OrderBy(a => a.Time_Stamp).Select(a => new
                     {
                         Index = a.Row,
                         EnergyValue = a.AverageEnergyGenValue,

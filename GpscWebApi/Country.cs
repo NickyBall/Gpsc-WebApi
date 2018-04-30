@@ -24,6 +24,8 @@ namespace GpscWebApi
         public string Country_Name { get; set; }
         public decimal Country_Latitude { get; set; }
         public decimal Country_Longitude { get; set; }
+        public string type_img_1 { get; set; }
+        public string type_img_2 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plant> Plants { get; set; }
