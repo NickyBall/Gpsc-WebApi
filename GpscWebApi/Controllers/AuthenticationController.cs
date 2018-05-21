@@ -59,7 +59,6 @@ namespace GpscWebApi.Controllers
                     Message = $"No User",
                     Result = new AuthenticateModel()
                     {
-                        UserCode = "",
                         AccessToken = ""
                     }
                 };
@@ -138,7 +137,6 @@ namespace GpscWebApi.Controllers
                         Message = $"Authorization Fail.",
                         Result = new AuthenticateModel()
                         {
-                            UserCode = "",
                             AccessToken = ""
                         }
                     };
