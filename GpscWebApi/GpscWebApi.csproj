@@ -419,6 +419,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\pms-api-dev - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\pms-api-dev - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -454,7 +455,9 @@
     <Content Include="Uploads\Logo\SSE1.png" />
     <Content Include="Uploads\PlantLayout\CHPP\001.jpg" />
     <Content Include="Uploads\PlantLayout\ISP1\001.jpg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
