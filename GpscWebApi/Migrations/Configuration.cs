@@ -9,7 +9,7 @@ namespace GpscWebApi.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
             ContextKey = "GpscWebApi.Identities.ApplicationDbContext";
         }
 

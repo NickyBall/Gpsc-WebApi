@@ -17,12 +17,12 @@ namespace GpscWebApi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Plant()
         {
-            this.EnergyPlantHists = new HashSet<EnergyPlantHist>();
-            this.EnergyGenTargets = new HashSet<EnergyGenTarget>();
             this.EnergyGenDailies = new HashSet<EnergyGenDaily>();
             this.EnergyGenHourlies = new HashSet<EnergyGenHourly>();
             this.EnergyGenMonthlies = new HashSet<EnergyGenMonthly>();
+            this.EnergyGenTargets = new HashSet<EnergyGenTarget>();
             this.EnergyGenYearlies = new HashSet<EnergyGenYearly>();
+            this.EnergyPlantHists = new HashSet<EnergyPlantHist>();
         }
     
         public int ID { get; set; }
@@ -75,18 +75,18 @@ namespace GpscWebApi
         public virtual Country Country { get; set; }
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnergyPlantHist> EnergyPlantHists { get; set; }
-        public virtual PlantType PlantType { get; set; }
-        public virtual SharedHolder SharedHolder { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnergyGenTarget> EnergyGenTargets { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnergyGenDaily> EnergyGenDailies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnergyGenHourly> EnergyGenHourlies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnergyGenMonthly> EnergyGenMonthlies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnergyGenTarget> EnergyGenTargets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnergyGenYearly> EnergyGenYearlies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnergyPlantHist> EnergyPlantHists { get; set; }
+        public virtual PlantType PlantType { get; set; }
+        public virtual SharedHolder SharedHolder { get; set; }
     }
 }

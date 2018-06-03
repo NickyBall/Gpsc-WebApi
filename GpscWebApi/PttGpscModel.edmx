@@ -118,7 +118,7 @@
           <Property Name="SysDesc" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.EnergyGen_20180405' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GPSC-Plant-monitoring.dbo.EnergyGen_20180405' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="EnergyGen_20180405">
           <Key>
             <PropertyRef Name="ID" />
@@ -192,7 +192,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.EnergyGen_20180405'
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.EnergyPlantHist_20180405' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GPSC-Plant-monitoring.dbo.EnergyPlantHist_20180405' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="EnergyPlantHist_20180405">
           <Key>
             <PropertyRef Name="Id" />
@@ -317,7 +317,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.EnergyPlantHist_201
           <Property Name="DataDateTime_Yearly" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.TranImportCHPP_20180425' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GPSC-Plant-monitoring.dbo.TranImportCHPP_20180425' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TranImportCHPP_20180425">
           <Key>
             <PropertyRef Name="SeqNo" />
@@ -353,7 +353,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.TranImportCHPP_2018
           <Property Name="Granularity" Type="varchar" MaxLength="32" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenDailyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GPSC-Plant-monitoring.dbo.PlantEnergyGenDailyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenDailyView">
           <Key>
             <PropertyRef Name="PlantId" />
@@ -364,7 +364,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenDaily
           <Property Name="Time_Stamp" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenHourlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GPSC-Plant-monitoring.dbo.PlantEnergyGenHourlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenHourlyView">
           <Key>
             <PropertyRef Name="PlantId" />
@@ -375,7 +375,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenHourl
           <Property Name="Time_Stamp" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenMonthlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GPSC-Plant-monitoring.dbo.PlantEnergyGenMonthlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenMonthlyView">
           <Key>
             <PropertyRef Name="PlantId" />
@@ -386,7 +386,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenMonth
           <Property Name="Time_Stamp" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GPSC-Plant-monitoring.dbo.PlantEnergyGenYearlyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenYearlyView">
           <Key>
             <PropertyRef Name="PlantId" />
@@ -397,7 +397,7 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearl
           <Property Name="Time_Stamp" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearTarget' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GPSC-Plant-monitoring.dbo.PlantEnergyGenYearTarget' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PlantEnergyGenYearTarget">
           <Key>
             <PropertyRef Name="PlantId" />
@@ -882,347 +882,10 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Company_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Company_Logo_Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Capacity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="COD" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="PPA" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_Company" FromRole="Company" ToRole="Plant" />
-          <Property Name="IsEnabled" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="GeneralInfoImages" Relationship="Model.FK_GeneralInfoImage_Company" FromRole="Company" ToRole="GeneralInfoImage" />
-          <NavigationProperty Name="PlantLayoutImages" Relationship="Model.FK_PlantLayoutImage_Company" FromRole="Company" ToRole="PlantLayoutImage" />
-          <Property Name="NavTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Country">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Country_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Country_Latitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="Country_Longitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_Country" FromRole="Country" ToRole="Plant" />
-          <Property Name="type_img_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="type_img_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Customer">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_Customer" FromRole="Customer" ToRole="Plant" />
-        </EntityType>
-        <EntityType Name="EnergyGen">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EnergyGen_Value" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="EnergyGen_LatestUpdate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EnergyGen_Weather" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EnergyGen_Wind_String" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EnergyGen_Solarradiation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EnergyGen_UV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EnergyGen_Forecast_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EnergyGen_History_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EnergyGen_Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EnergyGen_Icon_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="EnergyPlantHists" Relationship="Self.FK_EnergyPlantHist_EnergyGen" FromRole="EnergyGen" ToRole="EnergyPlantHist" />
-          <Property Name="SysDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="EnergyGenTarget">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="YearMonth" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TargetValue" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Plant" Relationship="Model.FK_EnergyGenTarget_Plant" FromRole="EnergyGenTarget" ToRole="Plant" />
-        </EntityType>
-        <EntityType Name="EnergyPlantHist">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="EnergyGenId" Type="Int32" Nullable="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="EnergyGen" Relationship="Self.FK_EnergyPlantHist_EnergyGen" FromRole="EnergyPlantHist" ToRole="EnergyGen" />
-          <NavigationProperty Name="Plant" Relationship="Self.FK_EnergyPlantHist_Plant" FromRole="EnergyPlantHist" ToRole="Plant" />
-        </EntityType>
-        <EntityType Name="Plant">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CountryID" Type="Int32" Nullable="false" />
-          <Property Name="CompanyID" Type="Int32" Nullable="false" />
-          <Property Name="PlantTypeID" Type="Int32" Nullable="false" />
-          <Property Name="Location_Latitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="Location_Longitude" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="Power_Gen" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Plant_Layout_Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Irradiation" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="AMB_Temp" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="SharedHolder_Id" Type="Int32" Nullable="false" />
-          <Property Name="SharedHolder_Percentage" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Electricity_Gen" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Company" Relationship="Self.FK_Plant_Company" FromRole="Plant" ToRole="Company" />
-          <NavigationProperty Name="Country" Relationship="Self.FK_Plant_Country" FromRole="Plant" ToRole="Country" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK_Plant_Customer" FromRole="Plant" ToRole="Customer" />
-          <NavigationProperty Name="EnergyPlantHists" Relationship="Self.FK_EnergyPlantHist_Plant" FromRole="Plant" ToRole="EnergyPlantHist" />
-          <NavigationProperty Name="PlantType" Relationship="Self.FK_Plant_PlantType" FromRole="Plant" ToRole="PlantType" />
-          <NavigationProperty Name="SharedHolder" Relationship="Self.FK_Plant_SharedHolder" FromRole="Plant" ToRole="SharedHolder" />
-          <Property Name="Order" Type="Int32" Nullable="false" />
-          <Property Name="Location_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EnergyGenTargets" Relationship="Model.FK_EnergyGenTarget_Plant" FromRole="Plant" ToRole="EnergyGenTarget" />
-          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LatestTemperature" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EnergyGenDailies" Relationship="Model.FK_EnergyGenDaily_Plant" FromRole="Plant" ToRole="EnergyGenDaily" />
-          <NavigationProperty Name="EnergyGenHourlies" Relationship="Model.FK_EnergyGenHourly_Plant" FromRole="Plant" ToRole="EnergyGenHourly" />
-          <NavigationProperty Name="EnergyGenMonthlies" Relationship="Model.FK_EnergyGenMonthly_Plant" FromRole="Plant" ToRole="EnergyGenMonthly" />
-          <NavigationProperty Name="EnergyGenYearlies" Relationship="Model.FK_EnergyGenYearly_Plant" FromRole="Plant" ToRole="EnergyGenYearly" />
-          <Property Name="TimeZone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Power_Gen_Scale" Type="Double" Nullable="false" />
-          <Property Name="Power_Gen_Min" Type="Double" Nullable="false" />
-          <Property Name="Power_Gen_Max" Type="Double" Nullable="false" />
-          <Property Name="Irradiation_Scale" Type="Double" Nullable="false" />
-          <Property Name="Irradiation_Min" Type="Double" Nullable="false" />
-          <Property Name="Irradiation_Max" Type="Double" Nullable="false" />
-          <Property Name="AMB_Scale" Type="Double" Nullable="false" />
-          <Property Name="AMB_Min" Type="Double" Nullable="false" />
-          <Property Name="AMB_Max" Type="Double" Nullable="false" />
-          <Property Name="ForecastTemperature" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IsEnabled" Type="Int32" Nullable="false" />
-          <Property Name="Cogen" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UnitScale" Type="Int32" />
-          <Property Name="Hourly_Min" Type="Int32" Nullable="false" />
-          <Property Name="Hourly_Max" Type="Int32" Nullable="false" />
-          <Property Name="Hourly_Scale" Type="Int32" Nullable="false" />
-          <Property Name="Daily_Min" Type="Int32" Nullable="false" />
-          <Property Name="Daily_Max" Type="Int32" Nullable="false" />
-          <Property Name="Daily_Scale" Type="Int32" Nullable="false" />
-          <Property Name="Monthly_Min" Type="Int32" Nullable="false" />
-          <Property Name="Monthly_Max" Type="Int32" Nullable="false" />
-          <Property Name="Monthly_Scale" Type="Int32" Nullable="false" />
-          <Property Name="Yearly_Min" Type="Int32" Nullable="false" />
-          <Property Name="Yearly_Max" Type="Int32" Nullable="false" />
-          <Property Name="Yearly_Scale" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PlantType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PlantType_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_PlantType" FromRole="PlantType" ToRole="Plant" />
-        </EntityType>
-        <EntityType Name="SharedHolder">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SharedHolder_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Gpsc_Share" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_SharedHolder" FromRole="SharedHolder" ToRole="Plant" />
-        </EntityType>
-        <EntityType Name="PlantEnergyGenDailyView">
-          <Key>
-            <PropertyRef Name="PlantId" />
-          </Key>
-          <Property Name="Row" Type="Int64" />
-          <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="PlantEnergyGenHourlyView">
-          <Key>
-            <PropertyRef Name="PlantId" />
-          </Key>
-          <Property Name="Row" Type="Int64" />
-          <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="PlantEnergyGenMonthlyView">
-          <Key>
-            <PropertyRef Name="PlantId" />
-          </Key>
-          <Property Name="Row" Type="Int64" />
-          <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="PlantEnergyGenYearlyView">
-          <Key>
-            <PropertyRef Name="PlantId" />
-          </Key>
-          <Property Name="Row" Type="Int64" />
-          <Property Name="PlantId" Type="Int32" Nullable="false" />
-          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
-        </EntityType>
-        <Association Name="FK_Plant_Company">
-          <End Role="Company" Type="Self.Company" Multiplicity="1" />
-          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Plant">
-              <PropertyRef Name="CompanyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Plant_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Plant">
-              <PropertyRef Name="CountryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Plant_Customer">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Plant">
-              <PropertyRef Name="Customer_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EnergyPlantHist_EnergyGen">
-          <End Role="EnergyGen" Type="Self.EnergyGen" Multiplicity="1" />
-          <End Role="EnergyPlantHist" Type="Self.EnergyPlantHist" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EnergyGen">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="EnergyPlantHist">
-              <PropertyRef Name="EnergyGenId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EnergyPlantHist_Plant">
-          <End Role="Plant" Type="Self.Plant" Multiplicity="1" />
-          <End Role="EnergyPlantHist" Type="Self.EnergyPlantHist" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Plant">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="EnergyPlantHist">
-              <PropertyRef Name="PlantId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Plant_PlantType">
-          <End Role="PlantType" Type="Self.PlantType" Multiplicity="1" />
-          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PlantType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Plant">
-              <PropertyRef Name="PlantTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Plant_SharedHolder">
-          <End Role="SharedHolder" Type="Self.SharedHolder" Multiplicity="1" />
-          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SharedHolder">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Plant">
-              <PropertyRef Name="SharedHolder_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="GpscEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Companies" EntityType="Self.Company" />
-          <EntitySet Name="Countries" EntityType="Self.Country" />
-          <EntitySet Name="Customers" EntityType="Self.Customer" />
-          <EntitySet Name="EnergyGens" EntityType="Self.EnergyGen" />
-          <EntitySet Name="EnergyGenTargets" EntityType="Self.EnergyGenTarget" />
-          <EntitySet Name="EnergyPlantHists" EntityType="Self.EnergyPlantHist" />
-          <EntitySet Name="Plants" EntityType="Self.Plant" />
-          <EntitySet Name="PlantTypes" EntityType="Self.PlantType" />
-          <EntitySet Name="SharedHolders" EntityType="Self.SharedHolder" />
-          <EntitySet Name="PlantEnergyGenDailyViews" EntityType="Self.PlantEnergyGenDailyView" />
-          <EntitySet Name="PlantEnergyGenHourlyViews" EntityType="Self.PlantEnergyGenHourlyView" />
-          <EntitySet Name="PlantEnergyGenMonthlyViews" EntityType="Self.PlantEnergyGenMonthlyView" />
-          <EntitySet Name="PlantEnergyGenYearlyViews" EntityType="Self.PlantEnergyGenYearlyView" />
-          <AssociationSet Name="FK_Plant_Company" Association="Self.FK_Plant_Company">
-            <End Role="Company" EntitySet="Companies" />
-            <End Role="Plant" EntitySet="Plants" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Plant_Country" Association="Self.FK_Plant_Country">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="Plant" EntitySet="Plants" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Plant_Customer" Association="Self.FK_Plant_Customer">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Plant" EntitySet="Plants" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EnergyPlantHist_EnergyGen" Association="Self.FK_EnergyPlantHist_EnergyGen">
-            <End Role="EnergyGen" EntitySet="EnergyGens" />
-            <End Role="EnergyPlantHist" EntitySet="EnergyPlantHists" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EnergyPlantHist_Plant" Association="Self.FK_EnergyPlantHist_Plant">
-            <End Role="Plant" EntitySet="Plants" />
-            <End Role="EnergyPlantHist" EntitySet="EnergyPlantHists" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Plant_PlantType" Association="Self.FK_Plant_PlantType">
-            <End Role="PlantType" EntitySet="PlantTypes" />
-            <End Role="Plant" EntitySet="Plants" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Plant_SharedHolder" Association="Self.FK_Plant_SharedHolder">
-            <End Role="SharedHolder" EntitySet="SharedHolders" />
-            <End Role="Plant" EntitySet="Plants" />
-          </AssociationSet>
-          <EntitySet Name="C__MigrationHistory" EntityType="Model.C__MigrationHistory" />
-          <EntitySet Name="AspNetRoles" EntityType="Model.AspNetRole" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Model.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Model.AspNetUserLogin" />
-          <EntitySet Name="AspNetUsers" EntityType="Model.AspNetUser" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="Model.AspNetUserRoles">
-            <End Role="AspNetRole" EntitySet="AspNetRoles" />
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <EntitySet Name="TranLocus" EntityType="Model.TranLocu" />
           <FunctionImport Name="SPX_Update_Summary">
           <Parameter Name="PlantId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <AssociationSet Name="FK_EnergyGenTarget_Plant" Association="Model.FK_EnergyGenTarget_Plant">
-            <End Role="Plant" EntitySet="Plants" />
-            <End Role="EnergyGenTarget" EntitySet="EnergyGenTargets" />
-          </AssociationSet>
-          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -1253,47 +916,13 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="GeneralInfoImages" EntityType="Model.GeneralInfoImage" />
-          <AssociationSet Name="FK_GeneralInfoImage_Company" Association="Model.FK_GeneralInfoImage_Company">
-            <End Role="Company" EntitySet="Companies" />
-            <End Role="GeneralInfoImage" EntitySet="GeneralInfoImages" />
-          </AssociationSet>
           <FunctionImport Name="SPX_Update_Weather">
             <Parameter Name="location_name" Mode="In" Type="String" />
             <Parameter Name="api_data" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="PlantLayoutImages" EntityType="Model.PlantLayoutImage" />
-          <AssociationSet Name="FK_PlantLayoutImage_Company" Association="Model.FK_PlantLayoutImage_Company">
-            <End Role="Company" EntitySet="Companies" />
-            <End Role="PlantLayoutImage" EntitySet="PlantLayoutImages" />
-          </AssociationSet>
-          <EntitySet Name="EnergyGenDailies" EntityType="Model.EnergyGenDaily" />
-          <EntitySet Name="EnergyGenHourlies" EntityType="Model.EnergyGenHourly" />
-          <EntitySet Name="EnergyGenMonthlies" EntityType="Model.EnergyGenMonthly" />
-          <EntitySet Name="EnergyGenYearlies" EntityType="Model.EnergyGenYearly" />
-          <AssociationSet Name="FK_EnergyGenDaily_Plant" Association="Model.FK_EnergyGenDaily_Plant">
-            <End Role="Plant" EntitySet="Plants" />
-            <End Role="EnergyGenDaily" EntitySet="EnergyGenDailies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EnergyGenHourly_Plant" Association="Model.FK_EnergyGenHourly_Plant">
-            <End Role="Plant" EntitySet="Plants" />
-            <End Role="EnergyGenHourly" EntitySet="EnergyGenHourlies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EnergyGenMonthly_Plant" Association="Model.FK_EnergyGenMonthly_Plant">
-            <End Role="Plant" EntitySet="Plants" />
-            <End Role="EnergyGenMonthly" EntitySet="EnergyGenMonthlies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EnergyGenYearly_Plant" Association="Model.FK_EnergyGenYearly_Plant">
-            <End Role="Plant" EntitySet="Plants" />
-            <End Role="EnergyGenYearly" EntitySet="EnergyGenYearlies" />
-          </AssociationSet>
-          <EntitySet Name="PlantEnergyGenYearTargets" EntityType="Model.PlantEnergyGenYearTarget" />
           <FunctionImport Name="SPX_Util_ClearData">
           <Parameter Name="PlantId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="TranImportCHPPs" EntityType="Model.TranImportCHPP" />
-          <EntitySet Name="EnergyGen_20180405" EntityType="Model.EnergyGen_20180405" />
-          <EntitySet Name="EnergyPlantHist_20180405" EntityType="Model.EnergyPlantHist_20180405" />
           <FunctionImport Name="SPX_Update_CHPP" >
           <Parameter Name="p_datetime" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -1314,8 +943,177 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
             <Parameter Name="p_plant_id" Mode="In" Type="Int32" />
             <Parameter Name="p_chk_date" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="C__MigrationHistory" EntityType="Model.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Model.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Model.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Model.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Model.AspNetUser" />
+          <EntitySet Name="Companies" EntityType="Model.Company" />
+          <EntitySet Name="Countries" EntityType="Model.Country" />
+          <EntitySet Name="Customers" EntityType="Model.Customer" />
+          <EntitySet Name="EnergyGens" EntityType="Model.EnergyGen" />
+          <EntitySet Name="EnergyGenDailies" EntityType="Model.EnergyGenDaily" />
+          <EntitySet Name="EnergyGenHourlies" EntityType="Model.EnergyGenHourly" />
+          <EntitySet Name="EnergyGenMonthlies" EntityType="Model.EnergyGenMonthly" />
+          <EntitySet Name="EnergyGenTargets" EntityType="Model.EnergyGenTarget" />
+          <EntitySet Name="EnergyGenYearlies" EntityType="Model.EnergyGenYearly" />
+          <EntitySet Name="EnergyPlantHists" EntityType="Model.EnergyPlantHist" />
+          <EntitySet Name="GeneralInfoImages" EntityType="Model.GeneralInfoImage" />
+          <EntitySet Name="Plants" EntityType="Model.Plant" />
+          <EntitySet Name="PlantLayoutImages" EntityType="Model.PlantLayoutImage" />
+          <EntitySet Name="PlantTypes" EntityType="Model.PlantType" />
+          <EntitySet Name="SharedHolders" EntityType="Model.SharedHolder" />
+          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
+          <EntitySet Name="TranImportCHPPs" EntityType="Model.TranImportCHPP" />
+          <EntitySet Name="TranLocus" EntityType="Model.TranLocu" />
+          <EntitySet Name="EnergyGen_20180405" EntityType="Model.EnergyGen_20180405" />
+          <EntitySet Name="EnergyPlantHist_20180405" EntityType="Model.EnergyPlantHist_20180405" />
           <EntitySet Name="TranImportCHPP_20180425" EntityType="Model.TranImportCHPP_20180425" />
-        </EntityContainer>
+          <EntitySet Name="PlantEnergyGenDailyViews" EntityType="Model.PlantEnergyGenDailyView" />
+          <EntitySet Name="PlantEnergyGenHourlyViews" EntityType="Model.PlantEnergyGenHourlyView" />
+          <EntitySet Name="PlantEnergyGenMonthlyViews" EntityType="Model.PlantEnergyGenMonthlyView" />
+          <EntitySet Name="PlantEnergyGenYearlyViews" EntityType="Model.PlantEnergyGenYearlyView" />
+          <EntitySet Name="PlantEnergyGenYearTargets" EntityType="Model.PlantEnergyGenYearTarget" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralInfoImage_Company" Association="Model.FK_GeneralInfoImage_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="GeneralInfoImage" EntitySet="GeneralInfoImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_Company" Association="Model.FK_Plant_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlantLayoutImage_Company" Association="Model.FK_PlantLayoutImage_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="PlantLayoutImage" EntitySet="PlantLayoutImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_Country" Association="Model.FK_Plant_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_Customer" Association="Model.FK_Plant_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyPlantHist_EnergyGen" Association="Model.FK_EnergyPlantHist_EnergyGen">
+            <End Role="EnergyGen" EntitySet="EnergyGens" />
+            <End Role="EnergyPlantHist" EntitySet="EnergyPlantHists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyGenDaily_Plant" Association="Model.FK_EnergyGenDaily_Plant">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="EnergyGenDaily" EntitySet="EnergyGenDailies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyGenHourly_Plant" Association="Model.FK_EnergyGenHourly_Plant">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="EnergyGenHourly" EntitySet="EnergyGenHourlies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyGenMonthly_Plant" Association="Model.FK_EnergyGenMonthly_Plant">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="EnergyGenMonthly" EntitySet="EnergyGenMonthlies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyGenTarget_Plant" Association="Model.FK_EnergyGenTarget_Plant">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="EnergyGenTarget" EntitySet="EnergyGenTargets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyGenYearly_Plant" Association="Model.FK_EnergyGenYearly_Plant">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="EnergyGenYearly" EntitySet="EnergyGenYearlies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnergyPlantHist_Plant" Association="Model.FK_EnergyPlantHist_Plant">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="EnergyPlantHist" EntitySet="EnergyPlantHists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_PlantType" Association="Model.FK_Plant_PlantType">
+            <End Role="PlantType" EntitySet="PlantTypes" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_SharedHolder" Association="Model.FK_Plant_SharedHolder">
+            <End Role="SharedHolder" EntitySet="SharedHolders" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Model.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition1" ReturnType="Collection(Model.sp_helpdiagramdefinition1_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams1" ReturnType="Collection(Model.sp_helpdiagrams1_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams1" />
+          <FunctionImport Name="SPX_Update_Cal_Daily1">
+            <Parameter Name="p_plant_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_chk_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SPX_Update_Cal_Monthly1">
+            <Parameter Name="p_plant_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_chk_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SPX_Update_Cal_Yearly1">
+            <Parameter Name="p_plant_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_chk_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SPX_Update_CHPP1">
+            <Parameter Name="p_datetime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SPX_Update_Summary1">
+            <Parameter Name="PlantId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPX_Update_Weather1">
+            <Parameter Name="location_name" Mode="In" Type="String" />
+            <Parameter Name="api_data" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPX_Update_Weather21">
+            <Parameter Name="location_name" Mode="In" Type="String" />
+            <Parameter Name="api_data_current" Mode="In" Type="String" />
+            <Parameter Name="api_data_forecast" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPX_Util_ClearData1">
+            <Parameter Name="PlantId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -1378,127 +1176,60 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <NavigationProperty Name="AspNetUserLogins" Relationship="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
           <NavigationProperty Name="AspNetRoles" Relationship="Model.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="Model.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaim">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="Model.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogin">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="AspNetUserRoles">
-          <End Type="Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-        </Association>
-        <EntityType Name="TranLocu">
+        <EntityType Name="Company">
           <Key>
-            <PropertyRef Name="SeqNo" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="SeqNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DataPoint" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="DataValue" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="DataDateTime" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="FlagImport" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PlantId" Type="Int32" />
-          <Property Name="Granularity" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Company_Logo_Path" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Capacity" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="COD" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PPA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsEnabled" Type="Int32" Nullable="false" />
+          <Property Name="NavTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GeneralInfoImages" Relationship="Model.FK_GeneralInfoImage_Company" FromRole="Company" ToRole="GeneralInfoImage" />
+          <NavigationProperty Name="Plants" Relationship="Model.FK_Plant_Company" FromRole="Company" ToRole="Plant" />
+          <NavigationProperty Name="PlantLayoutImages" Relationship="Model.FK_PlantLayoutImage_Company" FromRole="Company" ToRole="PlantLayoutImage" />
         </EntityType>
-        <Association Name="FK_EnergyGenTarget_Plant">
-          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
-          <End Type="Model.EnergyGenTarget" Role="EnergyGenTarget" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Plant">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="EnergyGenTarget">
-              <PropertyRef Name="PlantId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="GeneralInfoImage">
+        <EntityType Name="Country">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="ImageUrl" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Company" Relationship="Model.FK_GeneralInfoImage_Company" FromRole="GeneralInfoImage" ToRole="Company" />
+          <Property Name="Country_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Latitude" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Country_Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="type_img_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type_img_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Plants" Relationship="Model.FK_Plant_Country" FromRole="Country" ToRole="Plant" />
         </EntityType>
-        <Association Name="FK_GeneralInfoImage_Company">
-          <End Type="Model.Company" Role="Company" Multiplicity="1" />
-          <End Type="Model.GeneralInfoImage" Role="GeneralInfoImage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="GeneralInfoImage">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="PlantLayoutImage">
+        <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="ImageUrl" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Company" Relationship="Model.FK_PlantLayoutImage_Company" FromRole="PlantLayoutImage" ToRole="Company" />
+          <Property Name="Customer_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Plants" Relationship="Model.FK_Plant_Customer" FromRole="Customer" ToRole="Plant" />
         </EntityType>
-        <Association Name="FK_PlantLayoutImage_Company">
-          <End Type="Model.Company" Role="Company" Multiplicity="1" />
-          <End Type="Model.PlantLayoutImage" Role="PlantLayoutImage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PlantLayoutImage">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="EnergyGen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnergyGen_Value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="EnergyGen_LatestUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EnergyGen_Weather" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_Wind_String" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_Solarradiation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_UV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_Forecast_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_History_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnergyGen_Icon_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SysDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EnergyPlantHists" Relationship="Model.FK_EnergyPlantHist_EnergyGen" FromRole="EnergyGen" ToRole="EnergyPlantHist" />
+        </EntityType>
         <EntityType Name="EnergyGenDaily">
           <Key>
             <PropertyRef Name="Id" />
@@ -1529,72 +1260,142 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <Property Name="Energy_LatestUpdate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Plant" Relationship="Model.FK_EnergyGenMonthly_Plant" FromRole="EnergyGenMonthly" ToRole="Plant" />
         </EntityType>
+        <EntityType Name="EnergyGenTarget">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YearMonth" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TargetValue" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Plant" Relationship="Model.FK_EnergyGenTarget_Plant" FromRole="EnergyGenTarget" ToRole="Plant" />
+        </EntityType>
         <EntityType Name="EnergyGenYearly">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PlantId" Type="Int32" Nullable="false" />
           <Property Name="Energy_Value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="Energy_LatestUpdate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Plant" Relationship="Model.FK_EnergyGenYearly_Plant" FromRole="EnergyGenYearly" ToRole="Plant" />
         </EntityType>
-        <Association Name="FK_EnergyGenDaily_Plant">
-          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
-          <End Type="Model.EnergyGenDaily" Role="EnergyGenDaily" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Plant">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="EnergyGenDaily">
-              <PropertyRef Name="PlantId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EnergyGenHourly_Plant">
-          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
-          <End Type="Model.EnergyGenHourly" Role="EnergyGenHourly" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Plant">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="EnergyGenHourly">
-              <PropertyRef Name="PlantId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EnergyGenMonthly_Plant">
-          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
-          <End Type="Model.EnergyGenMonthly" Role="EnergyGenMonthly" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Plant">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="EnergyGenMonthly">
-              <PropertyRef Name="PlantId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EnergyGenYearly_Plant">
-          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
-          <End Type="Model.EnergyGenYearly" Role="EnergyGenYearly" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Plant">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="EnergyGenYearly">
-              <PropertyRef Name="PlantId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="PlantEnergyGenYearTarget">
+        <EntityType Name="EnergyPlantHist">
           <Key>
-            <PropertyRef Name="PlantId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Row" Type="Int64" />
-          <Property Name="Total" Type="Decimal" Precision="38" Scale="4" />
-          <Property Name="YearTarget" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PlantId" Type="Int32" Nullable="false" />
+          <Property Name="EnergyGenId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EnergyGen" Relationship="Model.FK_EnergyPlantHist_EnergyGen" FromRole="EnergyPlantHist" ToRole="EnergyGen" />
+          <NavigationProperty Name="Plant" Relationship="Model.FK_EnergyPlantHist_Plant" FromRole="EnergyPlantHist" ToRole="Plant" />
+        </EntityType>
+        <EntityType Name="GeneralInfoImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="ImageUrl" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Company" Relationship="Model.FK_GeneralInfoImage_Company" FromRole="GeneralInfoImage" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="Plant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="PlantTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Location_Latitude" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Location_Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Power_Gen" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Plant_Layout_Path" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Irradiation" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="AMB_Temp" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SharedHolder_Id" Type="Int32" Nullable="false" />
+          <Property Name="SharedHolder_Percentage" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Electricity_Gen" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="Location_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LatestTemperature" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TimeZone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Power_Gen_Scale" Type="Double" Nullable="false" />
+          <Property Name="Power_Gen_Min" Type="Double" Nullable="false" />
+          <Property Name="Power_Gen_Max" Type="Double" Nullable="false" />
+          <Property Name="Irradiation_Scale" Type="Double" Nullable="false" />
+          <Property Name="Irradiation_Min" Type="Double" Nullable="false" />
+          <Property Name="Irradiation_Max" Type="Double" Nullable="false" />
+          <Property Name="AMB_Scale" Type="Double" Nullable="false" />
+          <Property Name="AMB_Min" Type="Double" Nullable="false" />
+          <Property Name="AMB_Max" Type="Double" Nullable="false" />
+          <Property Name="ForecastTemperature" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsEnabled" Type="Int32" Nullable="false" />
+          <Property Name="Cogen" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitScale" Type="Int32" />
+          <Property Name="Hourly_Min" Type="Int32" Nullable="false" />
+          <Property Name="Hourly_Max" Type="Int32" Nullable="false" />
+          <Property Name="Hourly_Scale" Type="Int32" Nullable="false" />
+          <Property Name="Daily_Min" Type="Int32" Nullable="false" />
+          <Property Name="Daily_Max" Type="Int32" Nullable="false" />
+          <Property Name="Daily_Scale" Type="Int32" Nullable="false" />
+          <Property Name="Monthly_Min" Type="Int32" Nullable="false" />
+          <Property Name="Monthly_Max" Type="Int32" Nullable="false" />
+          <Property Name="Monthly_Scale" Type="Int32" Nullable="false" />
+          <Property Name="Yearly_Min" Type="Int32" Nullable="false" />
+          <Property Name="Yearly_Max" Type="Int32" Nullable="false" />
+          <Property Name="Yearly_Scale" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Model.FK_Plant_Company" FromRole="Plant" ToRole="Company" />
+          <NavigationProperty Name="Country" Relationship="Model.FK_Plant_Country" FromRole="Plant" ToRole="Country" />
+          <NavigationProperty Name="Customer" Relationship="Model.FK_Plant_Customer" FromRole="Plant" ToRole="Customer" />
+          <NavigationProperty Name="EnergyGenDailies" Relationship="Model.FK_EnergyGenDaily_Plant" FromRole="Plant" ToRole="EnergyGenDaily" />
+          <NavigationProperty Name="EnergyGenHourlies" Relationship="Model.FK_EnergyGenHourly_Plant" FromRole="Plant" ToRole="EnergyGenHourly" />
+          <NavigationProperty Name="EnergyGenMonthlies" Relationship="Model.FK_EnergyGenMonthly_Plant" FromRole="Plant" ToRole="EnergyGenMonthly" />
+          <NavigationProperty Name="EnergyGenTargets" Relationship="Model.FK_EnergyGenTarget_Plant" FromRole="Plant" ToRole="EnergyGenTarget" />
+          <NavigationProperty Name="EnergyGenYearlies" Relationship="Model.FK_EnergyGenYearly_Plant" FromRole="Plant" ToRole="EnergyGenYearly" />
+          <NavigationProperty Name="EnergyPlantHists" Relationship="Model.FK_EnergyPlantHist_Plant" FromRole="Plant" ToRole="EnergyPlantHist" />
+          <NavigationProperty Name="PlantType" Relationship="Model.FK_Plant_PlantType" FromRole="Plant" ToRole="PlantType" />
+          <NavigationProperty Name="SharedHolder" Relationship="Model.FK_Plant_SharedHolder" FromRole="Plant" ToRole="SharedHolder" />
+        </EntityType>
+        <EntityType Name="PlantLayoutImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="ImageUrl" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Company" Relationship="Model.FK_PlantLayoutImage_Company" FromRole="PlantLayoutImage" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="PlantType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlantType_Type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Plants" Relationship="Model.FK_Plant_PlantType" FromRole="PlantType" ToRole="Plant" />
+        </EntityType>
+        <EntityType Name="SharedHolder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SharedHolder_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gpsc_Share" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Plants" Relationship="Model.FK_Plant_SharedHolder" FromRole="SharedHolder" ToRole="Plant" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TranImportCHPP">
           <Key>
@@ -1615,6 +1416,20 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <Property Name="DataDateTime_Daily" Type="DateTime" Precision="3" />
           <Property Name="DataDateTime_Monthly" Type="DateTime" Precision="3" />
           <Property Name="DataDateTime_Yearly" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TranLocu">
+          <Key>
+            <PropertyRef Name="SeqNo" />
+          </Key>
+          <Property Name="SeqNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataPoint" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DataValue" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DataDateTime" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="FlagImport" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PlantId" Type="Int32" />
+          <Property Name="Granularity" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="EnergyGen_20180405">
           <Key>
@@ -1666,192 +1481,268 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
           <Property Name="DataDateTime_Monthly" Type="DateTime" Precision="3" />
           <Property Name="DataDateTime_Yearly" Type="DateTime" Precision="3" />
         </EntityType>
-      </Schema>
+        <EntityType Name="PlantEnergyGenDailyView">
+          <Key>
+            <PropertyRef Name="PlantId" />
+          </Key>
+          <Property Name="Row" Type="Int64" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PlantEnergyGenHourlyView">
+          <Key>
+            <PropertyRef Name="PlantId" />
+          </Key>
+          <Property Name="Row" Type="Int64" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PlantEnergyGenMonthlyView">
+          <Key>
+            <PropertyRef Name="PlantId" />
+          </Key>
+          <Property Name="Row" Type="Int64" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PlantEnergyGenYearlyView">
+          <Key>
+            <PropertyRef Name="PlantId" />
+          </Key>
+          <Property Name="Row" Type="Int64" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+          <Property Name="AverageEnergyGenValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PlantEnergyGenYearTarget">
+          <Key>
+            <PropertyRef Name="PlantId" />
+          </Key>
+          <Property Name="Row" Type="Int64" />
+          <Property Name="Total" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="YearTarget" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralInfoImage_Company">
+          <End Type="Model.Company" Role="Company" Multiplicity="1" />
+          <End Type="Model.GeneralInfoImage" Role="GeneralInfoImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GeneralInfoImage">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_Company">
+          <End Type="Model.Company" Role="Company" Multiplicity="1" />
+          <End Type="Model.Plant" Role="Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlantLayoutImage_Company">
+          <End Type="Model.Company" Role="Company" Multiplicity="1" />
+          <End Type="Model.PlantLayoutImage" Role="PlantLayoutImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PlantLayoutImage">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_Country">
+          <End Type="Model.Country" Role="Country" Multiplicity="1" />
+          <End Type="Model.Plant" Role="Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_Customer">
+          <End Type="Model.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="Model.Plant" Role="Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyPlantHist_EnergyGen">
+          <End Type="Model.EnergyGen" Role="EnergyGen" Multiplicity="1" />
+          <End Type="Model.EnergyPlantHist" Role="EnergyPlantHist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnergyGen">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyPlantHist">
+              <PropertyRef Name="EnergyGenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyGenDaily_Plant">
+          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
+          <End Type="Model.EnergyGenDaily" Role="EnergyGenDaily" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenDaily">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyGenHourly_Plant">
+          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
+          <End Type="Model.EnergyGenHourly" Role="EnergyGenHourly" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenHourly">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyGenMonthly_Plant">
+          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
+          <End Type="Model.EnergyGenMonthly" Role="EnergyGenMonthly" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenMonthly">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyGenTarget_Plant">
+          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
+          <End Type="Model.EnergyGenTarget" Role="EnergyGenTarget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenTarget">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyGenYearly_Plant">
+          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
+          <End Type="Model.EnergyGenYearly" Role="EnergyGenYearly" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyGenYearly">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnergyPlantHist_Plant">
+          <End Type="Model.Plant" Role="Plant" Multiplicity="1" />
+          <End Type="Model.EnergyPlantHist" Role="EnergyPlantHist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnergyPlantHist">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_PlantType">
+          <End Type="Model.PlantType" Role="PlantType" Multiplicity="1" />
+          <End Type="Model.Plant" Role="Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlantType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="PlantTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_SharedHolder">
+          <End Type="Model.SharedHolder" Role="SharedHolder" Multiplicity="1" />
+          <End Type="Model.Plant" Role="Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SharedHolder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="SharedHolder_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <ComplexType Name="sp_helpdiagramdefinition1_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams1_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="GpscEntities">
-          <EntitySetMapping Name="Companies">
-            <EntityTypeMapping TypeName="Model.Company">
-              <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="NavTitle" ColumnName="NavTitle" />
-                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
-                <ScalarProperty Name="Company_Logo_Path" ColumnName="Company_Logo_Path" />
-                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-                <ScalarProperty Name="COD" ColumnName="COD" />
-                <ScalarProperty Name="PPA" ColumnName="PPA" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Countries">
-            <EntityTypeMapping TypeName="Model.Country">
-              <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="type_img_2" ColumnName="type_img_2" />
-                <ScalarProperty Name="type_img_1" ColumnName="type_img_1" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
-                <ScalarProperty Name="Country_Latitude" ColumnName="Country_Latitude" />
-                <ScalarProperty Name="Country_Longitude" ColumnName="Country_Longitude" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="Model.Customer">
-              <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EnergyGens">
-            <EntityTypeMapping TypeName="Model.EnergyGen">
-              <MappingFragment StoreEntitySet="EnergyGen">
-                <ScalarProperty Name="SysDesc" ColumnName="SysDesc" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="EnergyGen_Value" ColumnName="EnergyGen_Value" />
-                <ScalarProperty Name="EnergyGen_LatestUpdate" ColumnName="EnergyGen_LatestUpdate" />
-                <ScalarProperty Name="EnergyGen_Weather" ColumnName="EnergyGen_Weather" />
-                <ScalarProperty Name="EnergyGen_Wind_String" ColumnName="EnergyGen_Wind_String" />
-                <ScalarProperty Name="EnergyGen_Solarradiation" ColumnName="EnergyGen_Solarradiation" />
-                <ScalarProperty Name="EnergyGen_UV" ColumnName="EnergyGen_UV" />
-                <ScalarProperty Name="EnergyGen_Forecast_Url" ColumnName="EnergyGen_Forecast_Url" />
-                <ScalarProperty Name="EnergyGen_History_Url" ColumnName="EnergyGen_History_Url" />
-                <ScalarProperty Name="EnergyGen_Icon" ColumnName="EnergyGen_Icon" />
-                <ScalarProperty Name="EnergyGen_Icon_Url" ColumnName="EnergyGen_Icon_Url" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EnergyGenTargets">
-            <EntityTypeMapping TypeName="Model.EnergyGenTarget">
-              <MappingFragment StoreEntitySet="EnergyGenTarget">
-                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="YearMonth" ColumnName="YearMonth" />
-                <ScalarProperty Name="TargetValue" ColumnName="TargetValue" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EnergyPlantHists">
-            <EntityTypeMapping TypeName="Model.EnergyPlantHist">
-              <MappingFragment StoreEntitySet="EnergyPlantHist">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="EnergyGenId" ColumnName="EnergyGenId" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Plants">
-            <EntityTypeMapping TypeName="Model.Plant">
-              <MappingFragment StoreEntitySet="Plant">
-                <ScalarProperty Name="Yearly_Scale" ColumnName="Yearly_Scale" />
-                <ScalarProperty Name="Yearly_Max" ColumnName="Yearly_Max" />
-                <ScalarProperty Name="Yearly_Min" ColumnName="Yearly_Min" />
-                <ScalarProperty Name="Monthly_Scale" ColumnName="Monthly_Scale" />
-                <ScalarProperty Name="Monthly_Max" ColumnName="Monthly_Max" />
-                <ScalarProperty Name="Monthly_Min" ColumnName="Monthly_Min" />
-                <ScalarProperty Name="Daily_Scale" ColumnName="Daily_Scale" />
-                <ScalarProperty Name="Daily_Max" ColumnName="Daily_Max" />
-                <ScalarProperty Name="Daily_Min" ColumnName="Daily_Min" />
-                <ScalarProperty Name="Hourly_Scale" ColumnName="Hourly_Scale" />
-                <ScalarProperty Name="Hourly_Max" ColumnName="Hourly_Max" />
-                <ScalarProperty Name="Hourly_Min" ColumnName="Hourly_Min" />
-                <ScalarProperty Name="UnitScale" ColumnName="UnitScale" />
-                <ScalarProperty Name="Cogen" ColumnName="Cogen" />
-                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
-                <ScalarProperty Name="ForecastTemperature" ColumnName="ForecastTemperature" />
-                <ScalarProperty Name="AMB_Max" ColumnName="AMB_Max" />
-                <ScalarProperty Name="AMB_Min" ColumnName="AMB_Min" />
-                <ScalarProperty Name="AMB_Scale" ColumnName="AMB_Scale" />
-                <ScalarProperty Name="Irradiation_Max" ColumnName="Irradiation_Max" />
-                <ScalarProperty Name="Irradiation_Min" ColumnName="Irradiation_Min" />
-                <ScalarProperty Name="Irradiation_Scale" ColumnName="Irradiation_Scale" />
-                <ScalarProperty Name="Power_Gen_Max" ColumnName="Power_Gen_Max" />
-                <ScalarProperty Name="Power_Gen_Min" ColumnName="Power_Gen_Min" />
-                <ScalarProperty Name="Power_Gen_Scale" ColumnName="Power_Gen_Scale" />
-                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
-                <ScalarProperty Name="LatestTemperature" ColumnName="LatestTemperature" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="Location_Name" ColumnName="Location_Name" />
-                <ScalarProperty Name="Order" ColumnName="Order" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
-                <ScalarProperty Name="PlantTypeID" ColumnName="PlantTypeID" />
-                <ScalarProperty Name="Location_Latitude" ColumnName="Location_Latitude" />
-                <ScalarProperty Name="Location_Longitude" ColumnName="Location_Longitude" />
-                <ScalarProperty Name="Power_Gen" ColumnName="Power_Gen" />
-                <ScalarProperty Name="Plant_Layout_Path" ColumnName="Plant_Layout_Path" />
-                <ScalarProperty Name="Irradiation" ColumnName="Irradiation" />
-                <ScalarProperty Name="AMB_Temp" ColumnName="AMB_Temp" />
-                <ScalarProperty Name="SharedHolder_Id" ColumnName="SharedHolder_Id" />
-                <ScalarProperty Name="SharedHolder_Percentage" ColumnName="SharedHolder_Percentage" />
-                <ScalarProperty Name="Electricity_Gen" ColumnName="Electricity_Gen" />
-                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlantTypes">
-            <EntityTypeMapping TypeName="Model.PlantType">
-              <MappingFragment StoreEntitySet="PlantType">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PlantType_Type" ColumnName="PlantType_Type" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SharedHolders">
-            <EntityTypeMapping TypeName="Model.SharedHolder">
-              <MappingFragment StoreEntitySet="SharedHolder">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="SharedHolder_Name" ColumnName="SharedHolder_Name" />
-                <ScalarProperty Name="Gpsc_Share" ColumnName="Gpsc_Share" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlantEnergyGenDailyViews">
-            <EntityTypeMapping TypeName="Model.PlantEnergyGenDailyView">
-              <MappingFragment StoreEntitySet="PlantEnergyGenDailyView">
-                <ScalarProperty Name="Row" ColumnName="Row" />
-                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
-                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlantEnergyGenHourlyViews">
-            <EntityTypeMapping TypeName="Model.PlantEnergyGenHourlyView">
-              <MappingFragment StoreEntitySet="PlantEnergyGenHourlyView">
-                <ScalarProperty Name="Row" ColumnName="Row" />
-                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
-                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlantEnergyGenMonthlyViews">
-            <EntityTypeMapping TypeName="Model.PlantEnergyGenMonthlyView">
-              <MappingFragment StoreEntitySet="PlantEnergyGenMonthlyView">
-                <ScalarProperty Name="Row" ColumnName="Row" />
-                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
-                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlantEnergyGenYearlyViews">
-            <EntityTypeMapping TypeName="Model.PlantEnergyGenYearlyView">
-              <MappingFragment StoreEntitySet="PlantEnergyGenYearlyView">
-                <ScalarProperty Name="Row" ColumnName="Row" />
-                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
-                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="Model.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -1910,81 +1801,55 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="AspNetRole">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="TranLocus">
-            <EntityTypeMapping TypeName="Model.TranLocu">
-              <MappingFragment StoreEntitySet="TranLocus">
-                <ScalarProperty Name="Granularity" ColumnName="Granularity" />
-                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FlagImport" ColumnName="FlagImport" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="DataDateTime" ColumnName="DataDateTime" />
-                <ScalarProperty Name="DataValue" ColumnName="DataValue" />
-                <ScalarProperty Name="DataPoint" ColumnName="DataPoint" />
-                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SPX_Update_Summary" FunctionName="Model.Store.SPX_Update_Summary" />
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Model.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Model.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Model.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Model.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Model.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="Model.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="NavTitle" ColumnName="NavTitle" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="PPA" ColumnName="PPA" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Company_Logo_Path" ColumnName="Company_Logo_Path" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Model.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Model.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="GeneralInfoImages">
-            <EntityTypeMapping TypeName="Model.GeneralInfoImage">
-              <MappingFragment StoreEntitySet="GeneralInfoImage">
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="Model.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="type_img_2" ColumnName="type_img_2" />
+                <ScalarProperty Name="type_img_1" ColumnName="type_img_1" />
+                <ScalarProperty Name="Country_Longitude" ColumnName="Country_Longitude" />
+                <ScalarProperty Name="Country_Latitude" ColumnName="Country_Latitude" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SPX_Update_Weather" FunctionName="Model.Store.SPX_Update_Weather" />
-          <EntitySetMapping Name="PlantLayoutImages">
-            <EntityTypeMapping TypeName="Model.PlantLayoutImage">
-              <MappingFragment StoreEntitySet="PlantLayoutImage">
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="Model.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnergyGens">
+            <EntityTypeMapping TypeName="Model.EnergyGen">
+              <MappingFragment StoreEntitySet="EnergyGen">
+                <ScalarProperty Name="SysDesc" ColumnName="SysDesc" />
+                <ScalarProperty Name="EnergyGen_Icon_Url" ColumnName="EnergyGen_Icon_Url" />
+                <ScalarProperty Name="EnergyGen_Icon" ColumnName="EnergyGen_Icon" />
+                <ScalarProperty Name="EnergyGen_History_Url" ColumnName="EnergyGen_History_Url" />
+                <ScalarProperty Name="EnergyGen_Forecast_Url" ColumnName="EnergyGen_Forecast_Url" />
+                <ScalarProperty Name="EnergyGen_UV" ColumnName="EnergyGen_UV" />
+                <ScalarProperty Name="EnergyGen_Solarradiation" ColumnName="EnergyGen_Solarradiation" />
+                <ScalarProperty Name="EnergyGen_Wind_String" ColumnName="EnergyGen_Wind_String" />
+                <ScalarProperty Name="EnergyGen_Weather" ColumnName="EnergyGen_Weather" />
+                <ScalarProperty Name="EnergyGen_LatestUpdate" ColumnName="EnergyGen_LatestUpdate" />
+                <ScalarProperty Name="EnergyGen_Value" ColumnName="EnergyGen_Value" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2018,6 +1883,16 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EnergyGenTargets">
+            <EntityTypeMapping TypeName="Model.EnergyGenTarget">
+              <MappingFragment StoreEntitySet="EnergyGenTarget">
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="TargetValue" ColumnName="TargetValue" />
+                <ScalarProperty Name="YearMonth" ColumnName="YearMonth" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="EnergyGenYearlies">
             <EntityTypeMapping TypeName="Model.EnergyGenYearly">
               <MappingFragment StoreEntitySet="EnergyGenYearly">
@@ -2028,17 +1903,113 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PlantEnergyGenYearTargets">
-            <EntityTypeMapping TypeName="Model.PlantEnergyGenYearTarget">
-              <MappingFragment StoreEntitySet="PlantEnergyGenYearTarget">
+          <EntitySetMapping Name="EnergyPlantHists">
+            <EntityTypeMapping TypeName="Model.EnergyPlantHist">
+              <MappingFragment StoreEntitySet="EnergyPlantHist">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="EnergyGenId" ColumnName="EnergyGenId" />
                 <ScalarProperty Name="PlantId" ColumnName="PlantId" />
-                <ScalarProperty Name="YearTarget" ColumnName="YearTarget" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SPX_Util_ClearData" FunctionName="Model.Store.SPX_Util_ClearData" />
+          <EntitySetMapping Name="GeneralInfoImages">
+            <EntityTypeMapping TypeName="Model.GeneralInfoImage">
+              <MappingFragment StoreEntitySet="GeneralInfoImage">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plants">
+            <EntityTypeMapping TypeName="Model.Plant">
+              <MappingFragment StoreEntitySet="Plant">
+                <ScalarProperty Name="Yearly_Scale" ColumnName="Yearly_Scale" />
+                <ScalarProperty Name="Yearly_Max" ColumnName="Yearly_Max" />
+                <ScalarProperty Name="Yearly_Min" ColumnName="Yearly_Min" />
+                <ScalarProperty Name="Monthly_Scale" ColumnName="Monthly_Scale" />
+                <ScalarProperty Name="Monthly_Max" ColumnName="Monthly_Max" />
+                <ScalarProperty Name="Monthly_Min" ColumnName="Monthly_Min" />
+                <ScalarProperty Name="Daily_Scale" ColumnName="Daily_Scale" />
+                <ScalarProperty Name="Daily_Max" ColumnName="Daily_Max" />
+                <ScalarProperty Name="Daily_Min" ColumnName="Daily_Min" />
+                <ScalarProperty Name="Hourly_Scale" ColumnName="Hourly_Scale" />
+                <ScalarProperty Name="Hourly_Max" ColumnName="Hourly_Max" />
+                <ScalarProperty Name="Hourly_Min" ColumnName="Hourly_Min" />
+                <ScalarProperty Name="UnitScale" ColumnName="UnitScale" />
+                <ScalarProperty Name="Cogen" ColumnName="Cogen" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="ForecastTemperature" ColumnName="ForecastTemperature" />
+                <ScalarProperty Name="AMB_Max" ColumnName="AMB_Max" />
+                <ScalarProperty Name="AMB_Min" ColumnName="AMB_Min" />
+                <ScalarProperty Name="AMB_Scale" ColumnName="AMB_Scale" />
+                <ScalarProperty Name="Irradiation_Max" ColumnName="Irradiation_Max" />
+                <ScalarProperty Name="Irradiation_Min" ColumnName="Irradiation_Min" />
+                <ScalarProperty Name="Irradiation_Scale" ColumnName="Irradiation_Scale" />
+                <ScalarProperty Name="Power_Gen_Max" ColumnName="Power_Gen_Max" />
+                <ScalarProperty Name="Power_Gen_Min" ColumnName="Power_Gen_Min" />
+                <ScalarProperty Name="Power_Gen_Scale" ColumnName="Power_Gen_Scale" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="LatestTemperature" ColumnName="LatestTemperature" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="Location_Name" ColumnName="Location_Name" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="Electricity_Gen" ColumnName="Electricity_Gen" />
+                <ScalarProperty Name="SharedHolder_Percentage" ColumnName="SharedHolder_Percentage" />
+                <ScalarProperty Name="SharedHolder_Id" ColumnName="SharedHolder_Id" />
+                <ScalarProperty Name="AMB_Temp" ColumnName="AMB_Temp" />
+                <ScalarProperty Name="Irradiation" ColumnName="Irradiation" />
+                <ScalarProperty Name="Plant_Layout_Path" ColumnName="Plant_Layout_Path" />
+                <ScalarProperty Name="Power_Gen" ColumnName="Power_Gen" />
+                <ScalarProperty Name="Location_Longitude" ColumnName="Location_Longitude" />
+                <ScalarProperty Name="Location_Latitude" ColumnName="Location_Latitude" />
+                <ScalarProperty Name="PlantTypeID" ColumnName="PlantTypeID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantLayoutImages">
+            <EntityTypeMapping TypeName="Model.PlantLayoutImage">
+              <MappingFragment StoreEntitySet="PlantLayoutImage">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantTypes">
+            <EntityTypeMapping TypeName="Model.PlantType">
+              <MappingFragment StoreEntitySet="PlantType">
+                <ScalarProperty Name="PlantType_Type" ColumnName="PlantType_Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SharedHolders">
+            <EntityTypeMapping TypeName="Model.SharedHolder">
+              <MappingFragment StoreEntitySet="SharedHolder">
+                <ScalarProperty Name="Gpsc_Share" ColumnName="Gpsc_Share" />
+                <ScalarProperty Name="SharedHolder_Name" ColumnName="SharedHolder_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TranImportCHPPs">
             <EntityTypeMapping TypeName="Model.TranImportCHPP">
               <MappingFragment StoreEntitySet="TranImportCHPP">
@@ -2056,6 +2027,21 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
                 <ScalarProperty Name="Wh_sum" ColumnName="Wh_sum" />
                 <ScalarProperty Name="POAI_avg" ColumnName="POAI_avg" />
                 <ScalarProperty Name="W_avg" ColumnName="W_avg" />
+                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TranLocus">
+            <EntityTypeMapping TypeName="Model.TranLocu">
+              <MappingFragment StoreEntitySet="TranLocus">
+                <ScalarProperty Name="Granularity" ColumnName="Granularity" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FlagImport" ColumnName="FlagImport" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DataDateTime" ColumnName="DataDateTime" />
+                <ScalarProperty Name="DataValue" ColumnName="DataValue" />
+                <ScalarProperty Name="DataPoint" ColumnName="DataPoint" />
                 <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2087,11 +2073,6 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SPX_Update_CHPP" FunctionName="Model.Store.SPX_Update_CHPP" />
-          <FunctionImportMapping FunctionImportName="SPX_Update_Weather2" FunctionName="Model.Store.SPX_Update_Weather2" />
-          <FunctionImportMapping FunctionImportName="SPX_Update_Cal_Daily" FunctionName="Model.Store.SPX_Update_Cal_Daily" />
-          <FunctionImportMapping FunctionImportName="SPX_Update_Cal_Monthly" FunctionName="Model.Store.SPX_Update_Cal_Monthly" />
-          <FunctionImportMapping FunctionImportName="SPX_Update_Cal_Yearly" FunctionName="Model.Store.SPX_Update_Cal_Yearly" />
           <EntitySetMapping Name="TranImportCHPP_20180425">
             <EntityTypeMapping TypeName="Model.TranImportCHPP_20180425">
               <MappingFragment StoreEntitySet="TranImportCHPP_20180425">
@@ -2113,6 +2094,96 @@ warning 6002: The table/view 'GPSC-Plant-monitoring_Test.dbo.PlantEnergyGenYearT
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PlantEnergyGenDailyViews">
+            <EntityTypeMapping TypeName="Model.PlantEnergyGenDailyView">
+              <MappingFragment StoreEntitySet="PlantEnergyGenDailyView">
+                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
+                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="Row" ColumnName="Row" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantEnergyGenHourlyViews">
+            <EntityTypeMapping TypeName="Model.PlantEnergyGenHourlyView">
+              <MappingFragment StoreEntitySet="PlantEnergyGenHourlyView">
+                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
+                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="Row" ColumnName="Row" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantEnergyGenMonthlyViews">
+            <EntityTypeMapping TypeName="Model.PlantEnergyGenMonthlyView">
+              <MappingFragment StoreEntitySet="PlantEnergyGenMonthlyView">
+                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
+                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="Row" ColumnName="Row" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantEnergyGenYearlyViews">
+            <EntityTypeMapping TypeName="Model.PlantEnergyGenYearlyView">
+              <MappingFragment StoreEntitySet="PlantEnergyGenYearlyView">
+                <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
+                <ScalarProperty Name="AverageEnergyGenValue" ColumnName="AverageEnergyGenValue" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="Row" ColumnName="Row" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantEnergyGenYearTargets">
+            <EntityTypeMapping TypeName="Model.PlantEnergyGenYearTarget">
+              <MappingFragment StoreEntitySet="PlantEnergyGenYearTarget">
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="YearTarget" ColumnName="YearTarget" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Row" ColumnName="Row" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram1" FunctionName="Model.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram1" FunctionName="Model.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram1" FunctionName="Model.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition1" FunctionName="Model.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_helpdiagramdefinition1_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams1" FunctionName="Model.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_helpdiagrams1_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram1" FunctionName="Model.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams1" FunctionName="Model.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="SPX_Update_Cal_Daily1" FunctionName="Model.Store.SPX_Update_Cal_Daily" />
+          <FunctionImportMapping FunctionImportName="SPX_Update_Cal_Monthly1" FunctionName="Model.Store.SPX_Update_Cal_Monthly" />
+          <FunctionImportMapping FunctionImportName="SPX_Update_Cal_Yearly1" FunctionName="Model.Store.SPX_Update_Cal_Yearly" />
+          <FunctionImportMapping FunctionImportName="SPX_Update_CHPP1" FunctionName="Model.Store.SPX_Update_CHPP" />
+          <FunctionImportMapping FunctionImportName="SPX_Update_Summary1" FunctionName="Model.Store.SPX_Update_Summary" />
+          <FunctionImportMapping FunctionImportName="SPX_Update_Weather1" FunctionName="Model.Store.SPX_Update_Weather" />
+          <FunctionImportMapping FunctionImportName="SPX_Update_Weather21" FunctionName="Model.Store.SPX_Update_Weather2" />
+          <FunctionImportMapping FunctionImportName="SPX_Util_ClearData1" FunctionName="Model.Store.SPX_Util_ClearData" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

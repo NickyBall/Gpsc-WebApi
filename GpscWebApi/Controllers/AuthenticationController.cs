@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.DirectoryServices;
 using System.DirectoryServices.Protocols;
 using System.Linq;
@@ -115,14 +116,14 @@ namespace GpscWebApi.Controllers
                                     {"password", Password }
                                 };
                 var BodyParam = new FormUrlEncodedContent(values);
-                client.BaseAddress = new Uri("https://gpscweb.pttgrp.com");
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["BaseUrl"]);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
 
                 // Post for Token
                 try
                 {
-                    var response = await client.PostAsync("GPSC-Plant-monitoring-API/token", BodyParam);
+                    var response = await client.PostAsync(ConfigurationManager.AppSettings["TokenEndpoint"], BodyParam);
                     if (response.IsSuccessStatusCode)
                     {
                         string outputJson = await response.Content.ReadAsStringAsync();

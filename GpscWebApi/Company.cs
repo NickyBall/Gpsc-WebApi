@@ -17,8 +17,8 @@ namespace GpscWebApi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Company()
         {
-            this.Plants = new HashSet<Plant>();
             this.GeneralInfoImages = new HashSet<GeneralInfoImage>();
+            this.Plants = new HashSet<Plant>();
             this.PlantLayoutImages = new HashSet<PlantLayoutImage>();
         }
     
@@ -32,9 +32,9 @@ namespace GpscWebApi
         public string NavTitle { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Plant> Plants { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GeneralInfoImage> GeneralInfoImages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Plant> Plants { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlantLayoutImage> PlantLayoutImages { get; set; }
     }

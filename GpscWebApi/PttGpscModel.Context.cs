@@ -27,37 +27,37 @@ namespace GpscWebApi
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<Country> Countries { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<EnergyGen> EnergyGens { get; set; }
-        public virtual DbSet<EnergyGenTarget> EnergyGenTargets { get; set; }
-        public virtual DbSet<EnergyPlantHist> EnergyPlantHists { get; set; }
-        public virtual DbSet<Plant> Plants { get; set; }
-        public virtual DbSet<PlantType> PlantTypes { get; set; }
-        public virtual DbSet<SharedHolder> SharedHolders { get; set; }
-        public virtual DbSet<PlantEnergyGenDailyView> PlantEnergyGenDailyViews { get; set; }
-        public virtual DbSet<PlantEnergyGenHourlyView> PlantEnergyGenHourlyViews { get; set; }
-        public virtual DbSet<PlantEnergyGenMonthlyView> PlantEnergyGenMonthlyViews { get; set; }
-        public virtual DbSet<PlantEnergyGenYearlyView> PlantEnergyGenYearlyViews { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-        public virtual DbSet<TranLocu> TranLocus { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<GeneralInfoImage> GeneralInfoImages { get; set; }
-        public virtual DbSet<PlantLayoutImage> PlantLayoutImages { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<EnergyGen> EnergyGens { get; set; }
         public virtual DbSet<EnergyGenDaily> EnergyGenDailies { get; set; }
         public virtual DbSet<EnergyGenHourly> EnergyGenHourlies { get; set; }
         public virtual DbSet<EnergyGenMonthly> EnergyGenMonthlies { get; set; }
+        public virtual DbSet<EnergyGenTarget> EnergyGenTargets { get; set; }
         public virtual DbSet<EnergyGenYearly> EnergyGenYearlies { get; set; }
-        public virtual DbSet<PlantEnergyGenYearTarget> PlantEnergyGenYearTargets { get; set; }
+        public virtual DbSet<EnergyPlantHist> EnergyPlantHists { get; set; }
+        public virtual DbSet<GeneralInfoImage> GeneralInfoImages { get; set; }
+        public virtual DbSet<Plant> Plants { get; set; }
+        public virtual DbSet<PlantLayoutImage> PlantLayoutImages { get; set; }
+        public virtual DbSet<PlantType> PlantTypes { get; set; }
+        public virtual DbSet<SharedHolder> SharedHolders { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TranImportCHPP> TranImportCHPPs { get; set; }
+        public virtual DbSet<TranLocu> TranLocus { get; set; }
         public virtual DbSet<EnergyGen_20180405> EnergyGen_20180405 { get; set; }
         public virtual DbSet<EnergyPlantHist_20180405> EnergyPlantHist_20180405 { get; set; }
         public virtual DbSet<TranImportCHPP_20180425> TranImportCHPP_20180425 { get; set; }
+        public virtual DbSet<PlantEnergyGenDailyView> PlantEnergyGenDailyViews { get; set; }
+        public virtual DbSet<PlantEnergyGenHourlyView> PlantEnergyGenHourlyViews { get; set; }
+        public virtual DbSet<PlantEnergyGenMonthlyView> PlantEnergyGenMonthlyViews { get; set; }
+        public virtual DbSet<PlantEnergyGenYearlyView> PlantEnergyGenYearlyViews { get; set; }
+        public virtual DbSet<PlantEnergyGenYearTarget> PlantEnergyGenYearTargets { get; set; }
     
         public virtual int SPX_Update_Summary(Nullable<int> plantId)
         {
@@ -256,6 +256,205 @@ namespace GpscWebApi
                 new ObjectParameter("p_chk_date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Cal_Yearly", p_plant_idParameter, p_chk_dateParameter);
+        }
+    
+        public virtual int sp_alterdiagram1(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram1", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram1(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram1", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram1(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram1", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition1_Result> sp_helpdiagramdefinition1(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition1_Result>("sp_helpdiagramdefinition1", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams1_Result> sp_helpdiagrams1(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams1_Result>("sp_helpdiagrams1", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram1(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram1", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams1");
+        }
+    
+        public virtual int SPX_Update_Cal_Daily1(Nullable<int> p_plant_id, Nullable<System.DateTime> p_chk_date)
+        {
+            var p_plant_idParameter = p_plant_id.HasValue ?
+                new ObjectParameter("p_plant_id", p_plant_id) :
+                new ObjectParameter("p_plant_id", typeof(int));
+    
+            var p_chk_dateParameter = p_chk_date.HasValue ?
+                new ObjectParameter("p_chk_date", p_chk_date) :
+                new ObjectParameter("p_chk_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Cal_Daily1", p_plant_idParameter, p_chk_dateParameter);
+        }
+    
+        public virtual int SPX_Update_Cal_Monthly1(Nullable<int> p_plant_id, Nullable<System.DateTime> p_chk_date)
+        {
+            var p_plant_idParameter = p_plant_id.HasValue ?
+                new ObjectParameter("p_plant_id", p_plant_id) :
+                new ObjectParameter("p_plant_id", typeof(int));
+    
+            var p_chk_dateParameter = p_chk_date.HasValue ?
+                new ObjectParameter("p_chk_date", p_chk_date) :
+                new ObjectParameter("p_chk_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Cal_Monthly1", p_plant_idParameter, p_chk_dateParameter);
+        }
+    
+        public virtual int SPX_Update_Cal_Yearly1(Nullable<int> p_plant_id, Nullable<System.DateTime> p_chk_date)
+        {
+            var p_plant_idParameter = p_plant_id.HasValue ?
+                new ObjectParameter("p_plant_id", p_plant_id) :
+                new ObjectParameter("p_plant_id", typeof(int));
+    
+            var p_chk_dateParameter = p_chk_date.HasValue ?
+                new ObjectParameter("p_chk_date", p_chk_date) :
+                new ObjectParameter("p_chk_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Cal_Yearly1", p_plant_idParameter, p_chk_dateParameter);
+        }
+    
+        public virtual int SPX_Update_CHPP1(Nullable<System.DateTime> p_datetime)
+        {
+            var p_datetimeParameter = p_datetime.HasValue ?
+                new ObjectParameter("p_datetime", p_datetime) :
+                new ObjectParameter("p_datetime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_CHPP1", p_datetimeParameter);
+        }
+    
+        public virtual int SPX_Update_Summary1(Nullable<int> plantId)
+        {
+            var plantIdParameter = plantId.HasValue ?
+                new ObjectParameter("PlantId", plantId) :
+                new ObjectParameter("PlantId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Summary1", plantIdParameter);
+        }
+    
+        public virtual int SPX_Update_Weather1(string location_name, string api_data)
+        {
+            var location_nameParameter = location_name != null ?
+                new ObjectParameter("location_name", location_name) :
+                new ObjectParameter("location_name", typeof(string));
+    
+            var api_dataParameter = api_data != null ?
+                new ObjectParameter("api_data", api_data) :
+                new ObjectParameter("api_data", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Weather1", location_nameParameter, api_dataParameter);
+        }
+    
+        public virtual int SPX_Update_Weather21(string location_name, string api_data_current, string api_data_forecast)
+        {
+            var location_nameParameter = location_name != null ?
+                new ObjectParameter("location_name", location_name) :
+                new ObjectParameter("location_name", typeof(string));
+    
+            var api_data_currentParameter = api_data_current != null ?
+                new ObjectParameter("api_data_current", api_data_current) :
+                new ObjectParameter("api_data_current", typeof(string));
+    
+            var api_data_forecastParameter = api_data_forecast != null ?
+                new ObjectParameter("api_data_forecast", api_data_forecast) :
+                new ObjectParameter("api_data_forecast", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Update_Weather21", location_nameParameter, api_data_currentParameter, api_data_forecastParameter);
+        }
+    
+        public virtual int SPX_Util_ClearData1(Nullable<int> plantId)
+        {
+            var plantIdParameter = plantId.HasValue ?
+                new ObjectParameter("PlantId", plantId) :
+                new ObjectParameter("PlantId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPX_Util_ClearData1", plantIdParameter);
         }
     }
 }

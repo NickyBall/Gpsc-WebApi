@@ -5,54 +5,54 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6a4470824e81428496911eed40a68518" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Company" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Country" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Customer" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.EnergyGen" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.EnergyGenTarget" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.EnergyPlantHist" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Plant" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PlantType" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.SharedHolder" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PlantEnergyGenDailyView" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PlantEnergyGenHourlyView" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PlantEnergyGenMonthlyView" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PlantEnergyGenYearlyView" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_Plant_Company" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Plant_Country" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Plant_Customer" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_EnergyPlantHist_EnergyGen" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_EnergyPlantHist_Plant" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Plant_PlantType" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Plant_SharedHolder" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="10.375" PointY="3.75" />
-        <EntityTypeShape EntityType="Model.AspNetRole" Width="1.5" PointX="5.375" PointY="11.5" />
-        <EntityTypeShape EntityType="Model.AspNetUserClaim" Width="1.5" PointX="9.875" PointY="10" />
-        <EntityTypeShape EntityType="Model.AspNetUserLogin" Width="1.5" PointX="9.875" PointY="12.75" />
-        <EntityTypeShape EntityType="Model.AspNetUser" Width="1.5" PointX="7.625" PointY="10.125" />
+        <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.AspNetRole" Width="1.5" PointX="11.75" PointY="2.5" />
+        <EntityTypeShape EntityType="Model.AspNetUserClaim" Width="1.5" PointX="16.25" PointY="3.625" />
+        <EntityTypeShape EntityType="Model.AspNetUserLogin" Width="1.5" PointX="16.25" PointY="1" />
+        <EntityTypeShape EntityType="Model.AspNetUser" Width="1.5" PointX="14" PointY="1.125" />
+        <EntityTypeShape EntityType="Model.Company" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="Model.Country" Width="1.5" PointX="3.75" PointY="17.75" />
+        <EntityTypeShape EntityType="Model.Customer" Width="1.5" PointX="3.75" PointY="15.375" />
+        <EntityTypeShape EntityType="Model.EnergyGen" Width="1.5" PointX="9" PointY="1.5" />
+        <EntityTypeShape EntityType="Model.EnergyGenDaily" Width="1.5" PointX="8.25" PointY="14.25" />
+        <EntityTypeShape EntityType="Model.EnergyGenHourly" Width="1.5" PointX="8.25" PointY="8.625" />
+        <EntityTypeShape EntityType="Model.EnergyGenMonthly" Width="1.5" PointX="8.25" PointY="17" />
+        <EntityTypeShape EntityType="Model.EnergyGenTarget" Width="1.5" PointX="8.25" PointY="5.875" />
+        <EntityTypeShape EntityType="Model.EnergyGenYearly" Width="1.5" PointX="8.25" PointY="19.75" />
+        <EntityTypeShape EntityType="Model.EnergyPlantHist" Width="1.5" PointX="11.25" PointY="11.25" />
+        <EntityTypeShape EntityType="Model.GeneralInfoImage" Width="1.5" PointX="3" PointY="10.125" />
+        <EntityTypeShape EntityType="Model.Plant" Width="1.5" PointX="6" PointY="6.375" />
+        <EntityTypeShape EntityType="Model.PlantLayoutImage" Width="1.5" PointX="3" PointY="26.375" />
+        <EntityTypeShape EntityType="Model.PlantType" Width="1.5" PointX="3.75" PointY="13" />
+        <EntityTypeShape EntityType="Model.SharedHolder" Width="1.5" PointX="3.75" PointY="7.5" />
+        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.TranImportCHPP" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.TranLocu" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.EnergyGen_20180405" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.EnergyPlantHist_20180405" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.TranImportCHPP_20180425" Width="1.5" PointX="13.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.PlantEnergyGenDailyView" Width="1.5" PointX="13.75" PointY="11.75" />
+        <EntityTypeShape EntityType="Model.PlantEnergyGenHourlyView" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="Model.PlantEnergyGenMonthlyView" Width="1.5" PointX="10.75" PointY="14.75" />
+        <EntityTypeShape EntityType="Model.PlantEnergyGenYearlyView" Width="1.5" PointX="12.75" PointY="14.75" />
+        <EntityTypeShape EntityType="Model.PlantEnergyGenYearTarget" Width="1.5" PointX="14.75" PointY="14.75" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="Model.AspNetUserRoles" />
-        <EntityTypeShape EntityType="Model.TranLocu" Width="1.5" PointX="10.375" PointY="6.75" />
-        <AssociationConnector Association="Model.FK_EnergyGenTarget_Plant" />
-        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="12.375" PointY="0.75" />
-        <EntityTypeShape EntityType="Model.GeneralInfoImage" Width="1.5" PointX="3" PointY="11.875" />
         <AssociationConnector Association="Model.FK_GeneralInfoImage_Company" />
-        <EntityTypeShape EntityType="Model.PlantLayoutImage" Width="1.5" PointX="3" PointY="15" />
+        <AssociationConnector Association="Model.FK_Plant_Company" />
         <AssociationConnector Association="Model.FK_PlantLayoutImage_Company" />
-        <EntityTypeShape EntityType="Model.EnergyGenDaily" Width="1.5" PointX="5.25" PointY="22.625" />
-        <EntityTypeShape EntityType="Model.EnergyGenHourly" Width="1.5" PointX="5.25" PointY="14.5" />
-        <EntityTypeShape EntityType="Model.EnergyGenMonthly" Width="1.5" PointX="5.25" PointY="17.125" />
-        <EntityTypeShape EntityType="Model.EnergyGenYearly" Width="1.5" PointX="5.25" PointY="19.875" />
+        <AssociationConnector Association="Model.FK_Plant_Country" />
+        <AssociationConnector Association="Model.FK_Plant_Customer" />
+        <AssociationConnector Association="Model.FK_EnergyPlantHist_EnergyGen" />
         <AssociationConnector Association="Model.FK_EnergyGenDaily_Plant" />
         <AssociationConnector Association="Model.FK_EnergyGenHourly_Plant" />
         <AssociationConnector Association="Model.FK_EnergyGenMonthly_Plant" />
+        <AssociationConnector Association="Model.FK_EnergyGenTarget_Plant" />
         <AssociationConnector Association="Model.FK_EnergyGenYearly_Plant" />
-        <EntityTypeShape EntityType="Model.PlantEnergyGenYearTarget" Width="1.5" PointX="12.375" PointY="3.75" />
-        <EntityTypeShape EntityType="Model.TranImportCHPP" Width="1.5" PointX="12.375" PointY="6.75" />
-        <EntityTypeShape EntityType="Model.EnergyGen_20180405" Width="1.5" PointX="12.375" PointY="10.75" />
-        <EntityTypeShape EntityType="Model.EnergyPlantHist_20180405" Width="1.5" PointX="14.375" PointY="0.75" />
-        <EntityTypeShape EntityType="Model.TranImportCHPP_20180425" Width="1.5" PointX="14.375" PointY="3.75" />
+        <AssociationConnector Association="Model.FK_EnergyPlantHist_Plant" />
+        <AssociationConnector Association="Model.FK_Plant_PlantType" />
+        <AssociationConnector Association="Model.FK_Plant_SharedHolder" />
+        <AssociationConnector Association="Model.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

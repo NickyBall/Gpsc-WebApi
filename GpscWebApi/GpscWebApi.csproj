@@ -357,7 +357,13 @@
     <Compile Include="SharedHolder.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition1_Result.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>PttGpscModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams1_Result.cs">
       <DependentUpon>PttGpscModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
