@@ -122,7 +122,7 @@ namespace GpscWebApi.Controllers
                 // Post for Token
                 try
                 {
-                    var response = await client.PostAsync("GPSC-Plant-monitoring-API_Test/token", BodyParam);
+                    var response = await client.PostAsync("GPSC-Plant-monitoring-API/token", BodyParam);
                     if (response.IsSuccessStatusCode)
                     {
                         string outputJson = await response.Content.ReadAsStringAsync();
